@@ -1,9 +1,4 @@
-<svg
-  {...Astro.props}
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 187.727 58.8"
-  fill="none"
->
+<svg xmlns="http://www.w3.org/2000/svg" width="187.727" height="58.8" viewBox="0 0 187.727 58.8">
   <g id="deligo_SVG" data-name="deligo SVG" transform="translate(-1.54 0.088)">
     <g id="Group_17689" data-name="Group 17689" transform="translate(131.41 -0.471)">
       <path id="Path_32935" data-name="Path 32935" d="M204.117,4.368v20.35a2.346,2.346,0,0,1-2.348,2.348H157.047L149.26,35.11V4.368a2.352,2.352,0,0,1,2.348-2.348h50.162A2.352,2.352,0,0,1,204.117,4.368Z" transform="translate(-146.26 -1.637)" fill="#1da6ae"/>
