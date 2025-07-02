@@ -1,6 +1,8 @@
 ---
 import TestimonialItem from "./TestimonialItem.astro";
 import StatsGrid from "../../ui/blocks/StatsGrid.astro";
+import PrimaryCTA from "../../ui/buttons/PrimaryCTA.astro";
+import SecondaryCTA from "../../ui/buttons/SecondaryCTA.astro";
 
 const {
   title,
@@ -29,52 +31,100 @@ type StatProps = {
   count: string;
   description: string;
 };
+
+// Featured case studies data
+const featuredCaseStudies = [
+  {
+    id: 1,
+    title: "E-Commerce Platform",
+    client: "TechRetail Inc.",
+    description: "Complete overhaul of legacy e-commerce system with modern microservices architecture.",
+    metrics: "300% performance improvement",
+    image: "/images/case-studies/ecommerce-platform.avif"
+  },
+  {
+    id: 2,
+    title: "Healthcare Management",
+    client: "MediCare Solutions",
+    description: "Custom patient management system with HIPAA compliance and real-time data synchronization.",
+    metrics: "250% efficiency increase",
+    image: "/images/case-studies/healthcare-system.avif"
+  },
+  {
+    id: 3,
+    title: "Financial Trading Platform",
+    client: "TradeFlow Capital",
+    description: "High-frequency trading platform with real-time market data processing.",
+    metrics: "0.1ms latency",
+    image: "/images/case-studies/trading-platform.avif"
+  }
+];
 ---
 
 <section
   class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
 >
-  <!-- Container for the testimonials -->
+  <!-- Container for the case studies preview -->
   <div
     class="lg:grid lg:grid-cols-12 lg:items-center lg:justify-between lg:gap-16"
   >
     <div class="lg:col-span-5 lg:col-start-1">
       <!-- Title and Subtitle -->
       <div class="mb-8">
-        <h2
-          class="mb-2 text-3xl font-bold text-neutral-800 dark:text-neutral-200 lg:text-4xl"
-        >
-          {title}
-        </h2>
+        <h2 class="font-h2">{title}</h2>
         {subTitle &&
-        <p class="text-neutral-600 dark:text-neutral-400">
+        <p class="font-h3 text-neutral-400">
           {subTitle}
         </p>
       }
       </div>
 
-      <!-- Generate a blockquote for each testimonial in the testimonials array by mapping over the array. -->
-      { testimonials &&
-        testimonials.map((testimonial) => (
-        <TestimonialItem content={testimonial.content} author={testimonial.author} role={testimonial.role} avatarSrc={testimonial.avatarSrc} />
-        ))
-      }
-    </div>
-{ statistics &&
-    <div class="mt-10 lg:col-span-6 lg:col-end-13 lg:mt-0">
-      <div class="space-y-6 sm:space-y-8">
-        <ul
-          class="grid grid-cols-2 divide-x-2 divide-y-2 divide-neutral-300 overflow-hidden dark:divide-neutral-700"
-        >
-          <!-- Generate a list item for each stat in the statistics array by mapping over the array. -->
-          {
-            statistics.map((stat, index) => (
-            <StatsGrid count={stat.count} description={stat.description} index={index}/>
-            ))
-          }
-        </ul>
+      <!-- Featured Case Studies Preview -->
+      <div class="space-y-6 mb-8">
+        {featuredCaseStudies.map((caseStudy) => (
+          <div class="bg-third rounded-lg p-4 border border-neutral-700 hover:border-primary/50 transition-colors">
+            <div class="flex items-start gap-4">
+              <div class="image-container overflow-hidden flex-shrink-0">
+                <img 
+                  src={caseStudy.image} 
+                  alt={caseStudy.title}
+                  class="w-16 h-16 object-cover"
+                  onerror="this.src='/images/placeholder-case-study.avif'"
+                />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="font-h4 mb-1">{caseStudy.title}</h3>
+                <p class="text-sm text-neutral-400 mb-2">{caseStudy.client}</p>
+                <p class="text-sm text-neutral-300 mb-2 line-clamp-2">{caseStudy.description}</p>
+                <div class="text-xs text-primary font-semibold">{caseStudy.metrics}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA to view all case studies -->
+      <div class="flex gap-4">
+        <PrimaryCTA title="View All Case Studies" url="/case-studies" />
+        <SecondaryCTA title="Get Custom Quote" url="/contact" />
       </div>
     </div>
-  }
+
+    {statistics &&
+      <div class="mt-10 lg:col-span-6 lg:col-end-13 lg:mt-0">
+        <div class="space-y-6 sm:space-y-8">
+          <ul
+            class="grid grid-cols-2 divide-x-2 divide-y-2 divide-neutral-700 overflow-hidden"
+          >
+            <!-- Generate a list item for each stat in the statistics array by mapping over the array. -->
+            {
+              statistics.map((stat, index) => (
+              <StatsGrid count={stat.count} description={stat.description} index={index}/>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    }
   </div>
 </section>

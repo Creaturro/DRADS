@@ -1,0 +1,248 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import Icon from "@components/ui/icons/Icon.astro";
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
+
+// Case studies data
+const caseStudies = [
+  {
+    id: 1,
+    title: "E-Commerce Platform Transformation",
+    client: "TechRetail Inc.",
+    industry: "E-Commerce",
+    description: "Complete overhaul of legacy e-commerce system with modern microservices architecture, resulting in 300% performance improvement and 50% reduction in maintenance costs.",
+    technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
+    metrics: {
+      performance: "300%",
+      costReduction: "50%",
+      timeToMarket: "60%"
+    },
+    image: "/images/case-studies/ecommerce-platform.avif",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "Healthcare Management System",
+    client: "MediCare Solutions",
+    industry: "Healthcare",
+    description: "Custom patient management system with HIPAA compliance, real-time data synchronization, and advanced analytics dashboard for healthcare providers.",
+    technologies: ["Vue.js", "Python", "MongoDB", "Azure"],
+    metrics: {
+      efficiency: "250%",
+      accuracy: "99.9%",
+      compliance: "100%"
+    },
+    image: "/images/case-studies/healthcare-system.avif",
+    featured: false
+  },
+  {
+    id: 3,
+    title: "Financial Trading Platform",
+    client: "TradeFlow Capital",
+    industry: "FinTech",
+    description: "High-frequency trading platform with real-time market data processing, advanced risk management, and automated trading algorithms.",
+    technologies: ["Angular", "Java", "Redis", "Kubernetes"],
+    metrics: {
+      latency: "0.1ms",
+      throughput: "1M+",
+      reliability: "99.99%"
+    },
+    image: "/images/case-studies/trading-platform.avif",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "Supply Chain Optimization",
+    client: "Global Logistics Corp",
+    industry: "Logistics",
+    description: "End-to-end supply chain management system with IoT integration, predictive analytics, and real-time tracking capabilities.",
+    technologies: ["React Native", "Go", "InfluxDB", "Docker"],
+    metrics: {
+      efficiency: "180%",
+      costSavings: "35%",
+      visibility: "Real-time"
+    },
+    image: "/images/case-studies/supply-chain.avif",
+    featured: false
+  },
+  {
+    id: 5,
+    title: "Educational Learning Platform",
+    client: "EduTech Innovations",
+    industry: "Education",
+    description: "Comprehensive learning management system with AI-powered content recommendations, virtual classrooms, and advanced assessment tools.",
+    technologies: ["Next.js", "Python", "TensorFlow", "AWS"],
+    metrics: {
+      engagement: "200%",
+      completion: "85%",
+      satisfaction: "4.8/5"
+    },
+    image: "/images/case-studies/education-platform.avif",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Manufacturing Automation",
+    client: "SmartFactory Industries",
+    industry: "Manufacturing",
+    description: "IoT-driven manufacturing automation system with predictive maintenance, quality control, and production optimization.",
+    technologies: ["Vue.js", "C#", "SQL Server", "Azure IoT"],
+    metrics: {
+      productivity: "220%",
+      downtime: "-70%",
+      quality: "99.5%"
+    },
+    image: "/images/case-studies/manufacturing.avif",
+    featured: false
+  }
+];
+---
+
+<MainLayout>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-b from-third to-neutral-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="font-h2 mb-6">
+          Our Success Stories
+        </h1>
+        <p class="font-h3 max-w-3xl mx-auto">
+          Discover how DRADS has transformed businesses across industries with custom software solutions that drive real results.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Case Study -->
+  <section class="py-16 bg-neutral-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h2 class="font-h2 text-center mb-4">Featured Project</h2>
+        <p class="font-h3 text-center text-neutral-400">Our most impactful transformation</p>
+      </div>
+
+      {caseStudies.filter(cs => cs.featured).map(caseStudy => (
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-semibold">
+                {caseStudy.industry}
+              </span>
+              <span class="text-neutral-400 font-h4">{caseStudy.client}</span>
+            </div>
+            
+            <h3 class="font-h2">{caseStudy.title}</h3>
+            <p class="font-h3 text-neutral-300">{caseStudy.description}</p>
+            
+            <div class="grid grid-cols-3 gap-6">
+              {Object.entries(caseStudy.metrics).map(([key, value]) => (
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-primary">{value}</div>
+                  <div class="text-sm text-neutral-400 capitalize">{key}</div>
+                </div>
+              ))}
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              {caseStudy.technologies.map(tech => (
+                <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div class="flex gap-4">
+              <PrimaryCTA title="View Details" url={`/case-studies/${caseStudy.id}`} />
+              <SecondaryCTA title="Similar Projects" url="/case-studies" />
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="image-container overflow-hidden">
+              <img 
+                src={caseStudy.image} 
+                alt={caseStudy.title}
+                class="w-full h-80 object-cover"
+                onerror="this.src='/images/placeholder-case-study.avif'"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- All Case Studies Grid -->
+  <section class="py-16 bg-neutral-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h2 class="font-h2 text-center mb-4">All Projects</h2>
+        <p class="font-h3 text-center text-neutral-400">Explore our complete portfolio</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {caseStudies.filter(cs => !cs.featured).map(caseStudy => (
+          <div class="bg-third rounded-xl p-6 border border-neutral-700 hover:border-primary/50 transition-colors">
+            <div class="image-container overflow-hidden mb-6">
+              <img 
+                src={caseStudy.image} 
+                alt={caseStudy.title}
+                class="w-full h-48 object-cover"
+                onerror="this.src='/images/placeholder-case-study.avif'"
+              />
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="px-2 py-1 bg-primary/20 text-primary rounded-full text-xs font-semibold">
+                  {caseStudy.industry}
+                </span>
+                <span class="text-neutral-400 text-sm">{caseStudy.client}</span>
+              </div>
+
+              <h3 class="font-h4">{caseStudy.title}</h3>
+              <p class="text-neutral-300 text-sm line-clamp-3">{caseStudy.description}</p>
+
+              <div class="flex flex-wrap gap-2 mb-4">
+                {caseStudy.technologies.slice(0, 3).map(tech => (
+                  <span class="px-2 py-1 bg-secondary/20 text-secondary rounded-full text-xs">
+                    {tech}
+                  </span>
+                ))}
+                {caseStudy.technologies.length > 3 && (
+                  <span class="px-2 py-1 bg-neutral-600 text-neutral-300 rounded-full text-xs">
+                    +{caseStudy.technologies.length - 3} more
+                  </span>
+                )}
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div class="text-sm text-neutral-400">
+                  {Object.entries(caseStudy.metrics)[0] && (
+                    <span>{Object.entries(caseStudy.metrics)[0][1]} improvement</span>
+                  )}
+                </div>
+                <SecondaryCTA title="View Details" url={`/case-studies/${caseStudy.id}`} class="text-sm" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-primary/10 to-secondary/10">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-h2 mb-6">Ready to Start Your Project?</h2>
+      <p class="font-h3 mb-8 text-neutral-300">
+        Let's discuss how DRADS can transform your business with custom software solutions tailored to your specific needs.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <PrimaryCTA title="Get Custom Quote" url="/contact" />
+        <SecondaryCTA title="Schedule Consultation" url="/contact?type=consultation" />
+      </div>
+    </div>
+  </section>
+</MainLayout> 

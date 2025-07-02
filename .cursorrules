@@ -1,0 +1,25 @@
+# .cursorrules for DRADS Project
+
+- Use the ScrewFast Astro template as the base for all development.
+- All design and layout must follow the Adobe XD/Figma mockups provided for DRADS.
+- The site must use a **dark theme only**. Remove all light theme toggles and logic.
+- Use the Deligo SVG logo as the BrandLogo in the navbar, footer, and mega menu. The logo should be prominent and visually balanced.
+- All CTAs, links, and active navigation states must use the DRADS primary color: `#1DA6AE`.
+- Use the secondary color `#AB1E81` for accent elements (e.g., triangle in cards).
+- Navigation and footer links must match the DRADS structure. Hide or disable multi-language, blog, and documentation features (do not delete files, just disable routing/UI).
+- The homepage is the main landing page. Dedicated pages must exist for Case Studies, Contact, and (future) About/Join Our Team.
+- Reuse and adapt existing ScrewFast components wherever possible. Minimize new code.
+- Use the `ReusableSection.astro` component for all major content sections. This component must have:
+  - H2 title (full width, left-aligned)
+  - H3 description (70% width on desktop, full width on mobile, left-aligned)
+  - Two-column responsive content area (32px gap, stacks on mobile)
+- The "3-4x / 3 weeks / 2 months" cards must use a reusable Astro component with a speech bubble tail. The tail must be a CSS triangle, outside the card's rounded rectangle, bottom left, and match the card's background.
+- Use the generic `SpeechBubble.astro` component for quotes or any custom content. It must accept slot content and allow customization of background color, text color, and tail size.
+- All components and sections must be fully responsive and mobile-friendly.
+- Typography, spacing, and color usage must be consistent with the DRADS design system.
+- All assets (images, SVGs, etc.) must be placed in the appropriate `public` or `src/assets` directories.
+- New components must be placed in logical directories (`sections/`, `ui/blocks/`, etc.) for maintainability.
+- All major UI changes must be tested for responsiveness and accessibility.
+- Commit and push to git after each major change.
+- Prioritize Astro and Tailwind best practices (Astro Islands, zero-JS by default, etc.).
+- Minimal new code creation; focus on adapting and reusing existing, optimized components. 

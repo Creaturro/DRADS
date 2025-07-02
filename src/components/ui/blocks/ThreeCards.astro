@@ -1,0 +1,46 @@
+---
+// No props needed, this is a static three-card display
+---
+<div class="flex flex-col md:flex-row gap-4 md:gap-8 items-center md:items-start w-full">
+  <!-- Speed Card -->
+  <div class="relative text-white p-2.5 sm:p-4 pb-8 rounded-xl w-48 sm:w-52 h-48 sm:h-52 bg-primary">
+    <!-- Enlarged secondary color accent triangle -->
+    <div class="absolute top-0 right-0 w-0 h-0 border-l-[60px] border-l-transparent border-t-[60px] border-t-secondary rounded-tr-xl"></div>
+    <div class="relative z-10 h-full flex flex-col justify-between text-center">
+      <div class="text-6xl font-bold mb-3 mt-5">3-4x</div>
+      <div class="text-base sm:text-lg leading-[23.4px] mt-auto">
+        faster completion<br />vs classical<br />development
+      </div>
+    </div>
+    <!-- Flipped speech bubble tail (triangle only, still bottom left) -->
+    <div class="absolute left-0 -bottom-5 z-20" style="width: 0; height: 0; border-top: 40px solid #1DA6AE; border-right: 40px solid transparent;"></div>
+  </div>
+  <!-- Weeks Card -->
+  <div class="relative text-white p-2.5 sm:p-4 pb-8 rounded-xl w-48 sm:w-52 h-48 sm:h-52 bg-primary">
+    <div class="text-center h-full flex flex-col justify-between">
+      <div class="flex-1 flex flex-col justify-center">
+        <div class="text-6xl font-bold mb-2">3</div>
+        <div class="text-2xl font-semibold mb-4">Weeks</div>
+      </div>
+      <div class="text-base sm:text-lg leading-[23.4px] mt-auto">
+        first working<br />version of the app
+      </div>
+    </div>
+    <!-- Flipped speech bubble tail (triangle only, still bottom left) -->
+    <div class="absolute left-0 -bottom-5 z-20" style="width: 0; height: 0; border-top: 40px solid #1DA6AE; border-right: 40px solid transparent;"></div>
+  </div>
+  <!-- Months Card -->
+  <div class="relative text-white p-2.5 sm:p-4 pb-8 rounded-xl w-48 sm:w-52 h-48 sm:h-52 bg-primary">
+    <div class="text-center h-full flex flex-col justify-between">
+      <div class="flex-1 flex flex-col justify-center">
+        <div class="text-6xl font-bold mb-2">2</div>
+        <div class="text-2xl font-semibold mb-4">Months</div>
+      </div>
+      <div class="text-base sm:text-lg leading-[23.4px] mt-auto">
+        from concept to<br />going live
+      </div>
+    </div>
+    <!-- Flipped speech bubble tail (triangle only, still bottom left) -->
+    <div class="absolute left-0 -bottom-5 z-20" style="width: 0; height: 0; border-top: 40px solid #1DA6AE; border-right: 40px solid transparent;"></div>
+  </div>
+</div> 

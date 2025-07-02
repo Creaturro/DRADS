@@ -2,14 +2,14 @@
 // No props needed for this custom Hero Section
 ---
 
-<section class="relative min-h-screen flex flex-col items-center px-8" style="margin: 0; padding: 0; margin-top: 50px;">
+<section class="relative flex flex-col items-center px-8" style="margin: 0; padding: 0; margin-top: 50px; min-height: 1100px;">
   <!-- Centered Background Image Container -->
   <div 
-    class="relative w-full max-w-[1920px] bg-center bg-cover bg-no-repeat"
+    class="relative w-full max-w-[1920px] bg-center bg-cover bg-no-repeat flex flex-col items-center justify-center gap-4"
     style="background-image: url('/images/hero/Background.png'); aspect-ratio: 1920/838; min-height: 400px; margin-top: -50px;"
   >
     <!-- Letter images positioned above background - spelling DRADS -->
-    <div class="absolute inset-0 flex items-center justify-center gap-4" style="transform: translateY(-80px);">
+    <div class="flex items-center justify-center gap-4" style="transform: translateY(360px);">
       <img 
         src="/images/hero/hero-letters-_01.png" 
         alt="D - Letter 1" 
@@ -37,61 +37,60 @@
       />
     </div>
 
-    <!-- Main Content - Two Column Layout - Overlaying Background -->
-    <div class="absolute inset-0 flex items-center justify-center" style="transform: translateY(230px);">
-      <div class="max-w-6xl mx-auto">
+    <!-- Main Content - Two Column Layout - Now in normal flow -->
+    <div class="flex items-center justify-center w-full mt-[340px]">
+      <div class="max-w-6xl mx-auto w-full">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-          <!-- Left Column - Subtitle -->
-          <div class="lg:pr-8">
-            <p class="text-white" style="font-family: 'Open Sans', sans-serif; font-weight: 300; font-size: 26px; line-height: 52px; text-align: right;">
-              We have the people,<br />
-              tools and procedures<br />
-              to develop custom software<br />
-              quickly and with high quality.
+          <!-- Left Column - Subtitle (mobile: below H1, desktop: left) -->
+          <div class="lg:pr-8 order-2 md:order-1 mt-6 md:mt-0">
+            <p class="font-h3 text-left md:text-right" id="hero-subtitle">
+              We have the people, tools and procedures to develop custom software quickly and with high quality.
             </p>
+            <style>
+              @media (min-width: 768px) {
+                #hero-subtitle {
+                  line-height: 2 !important;
+                }
+              }
+            </style>
           </div>
 
-          <!-- Right Column - Main Heading -->
-          <div class="text-left">
-            <h1 class="text-white" style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 48px; line-height: 48px;">
+          <!-- Right Column - Main Heading (mobile: above subtitle, desktop: right) -->
+          <div class="text-left order-1 md:order-2">
+            <h1 class="font-h1">
               DELIGO<br />
               RAPID<br />
               APP<br />
               DEVELOPMENT<br />
               SYSTEM
-            </h1>
+    </h1>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Centered Icon and Description - Overlaying Background -->
-    <div class="absolute inset-0 flex items-center justify-center" style="transform: translateY(502px);">
-      <div class="mx-auto" style="max-width: 1170px;">
-        <!-- Icon/Button -->
-        <div class="text-center" style="padding-top: 16px; padding-bottom: 16px;">
-          <button
-            id="scroll-button"
-            class="mx-auto cursor-pointer bg-transparent border-none p-0 transition-all duration-200 hover:brightness-100"
-            style="width: 33px; height: 59px; filter: brightness(0) invert(1) sepia(0) saturate(0) brightness(0.93);"
-          >
-            <img 
-              src="/images/hero/scroll.png" 
-              alt="Navigation icon" 
-              class="w-full h-full"
-              style="width: 33px; height: 59px; pointer-events: none;"
-            />
-          </button>
-        </div>
-
-        <!-- Description -->
-        <p class="text-white" style="font-family: 'Open Sans', sans-serif; font-weight: 300; font-size: 28px; line-height: 38px; text-align: left; margin-top: 16px;">
-          We've been involved in building software for 18 years. The DRADS work system is the result of 
-          our accumulated experience combined with modern tools and approaches. We took the whole 
-          software development process apart, looked at every piece and combined together for a 
-          comprehensive, fast and efficient way to build custom software for businesses of all sizes.
-        </p>
+    <!-- Centered Icon and Description - Now inside background image container, always below main content -->
+    <div class="mx-auto w-full max-w-[1170px] mt-12 md:mt-0">
+      <div class="flex justify-center m-4">
+        <button
+          id="scroll-button"
+          class="mx-auto cursor-pointer bg-transparent border-none p-0 transition-all duration-200 hover:brightness-100"
+          style="width: 33px; height: 59px; filter: brightness(0) invert(1) sepia(0) saturate(0) brightness(0.93);"
+        >
+          <img 
+            src="/images/hero/scroll.png" 
+            alt="Navigation icon" 
+            class="w-full h-full"
+            style="width: 33px; height: 59px; pointer-events: none;"
+          />
+        </button>
       </div>
+      <p class="font-h3 text-left" style="margin-top: 48px;">
+        We've been involved in building software for 18 years. The DRADS work system is the result of 
+        our accumulated experience combined with modern tools and approaches. We took the whole 
+        software development process apart, looked at every piece and combined together for a 
+        comprehensive, fast and efficient way to build custom software for businesses of all sizes.
+      </p>
     </div>
   </div>
 </section>
@@ -99,7 +98,7 @@
 <!-- Add Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 
 <script>
   // Handle scroll button click

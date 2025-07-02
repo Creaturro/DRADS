@@ -12,6 +12,17 @@
   --color-black: #000;
   --color-white: #fff;
 
+  /* DRADS Custom Colors */
+  --color-primary: #1DA6AE;
+  --color-secondary: #AB1E81;
+  --color-third: #26323A;
+  --color-infographics: #FFAD00;
+  --color-emphasize: #FFDE5B;
+
+  /* DRADS Typography Classes */
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-opensans: 'Open Sans', sans-serif;
+
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
@@ -117,5 +128,171 @@
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  a:hover, a:focus {
+    color: var(--color-secondary);
+  }
+}
+
+/* DRADS Custom Typography Classes */
+@layer utilities {
+  .font-h1 {
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 48px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .font-h2 {
+    font-family: var(--font-montserrat);
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 100px;
+    color: #CCCCCC;
+    letter-spacing: normal;
+  }
+
+  @media (max-width: 767px) {
+    .font-h2 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  .font-h3 {
+    font-family: var(--font-opensans);
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 38px;
+    color: #fff;
+  }
+
+  @media (max-width: 767px) {
+    .font-h3 {
+      font-size: 19.6px;
+      line-height: 27px;
+    }
+  }
+
+  .font-h4 {
+    font-family: var(--font-opensans);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #fff;
+  }
+
+  .font-quote {
+    font-family: var(--font-opensans);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 28px;
+    color: #fff;
+  }
+
+  /* Image container styling */
+  .image-container {
+    border-radius: 8px;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Custom color utilities */
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+
+  .text-third {
+    color: var(--color-third);
+  }
+
+  .text-infographics {
+    color: var(--color-infographics);
+  }
+
+  .text-emphasize {
+    color: var(--color-emphasize);
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+
+  .bg-third {
+    background-color: var(--color-third);
+  }
+
+  .bg-infographics {
+    background-color: var(--color-infographics);
+  }
+
+  .bg-emphasize {
+    background-color: var(--color-emphasize);
+  }
+
+  .border-primary {
+    border-color: var(--color-primary);
+  }
+
+  .border-secondary {
+    border-color: var(--color-secondary);
+  }
+
+  .border-third {
+    border-color: var(--color-third);
+  }
+
+  .border-infographics {
+    border-color: var(--color-infographics);
+  }
+
+  .border-emphasize {
+    border-color: var(--color-emphasize);
+  }
+
+  .btn,
+  .primary,
+  .PrimaryCTA,
+  .btn-primary {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #fff !important;
+    transition: background 0.2s, border 0.2s;
+  }
+  .btn:hover,
+  .primary:hover,
+  .PrimaryCTA:hover,
+  .btn-primary:hover {
+    background-color: var(--color-secondary) !important;
+    border-color: var(--color-secondary) !important;
   }
 }

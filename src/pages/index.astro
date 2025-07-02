@@ -2,14 +2,12 @@
 // Import the necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroSection from "@components/sections/landing/HeroSection.astro";
-import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import ClientsSection from "@components/sections/landing/ClientsSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
 import PricingSection from "@components/sections/pricing/PricingSection.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
-import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 import faqs from "@data/faqs.json";
 import features from "@data/features.json";
 import pricing from "@data/pricing.json";
@@ -18,16 +16,102 @@ import construction from "@images/construction-image.avif";
 import tools from "@images/automated-tools.avif";
 import dashboard from "@images/dashboard-image.avif";
 import { partnersData } from "@/data_files/constants";
+import ReusableSection from "@components/sections/misc/ReusableSection.astro";
+import ThreeCards from "@components/ui/blocks/ThreeCards.astro";
+import SpeechBubble from "@components/ui/blocks/SpeechBubble.astro";
+import Icon from "@components/ui/icons/Icon.astro";
 ---
 
 <MainLayout>
-  <AnnouncementBanner
-    btnId="dismiss-button"
-    btnTitle="Explore ScrewFast on GitHub"
-    url="https://github.com/mearashadowfax/ScrewFast"
-  />
-
   <HeroSection />
+
+  <ReusableSection
+    title="What will you gain?"
+    description="DRADS gives you a competitive edge with lightning-fast custom software deployment."
+  >
+    <div slot="leftContent">
+      <p class="mb-4">DRADS enables you to rapidly prototype and refine your software, reducing time-to-market and development costs. With DRADS approach you can launch a working app version in 2-3 weeks, with a full v1 release in 2 months.</p>
+      <p>With DRADS, you'll launch a polished, market-ready product faster and more efficiently and you gain the ability to rapidly iterate on your product, ensuring it meets user needs and business goals efficiently.</p>
+    </div>
+    <div slot="rightContent">
+      <ThreeCards />
+    </div>
+  </ReusableSection>
+
+  <ReusableSection
+    title="Who is this solution for?"
+    description="DRADS is for businesses seeking rapid, custom software solutions to replace legacy systems, build new applications, or integrate existing platforms without the traditional development overhead."
+  >
+    <div slot="leftContent">
+      <p class="mb-16" style="margin-bottom: 64px;">
+        DRADS is ideal for businesses seeking to modernize their operations through custom software. Whether you need to replace outdated systems, create new applications from scratch, or integrate existing platforms, DRADS offers a rapid and flexible solution. It's particularly suited for companies that require tailored software but want to avoid lengthy development cycles and high costs.
+      </p>
+      <div class="space-y-8">
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">For small business owners</h4>
+            <p>DRADS can streamline operations by automating processes and providing custom tools tailored to your specific needs. It enables rapid development of cost-effective software solutions that grow with your business, from inventory management to customer relationship systems.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">For legacy systems</h4>
+            <p>DRADS can modernize your operations by working around limitations of existing systems (ERP, CRM, custom software) and creating seamless integrations. It enables you to connect disparate systems, such as linking your CRM to your website, without replacing entire infrastructures.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">For internal teams</h4>
+            <p>DRADS empowers your internal teams with custom tools tailored to their specific needs.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">For building new software products</h4>
+            <p>DRADS accelerates the development of SaaS and commercial applications, helping you bring your ideas to market faster. It enables rapid prototyping and iteration, allowing you to test and refine your product quickly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div slot="rightContent" class="space-y-8">
+      <SpeechBubble bgColor="#1DA6AE" textColor="#fff" tailSize={40}>
+        <p class="mb-2 text-left pt-4 pb-4 px-8" style="font-family: 'Montserrat', sans-serif; font-style: italic;">
+          <span class="flex justify-start"><img src="/src/images/format_quote_white_24dp.svg" alt="Quote icon" class="w-12 h-12 mb-2" /></span>
+          We created DRADS to help you rapidly build the software your business needs. Whether you're looking to streamline your internal operations or launch a new product to market, we can make it happen. Our system lets you create custom apps from the ground up or connect seamlessly with your existing tools. And we do it all faster and more efficiently than traditional development methods.
+        </p>
+      </SpeechBubble>
+      <div class="flex items-center gap-2 mt-2">
+        <img src="/images/blog/anna.avif" alt="Maciej" class="w-8 h-8 rounded-full" />
+        <span class="text-sm font-medium">Maciej</span>
+        <span class="text-xs text-neutral-300">Deligo Owner</span>
+      </div>
+      <div class="flex items-start gap-4">
+        <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+        <div>
+          <h4 class="font-h4 mb-1">For sales teams</h4>
+          <p>DRADS can create customized CRM systems and lead management tools that integrate seamlessly with your existing workflows. It enables quick deployment of mobile-friendly applications for real-time data access and reporting, enhancing productivity and closing rates.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+        <div>
+          <h4 class="font-h4 mb-1">For marketing teams</h4>
+          <p>DRADS can develop targeted campaign management platforms and analytics dashboards to track performance across multiple channels. It allows for rapid iteration of digital marketing tools, helping you stay agile in response to market trends and customer behavior.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+        <div>
+          <h4 class="font-h4 mb-1">For accounting teams</h4>
+          <p>DRADS can build tailored financial management systems that automate data entry, reconciliation, and reporting processes. It enables the creation of secure, compliant software solutions that integrate with existing accounting software, improving accuracy and efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </ReusableSection>
 
   <ClientsSection
     title="Trusted by Industry Leaders"
@@ -37,77 +121,66 @@ import { partnersData } from "@/data_files/constants";
 
   <FeaturesGeneral
     title="Meeting Industry Demands"
-    subTitle="At ScrewFast, we tackle the unique challenges encountered in the hardware and construction sectors. From cutting-edge tools to expert services, we're dedicated to helping you overcome obstacles and achieve your goals."
+    subTitle="At DRADS, we tackle the unique challenges encountered in software development. From cutting-edge tools to expert services, we're dedicated to helping you overcome obstacles and achieve your goals."
     src={featureImage}
-    alt="ScrewFast products in floating boxes"
+    alt="DRADS software development tools and services"
     features={features}
   />
 
   <FeaturesNavs
-    title=`Customize <span class="text-yellow-500 dark:text-yellow-400">ScrewFast</span>'s offerings to perfectly suit your hardware and construction needs.`
+    title={`Customize <span class="text-primary">DRADS</span>'s offerings to perfectly suit your software development needs.`}
     tabs={[
       {
-        heading: "Cutting-Edge Tools",
+        heading: "Custom Software Development",
         content:
-          "Empower your projects with ScrewFast's cutting-edge tools. Experience enhanced efficiency in construction management with our sophisticated automated solutions.",
+          "Empower your business with DRADS's custom software solutions. Experience enhanced efficiency in development with our sophisticated automated approaches.",
         svg: "tools",
         src: tools,
-        alt: "Yellow and black heavy equipment on brown grass field",
+        alt: "Custom software development tools and processes",
         first: true,
       },
       {
-        heading: "Intuitive Dashboards",
+        heading: "Rapid Application Development",
         content:
-          "Navigate with ease using ScrewFast's intuitive dashboards. Set up and oversee your projects seamlessly, with user-friendly interfaces designed for quick and effective workflow management.",
+          "Navigate with ease using DRADS's rapid development methodology. Set up and oversee your projects seamlessly, with user-friendly processes designed for quick and effective delivery.",
         svg: "dashboard",
         src: dashboard,
-        alt: "A screenshot or graphic representation of the intuitive dashboard",
+        alt: "Rapid application development dashboard and tools",
         second: true,
       },
       {
-        heading: "Robust Features",
+        heading: "Quality Assurance & Testing",
         content:
-          "Minimize complexity, maximize productivity. ScrewFast's robust features are engineered to streamline your construction process, delivering results that stand out for their excellence.",
+          "Minimize complexity, maximize quality. DRADS's robust testing processes are engineered to streamline your development workflow, delivering results that stand out for their excellence.",
         svg: "house",
         src: construction,
-        alt: "Gray metal building frame near tower crane during daytime",
+        alt: "Quality assurance and testing processes",
       },
     ]}
   />
 
   <TestimonialsSection
-    title="Fast-Track Your Projects"
-    subTitle="At ScrewFast, we ensure a swift start with instant account setup. Experience the speed of construction redefined."
-    ;
-    testimonials={[
-      {
-        content:
-          "ScrewFast dramatically boosted our project efficiency. Setup was instant, and their rapid response times are phenomenal. Truly a game-changer in hardware and construction support!",
-        author: "Samantha Ruiz",
-        role: "Chief Operating Officer | ConstructIt Inc.",
-        avatarSrc:
-          "https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?q=80&w=1453&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-      },
-    ]}
+    title="Success Stories"
+    subTitle="Discover how DRADS has transformed businesses across industries with custom software solutions that drive real results."
     statistics={[
       {
         count: "70k+",
         description:
-          "customers equipped — from DIY to major construction firms",
+          "projects delivered — from startups to enterprise solutions",
       },
       {
         count: "35%",
         description:
-          "uptick in project efficiency with ScrewFast tools and services",
+          "uptick in development efficiency with DRADS methodology",
       },
       {
         count: "15.3%",
         description:
-          "reduction in maintenance costs reported by long-term clients",
+          "reduction in development costs reported by long-term clients",
       },
       {
         count: "2x",
-        description: "quicker assembly using innovative fastening solutions",
+        description: "quicker delivery using rapid development approach",
       },
     ]}
   />
@@ -115,10 +188,4 @@ import { partnersData } from "@/data_files/constants";
   <PricingSection pricing={pricing} />
 
   <FAQ title="Frequently<br />asked questions" faqs={faqs} />
-
-  <HeroSectionAlt
-    title="Let's Build Together"
-    subTitle="ScrewFast is an open-source template, meticulously crafted with Astro, Tailwind CSS, and Preline UI frameworks."
-    url="https://github.com/mearashadowfax/ScrewFast"
-  />
 </MainLayout>
