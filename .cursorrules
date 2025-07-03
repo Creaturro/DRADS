@@ -22,4 +22,6 @@
 - All major UI changes must be tested for responsiveness and accessibility.
 - Commit and push to git after each major change.
 - Prioritize Astro and Tailwind best practices (Astro Islands, zero-JS by default, etc.).
-- Minimal new code creation; focus on adapting and reusing existing, optimized components. 
+- Minimal new code creation; focus on adapting and reusing existing, optimized components.
+- Project root directory (local): C:\Users\Artur.g\DRADS\DRADS
+- Remote GitHub repository: https://github.com/Creaturro/DRADS 

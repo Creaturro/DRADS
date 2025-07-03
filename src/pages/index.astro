@@ -20,6 +20,7 @@ import ReusableSection from "@components/sections/misc/ReusableSection.astro";
 import ThreeCards from "@components/ui/blocks/ThreeCards.astro";
 import SpeechBubble from "@components/ui/blocks/SpeechBubble.astro";
 import Icon from "@components/ui/icons/Icon.astro";
+import Quota from "@components/ui/blocks/Quota.astro";
 ---
 
 <MainLayout>
@@ -78,17 +79,12 @@ import Icon from "@components/ui/icons/Icon.astro";
       </div>
     </div>
     <div slot="rightContent" class="space-y-8">
-      <SpeechBubble bgColor="#1DA6AE" textColor="#fff" tailSize={40}>
-        <p class="mb-2 text-left pt-4 pb-4 px-8" style="font-family: 'Montserrat', sans-serif; font-style: italic;">
-          <span class="flex justify-start"><img src="/src/images/format_quote_white_24dp.svg" alt="Quote icon" class="w-12 h-12 mb-2" /></span>
-          We created DRADS to help you rapidly build the software your business needs. Whether you're looking to streamline your internal operations or launch a new product to market, we can make it happen. Our system lets you create custom apps from the ground up or connect seamlessly with your existing tools. And we do it all faster and more efficiently than traditional development methods.
-        </p>
-      </SpeechBubble>
-      <div class="flex items-center gap-2 mt-2">
-        <img src="/images/blog/anna.avif" alt="Maciej" class="w-8 h-8 rounded-full" />
-        <span class="text-sm font-medium">Maciej</span>
-        <span class="text-xs text-neutral-300">Deligo Owner</span>
-      </div>
+      <Quota
+        content="We created DRADS to help you rapidly build the software your business needs. Whether you're looking to streamline your internal operations or launch a new product to market, we can make it happen. Our system lets you create custom apps from the ground up or connect seamlessly with your existing tools. And we do it all faster and more efficiently than traditional development methods."
+        author="Maciej"
+        position="Deligo Owner"
+        avatarSrc="/src/images/avatar Maciej.png"
+      />
       <div class="flex items-start gap-4">
         <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
         <div>

@@ -1,0 +1,23 @@
+---
+// Props: content (string), author (string), position (string), avatarSrc (string), bgColor (default: #1DA6AE), textColor (default: #fff), tailSize (default: 40), quoteIconSrc (default: '/src/images/format_quote_white_24dp.svg'), class (optional)
+const { content, author, position, avatarSrc, bgColor = '#1DA6AE', textColor = '#fff', tailSize = 40, quoteIconSrc = '/src/images/format_quote_white_24dp.svg', class: customClass = '' } = Astro.props;
+---
+<div class={`relative rounded-xl ${customClass}`} style={`background:${bgColor}; color:${textColor}; margin-left:40px;`}>
+  <div class="relative z-10 flex flex-col justify-between" style="padding:28px 28px 28px 16px;">
+    <div class="flex items-start gap-[4px]">
+      <div class="flex flex-col flex-shrink-0" style="margin-top:-10px; mb-auto">
+        <img src={quoteIconSrc} alt="Quote icon" class="w-12 h-12" />
+      </div>
+      <div class="flex-1 text-left" style="font-family: 'Montserrat', sans-serif; font-style: italic;">
+        {content}
+      </div>
+    </div>
+  </div>
+  <!-- Speech bubble tail (bottom left, flipped triangle) -->
+  <div class="absolute left-0 -bottom-5 z-20" style={`width:0;height:0;border-top:${tailSize}px solid ${bgColor};border-right:${tailSize}px solid transparent;`}></div>
+</div>
+<div class="flex items-center gap-2 mt-2">
+  <img src={avatarSrc} alt={author} class="w-20 h-20 rounded-full" />
+  <span class="text-sm font-medium">{author}</span>
+  <span class="text-xs text-neutral-300">{position}</span>
+</div> 
