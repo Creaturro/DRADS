@@ -1,0 +1,98 @@
+---
+// No props needed; static content
+const tableData = [
+  {
+    area: "Time to Market *",
+    drads: "Specs built to hit first working version in 8 weeks",
+    traditional: "At least 18-24 weeks"
+  },
+  {
+    area: "Cost Efficiency",
+    drads: "More cost-effective due to rapid development and use of ready-made solutions",
+    traditional: "Can be more expensive due to longer development times"
+  },
+  {
+    area: "Client Involvement",
+    drads: "High client involvement throughout the process, with frequent feedback loops",
+    traditional: "Client involvement often limited to specific phases (requirements, testing, etc.)"
+  },
+  {
+    area: "Development Process",
+    drads: "Multiple steps at the same time, fast iterations, easy pivots",
+    traditional: "Linear, step-by-step approach"
+  },
+  {
+    area: "Prototyping",
+    drads: "Rapid prototyping with functional demos early in the process",
+    traditional: "Typically focuses on creating visual representations of the proposed system without implementing actual functionality"
+  },
+  {
+    area: "Adaptability to Changes",
+    drads: "Highly adaptable, can quickly pivot based on feedback",
+    traditional: "Less adaptable, changes often require significant rework"
+  },
+  {
+    area: "Scalability",
+    drads: "Built-in scalability with cloud-based solutions",
+    traditional: "Scalability often needs to be manually implemented"
+  },
+  {
+    area: "Technical best practices",
+    drads: "Maintains high standards in versioning, testing, documentation, time tracking, and project management.",
+    traditional: ""
+  }
+];
+---
+
+<!-- Desktop Table (md and up) -->
+<div class="w-full overflow-x-auto hidden md:block">
+  <table class="w-full">
+    <thead>
+      <tr class="border-b-0 hover:bg-transparent">
+        <th class="text-white text-lg p-3 sm:p-4 font-medium border-r border-gray-500 min-w-[220px] sm:min-w-[240px]" style="background-color: #5A5959;">Area</th>
+        <th class="text-white text-lg p-3 sm:p-4 font-medium border-r border-gray-500 min-w-[280px] sm:min-w-[320px]" style="background-color: #E14EB5;">DRADS</th>
+        <th class="text-white text-lg p-3 sm:p-4 font-medium min-w-[280px] sm:min-w-[320px]" style="background-color: #1DA6AE;">Traditional Development</th>
+      </tr>
+    </thead>
+    <tbody>
+      {tableData.map((row, idx) => (
+        <tr class="border-b border-gray-600 hover:bg-gray-700/50" key={idx}>
+          <td class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 border-r border-gray-600 align-top whitespace-nowrap">{row.area}</td>
+          {idx === tableData.length - 1 ? (
+            <td colspan="2" class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 align-top whitespace-normal break-words">{row.drads}</td>
+          ) : (
+            <>
+              <td class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 border-r border-gray-600 align-top whitespace-normal break-words">{row.drads}</td>
+              <td class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 align-top whitespace-normal break-words">{row.traditional}</td>
+            </>
+          )}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <div class="text-sm text-gray-400 mt-2">* based on Deligo's experience on apps of similar scopes</div>
+</div>
+
+<!-- Mobile Stacked Cards (below md) -->
+<div class="block md:hidden space-y-6">
+  {tableData.map((row, idx) => (
+    <div class="bg-gray-800 rounded-lg shadow p-4 flex flex-col gap-2" key={idx}>
+      <div class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-1">{row.area}</div>
+      <div class="flex flex-col gap-2">
+        <div>
+          <div class="text-sm font-bold text-[#E14EB5] mb-1">DRADS</div>
+          <div class="text-gray-200 text-base leading-snug">{row.drads}</div>
+        </div>
+        {idx !== tableData.length - 1 && (
+          <div>
+            <div class="text-sm font-bold text-[#1DA6AE] mb-1">Traditional Development</div>
+            <div class="text-gray-200 text-base leading-snug">{row.traditional}</div>
+          </div>
+        )}
+      </div>
+      {idx === tableData.length - 1 && (
+        <div class="text-xs text-gray-400 mt-2">* based on Deligo's experience on apps of similar scopes</div>
+      )}
+    </div>
+  ))}
+</div> 

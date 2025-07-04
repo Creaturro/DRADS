@@ -1,0 +1,160 @@
+---
+import ReusableSection from "../misc/ReusableSection.astro";
+import TimelineStepCard from "./TimelineStepCard.astro";
+import SpeechBubble from "../../ui/blocks/SpeechBubble.astro";
+// DRADS SVGs
+import BriefAndResearchDrads from "../../../assets/images/drads_flow/Brief and Research.svg";
+import AsyncDesignWork from "../../../assets/images/drads_flow/Asynchronous Design Work.svg";
+import AsyncFrontendCoding from "../../../assets/images/drads_flow/Asynchronous Frontend Coding.svg";
+import GlueingSystems from "../../../assets/images/drads_flow/Glueing systems.svg";
+import LiveTesting from "../../../assets/images/drads_flow/Live Testing.svg";
+// Standard SVGs
+import BriefAndResearchStd from "../../../assets/images/standard_flow/Brief and Research.svg";
+import UXDesign from "../../../assets/images/standard_flow/UX Design.svg";
+import FrontendCoding from "../../../assets/images/standard_flow/Frontend Coding.svg";
+import BackendCoding from "../../../assets/images/standard_flow/Backend Coding.svg";
+import Testing from "../../../assets/images/standard_flow/Testing.svg";
+import SettingUp from "../../../assets/images/standard_flow/Setting up.svg";
+// Emblem and splash
+import DradsEmblem from "../../../assets/images/drads_emblem.svg";
+import splash from "../../../assets/images/splash.png";
+
+const dradsSteps = [
+  {
+    title: "Brief and Research",
+    description: "The initial specs are narrow and highly focused with the goal of starting the implementation ASAP.",
+  },
+  {
+    title: "Asynchronous Design Work",
+    description: "Design is happening along side the app development. The interface elements are added into the app directly and are instantly connected to the app code.",
+  },
+  {
+    title: "Asynchronous Frontend Coding",
+    description: "We can work on your app's user interface and logic simultaneously. This parallel development eliminates bottlenecks, speeding up the entire process.",
+  },
+  {
+    title: "'Glueing' systems through APIs",
+    description: "Developers quickly integrate various services and functionalities using pre-built or custom APIs, ensuring seamless data flow and communication.",
+  },
+  {
+    title: "Live Testing",
+    description: "The application is swiftly deployed using pre-configured environments, allowing immediate testing and validation to ensure the app meets the desired specifications and functions correctly.",
+  },
+  // Final milestone with splash and emblem
+  {
+    title: "Your app is ready",
+    description: "A working app is delivered in record time, ready for real-world use.",
+    splash: splash,
+    emblem: DradsEmblem,
+  },
+];
+
+const standardSteps = [
+  {
+    title: "Brief and Research",
+    description: "This initial phase involves understanding the project requirements, target audience, and goals, followed by researching the market and competitors.",
+  },
+  {
+    title: "UI/UX Design",
+    description: "Designers create wireframes and prototypes to map out the user journey and visual layout. Without rapid real-world validation, these initial mockups may lead to designs that look great but perform poorly in practice.",
+  },
+  {
+    title: "Frontend Coding",
+    description: "Developers build the client-side of the application, translating designs into functional code using HTML, CSS, and JavaScript.",
+  },
+  {
+    title: "Backend Coding",
+    description: "This stage involves developing the server-side logic, databases, handling of data processing. With classic development approaches and without leveraging existing external systems via APIs, this phase can become extremely time-consuming.",
+  },
+  {
+    title: "Testing",
+    description: "The application undergoes rigorous testing, including unit, integration, and user acceptance tests, to identify and fix bugs.",
+  },
+  {
+    title: "Setting up the production environment",
+    description: "Developers deploy the application to a live server, configure necessary services, and ensure security measures are in place, preparing the app for public use.",
+  },
+  {
+    title: "Your app is ready",
+    description: "The app is finally ready for launch after a lengthy, sequential process.",
+  },
+];
+
+const timelineMilestones = [
+  { label: "1 week", top: "0%" },
+  { label: "2 weeks", top: "16%" },
+  { label: "3 weeks", top: "32%" },
+  { label: "4 weeks", top: "48%" },
+  { label: "8 weeks", top: "64%" },
+  { label: "16 weeks", top: "80%" },
+  { label: "24-32 weeks", top: "96%" },
+];
+---
+<div class="relative min-h-[1200px]">
+  <ReusableSection title="Development Process Comparison" description="A side-by-side look at the DRADS quick development flow versus the classic standard development process.">
+    <div slot="leftContent" class="relative">
+      <div class="flex flex-col gap-8">
+        {dradsSteps.map((step, idx) => (
+          <TimelineStepCard
+            title={step.title}
+            description={step.description}
+            accentColor="#1DA6AE"
+            class={idx === dradsSteps.length - 1 ? 'relative' : ''}
+          >
+            <slot slot="icon">
+              {idx === 0 && <BriefAndResearchDrads class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 1 && <AsyncDesignWork class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 2 && <AsyncFrontendCoding class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 3 && <GlueingSystems class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 4 && <LiveTesting class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 5 && <DradsEmblem class="w-10 h-10 mb-2" aria-hidden="true" />}
+            </slot>
+            {step.splash && (
+              <img src={step.splash.src} alt="splash background" class="absolute left-0 bottom-0 w-full h-32 object-cover opacity-60 -z-10" aria-hidden="true" />
+            )}
+            {step.emblem && (
+              <DradsEmblem class="absolute right-4 top-4 w-10 h-10" aria-label="DRADS Emblem" />
+            )}
+          </TimelineStepCard>
+        ))}
+        <SpeechBubble bgColor="#1DA6AE" textColor="#fff">In DRADS, we skip the separate UI prototyping phase...</SpeechBubble>
+      </div>
+    </div>
+    <div slot="rightContent" class="relative">
+      <div class="flex flex-col gap-8">
+        {standardSteps.map((step, idx) => (
+          <TimelineStepCard
+            title={step.title}
+            description={step.description}
+            accentColor="#AB1E81"
+          >
+            <slot slot="icon">
+              {idx === 0 && <BriefAndResearchStd class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 1 && <UXDesign class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 2 && <FrontendCoding class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 3 && <BackendCoding class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 4 && <Testing class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 5 && <SettingUp class="w-10 h-10 mb-2" aria-hidden="true" />}
+              {idx === 6 && <div class="w-10 h-10 mb-2" aria-hidden="true" />}
+            </slot>
+          </TimelineStepCard>
+        ))}
+        <SpeechBubble bgColor="#AB1E81" textColor="#fff">In standard development, each phase is strictly sequential...</SpeechBubble>
+      </div>
+    </div>
+    <!-- Central Timeline for Desktop (overlay) -->
+    <div class="hidden md:block absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 z-10 pointer-events-none">
+      <div class="h-full border-l-2 border-dashed border-gray-500 mx-auto relative">
+        <!-- PROJECT TIMELINE label -->
+        <div class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold text-gray-400 rotate-[-90deg] tracking-widest">PROJECT TIMELINE</div>
+        <!-- Milestone dots and week labels -->
+        {timelineMilestones.map((m, i) => (
+          <div class="absolute left-1/2 -translate-x-1/2" style={`top: ${m.top}`}> 
+            <div class="w-4 h-4 rounded-full bg-primary border-2 border-white mx-auto"></div>
+            <div class="text-xs text-gray-300 mt-1 whitespace-nowrap">{m.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </ReusableSection>
+</div> 

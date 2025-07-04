@@ -1,0 +1,10 @@
+---
+// Props: title (string), description (string), accentColor (string, optional), class (string, optional)
+const { title, description, accentColor = '#1DA6AE', class: customClass = '' } = Astro.props;
+---
+<div class={`relative flex flex-col items-start gap-2 rounded-xl p-6 shadow-lg bg-neutral-800 border-l-4`} style={`border-color:${accentColor};`}>
+  <slot name="icon" />
+  <h4 class="font-semibold text-lg text-neutral-100">{title}</h4>
+  <p class="text-base text-gray-300">{description}</p>
+  <slot />
+</div> 

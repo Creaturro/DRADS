@@ -3,6 +3,9 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import Icon from "@components/ui/icons/Icon.astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
+import ReusableSection from "@components/sections/misc/ReusableSection.astro";
+import Quota from "@components/ui/blocks/Quota.astro";
+import CaseStudyTemplate from "@components/sections/case-study/CaseStudyTemplate.astro";
 
 // Case studies data
 const caseStudies = [
@@ -63,7 +66,7 @@ const caseStudies = [
       costSavings: "35%",
       visibility: "Real-time"
     },
-    image: "/images/case-studies/supply-chain.avif",
+    image: "/images/case-studies/ecommerce-platform.avif",
     featured: false
   },
   {
@@ -78,7 +81,7 @@ const caseStudies = [
       completion: "85%",
       satisfaction: "4.8/5"
     },
-    image: "/images/case-studies/education-platform.avif",
+    image: "/images/case-studies/healthcare-system.avif",
     featured: false
   },
   {
@@ -93,10 +96,42 @@ const caseStudies = [
       downtime: "-70%",
       quality: "99.5%"
     },
-    image: "/images/case-studies/manufacturing.avif",
+    image: "/images/case-studies/trading-platform.avif",
     featured: false
   }
 ];
+
+const liveLeadPersonas = [
+  {
+    icon: '/src/images/checkbox.svg',
+    title: 'Lead',
+    text: 'Leads experience a wow factor with lightning-fast human interaction, receiving personalised outreach within minutes of submitting their information. This immediate response creates a positive first impression and demonstrates the company\'s commitment to exceptional service.'
+  },
+  {
+    icon: '/src/images/checkbox.svg',
+    title: 'Sales Agent',
+    text: 'Sales agents gain a competitive edge through real-time lead notifications and a user-friendly interface, allowing them to quickly claim and engage with potential clients. The app\'s comprehensive lead profile generation enables agents to tailor their approach, increasing their chances of successful conversions.'
+  },
+  {
+    icon: '/src/images/checkbox.svg',
+    title: 'Manager',
+    text: 'Managers benefit from enhanced visibility into the sales process, with access to real-time performance metrics and automated daily summaries. This data-driven approach allows for more effective team management, optimized lead distribution, and the ability to identify and replicate successful strategies across the team.'
+  }
+];
+
+const liveLeadFastResults = {
+  icon: '/images/case-studies/fast results ico.svg',
+  iconAlt: 'Fast Results Icon',
+  title: 'Fast results',
+  text: 'The implementation of a similar application will take 2 months, the first working version will be available as early as <span class="bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded">2-3 weeks</span> after the start of work.'
+};
+
+const liveLeadCost = {
+  icon: '/images/case-studies/cost ico.svg',
+  iconAlt: 'Cost Icon',
+  title: 'Cost',
+  text: 'Building an app similar in scope will cost around <span class="bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded">$12,000</span>.'
+};
 ---
 
 <MainLayout>
@@ -114,120 +149,184 @@ const caseStudies = [
     </div>
   </section>
 
-  <!-- Featured Case Study -->
-  <section class="py-16 bg-neutral-900">
+  <!-- Inbox App Case Study Section -->
+  <section class="relative py-20 bg-neutral-900" style="margin-bottom:100px;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-12">
-        <h2 class="font-h2 text-center mb-4">Featured Project</h2>
-        <p class="font-h3 text-center text-neutral-400">Our most impactful transformation</p>
+      <!-- Title Row: 1/4 + 3/4 columns -->
+      <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
+        <div class="w-full md:w-1/4 flex justify-start mb-4 md:mb-0">
+          <img src="/images/case-studies/inbox logo large.svg" alt="Inbox App Logo" class="h-20 w-auto" style="max-width:none;" />
+        </div>
+        <div class="w-full md:w-3/4">
+          <h3 class="font-h3">Transforming cluttered inquiries into structured deals, saving hours and empowering the sales teams.</h3>
+        </div>
       </div>
-
-      {caseStudies.filter(cs => cs.featured).map(caseStudy => (
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
-            <div class="flex items-center gap-4">
-              <span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-semibold">
-                {caseStudy.industry}
-              </span>
-              <span class="text-neutral-400 font-h4">{caseStudy.client}</span>
+      <!-- 1/2 + 1/2 Columns Section -->
+      <div class="flex flex-col md:flex-row gap-12">
+        <!-- Left: Main Value Proposition -->
+        <div class="w-full md:w-1/2">
+          <p class="text-neutral-200 mb-6">The app automatically reads incoming emails looking for potential investing opportunities. An AI agent extracts data from the messages and turns them into structured deals that are validated by the sales team. This heavily speeds up data entry into a CRM system (with the structures the app creates the deal creation is automated), increases accuracy heavily, speeds up deal processing.</p>
+          <div class="flex flex-col gap-8 mt-6">
+            <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+              <img src="/images/case-studies/fast results ico.svg" alt="Fast Results Icon" style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+              <div>
+                <h4 class="font-h4 text-primary mb-2">Fast results</h4>
+                <p class="text-neutral-200 text-sm">The implementation of a similar application will take 2 months, the first working version will be available as early as <span class="bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded">2-3 weeks</span> after the start of work.</p>
+              </div>
             </div>
-            
-            <h3 class="font-h2">{caseStudy.title}</h3>
-            <p class="font-h3 text-neutral-300">{caseStudy.description}</p>
-            
-            <div class="grid grid-cols-3 gap-6">
-              {Object.entries(caseStudy.metrics).map(([key, value]) => (
-                <div class="text-center">
-                  <div class="text-2xl font-bold text-primary">{value}</div>
-                  <div class="text-sm text-neutral-400 capitalize">{key}</div>
-                </div>
-              ))}
-            </div>
-
-            <div class="flex flex-wrap gap-2">
-              {caseStudy.technologies.map(tech => (
-                <span class="px-3 py-1 bg-secondary/20 text-secondary rounded-full text-sm">
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div class="flex gap-4">
-              <PrimaryCTA title="View Details" url={`/case-studies/${caseStudy.id}`} />
-              <SecondaryCTA title="Similar Projects" url="/case-studies" />
-            </div>
-          </div>
-
-          <div class="relative">
-            <div class="image-container overflow-hidden">
-              <img 
-                src={caseStudy.image} 
-                alt={caseStudy.title}
-                class="w-full h-80 object-cover"
-                onerror="this.src='/images/placeholder-case-study.avif'"
-              />
+            <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+              <img src="/images/case-studies/cost ico.svg" alt="Cost Icon" style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+              <div>
+                <h4 class="font-h4 text-primary mb-2">Cost</h4>
+                <p class="text-neutral-200 text-sm">Building an app similar in scope will cost around <span class="bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded">$15,000</span></p>
+              </div>
             </div>
           </div>
         </div>
-      ))}
+        <!-- Right: Persona Blocks -->
+        <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1">Customer</h4>
+              <p>Customers receive rapid responses, ensuring they always know the status of their inquiry. They experience a sense of immediate, professional attention, enhancing their confidence in the service.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1">Sales Agent</h4>
+              <p>Can dramatically increase their productivity while reducing errors. They maintain full control over the process but now benefit from an AI assistant that automates data extraction and processing. This allows agents to focus on high-value tasks. The system aids in deal creation, ensuring consistency and accuracy.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1">Manager</h4>
+              <p>Managers gain access to a wealth of structured data, providing unprecedented visibility into the deal flow and agent performance. This structured approach enables easy deal status and workflow analysis, supporting data-driven decision making. Managers can quickly identify trends, optimize processes, and provide targeted support to their team.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Feature & System Overview -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="flex flex-col gap-2">
+          <div>
+            <h4 class="font-h4 text-primary mb-4">Feature Highlight</h4>
+            <p class="text-neutral-200 mb-4">The Inbox app cuts through the clutter of email inquiries, transforming noisy information into structured, actionable data. It features a smart board view that lets sales teams organize and prioritize deals at a glance, providing a clear picture of the entire pipeline.</p>
+            <p class="text-neutral-200 mb-8">In practice, this means <span class="bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded">time savings can go into hours every week</span>, allowing the agents to focus on other high-value activities like building customer relationships or strategizing on complex deals.</p>
+          </div>
+          <Quota 
+            content="What I really like about this app is the practicality of the AI assistant. It's not just a fancy add-on – it's a workhorse that significantly speeds up the workflow. The assistant extracts key information from emails and helps create deals in HubSpot. We've programmed it to understand the nuances of the specific clients inquiries, so it can quickly categorize and prioritize incoming requests."
+            author="Maciej"
+            position="Deligo Owner"
+            avatarSrc="/src/images/avatar Maciej.png"
+            bgColor="#1DA6AE"
+            textColor="#fff"
+          />
+        </div>
+        <div>
+          <h4 class="font-h4 text-primary mb-4">System overview</h4>
+          <p class="text-neutral-200 mb-4">The app processes incoming emails, helps with data extraction and distributes information across multiple platforms. It notifies sales agents via Slack, pushes data to HubSpot pipelines, sends automatic SMS messages to clients, and provides data visualization capabilities, streamlining the customer inquiry management process.</p>
+          <img src="/images/case-studies/inbox infographic.svg" alt="System Overview Diagram" class="w-full max-w-md mx-auto" />
+        </div>
+      </div>
+      <!-- Screenshots/Details -->
+      <h3 class="font-h3 mb-0 mt-8">Clear inbox with deal statuses</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+        <div>
+          <img src="/images/case-studies/inbox scr1.png" alt="Inbox Statuses Screenshot" class="rounded-lg border border-neutral-700 w-full h-128 object-cover" />
+        </div>
+        <div>
+          <img src="/images/case-studies/inbox scr2.png" alt="Inbox Contact Screenshot" class="rounded-lg border border-neutral-700 w-full h-128 object-cover" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12 items-center">
+        <div class="md:col-span-3">
+          <img src="/images/case-studies/inbox scr3.png" alt="Inbox Deal Status Screenshot" class="rounded-lg border border-neutral-700 w-full" />
+        </div>
+        <div class="md:col-span-1 h-full flex items-center">
+          <div class="w-full flex flex-col justify-center h-full">
+            <h4 class="font-h4 text-primary mb-4" style="line-height: 1.4;">AI assistant prepares hints but the human makes the decision</h4>
+            <p class="text-neutral-200 text-sm mt-6">The implemented AI assistant helps classify mail and deals but doesn't replace a human – the sales team members have full control over data processing.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- All Case Studies Grid -->
-  <section class="py-16 bg-neutral-800">
+  <!-- Live Lead Case Study Section (custom markup, not using CaseStudyTemplate) -->
+  <section class="relative py-20 bg-neutral-900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-12">
-        <h2 class="font-h2 text-center mb-4">All Projects</h2>
-        <p class="font-h3 text-center text-neutral-400">Explore our complete portfolio</p>
+      <!-- Title Row: 1/4 + 3/4 columns -->
+      <div class="case-study-title-row flex flex-col md:flex-row items-center gap-8 mb-10">
+        <div class="w-full md:w-1/4 flex justify-start mb-4 md:mb-0 order-2 md:order-1">
+          <img src="/images/case-studies/live lead logo large.svg" alt="Live Lead App Logo" class="h-20 w-auto case-study-logo" style="max-width:none;" />
+        </div>
+        <div class="w-full md:w-3/4 order-1 md:order-2">
+          <h3 class="font-h3 case-study-title">Turning inquiries into sales opportunities at lightning speed.</h3>
+        </div>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {caseStudies.filter(cs => !cs.featured).map(caseStudy => (
-          <div class="bg-third rounded-xl p-6 border border-neutral-700 hover:border-primary/50 transition-colors">
-            <div class="image-container overflow-hidden mb-6">
-              <img 
-                src={caseStudy.image} 
-                alt={caseStudy.title}
-                class="w-full h-48 object-cover"
-                onerror="this.src='/images/placeholder-case-study.avif'"
-              />
+      <!-- 1/2 + 1/2 Columns Section -->
+      <div class="flex flex-col md:flex-row gap-12">
+        <!-- Left: Main Value Proposition -->
+        <div class="w-full md:w-1/2">
+          <p class="text-neutral-200 mb-6">Live Lead transforms the initial stages of lead nurturing by connecting sales agents with potential clients in real-time. When a lead submits their information, the app immediately builds a comprehensive profile using external databases and AI-powered summarization. Sales agents receive instant notifications and have a window to claim the lead, fostering healthy competition. If unclaimed, the lead is automatically assigned, ensuring no opportunity is missed. This rapid response system, coupled with detailed lead insights, enables agents to provide personalized, timely outreach, significantly enhancing the chances of conversion.</p>
+          <div class="flex flex-col gap-8 mt-6">
+            <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+              <img src="/images/case-studies/fast results ico.svg" alt="Fast Results Icon" style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+              <div>
+                <h4 class="font-h4 text-primary mb-2">Fast results</h4>
+                <p class="text-neutral-200 text-sm" set:html={liveLeadFastResults.text}></p>
+              </div>
             </div>
-
-            <div class="space-y-4">
-              <div class="flex items-center gap-3">
-                <span class="px-2 py-1 bg-primary/20 text-primary rounded-full text-xs font-semibold">
-                  {caseStudy.industry}
-                </span>
-                <span class="text-neutral-400 text-sm">{caseStudy.client}</span>
-              </div>
-
-              <h3 class="font-h4">{caseStudy.title}</h3>
-              <p class="text-neutral-300 text-sm line-clamp-3">{caseStudy.description}</p>
-
-              <div class="flex flex-wrap gap-2 mb-4">
-                {caseStudy.technologies.slice(0, 3).map(tech => (
-                  <span class="px-2 py-1 bg-secondary/20 text-secondary rounded-full text-xs">
-                    {tech}
-                  </span>
-                ))}
-                {caseStudy.technologies.length > 3 && (
-                  <span class="px-2 py-1 bg-neutral-600 text-neutral-300 rounded-full text-xs">
-                    +{caseStudy.technologies.length - 3} more
-                  </span>
-                )}
-              </div>
-
-              <div class="flex justify-between items-center">
-                <div class="text-sm text-neutral-400">
-                  {Object.entries(caseStudy.metrics)[0] && (
-                    <span>{Object.entries(caseStudy.metrics)[0][1]} improvement</span>
-                  )}
-                </div>
-                <SecondaryCTA title="View Details" url={`/case-studies/${caseStudy.id}`} class="text-sm" />
+            <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+              <img src="/images/case-studies/cost ico.svg" alt="Cost Icon" style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+              <div>
+                <h4 class="font-h4 text-primary mb-2">Cost</h4>
+                <p class="text-neutral-200 text-sm" set:html={liveLeadCost.text}></p>
               </div>
             </div>
           </div>
-        ))}
+        </div>
+        <!-- Right: Persona Blocks -->
+        <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
+          {liveLeadPersonas.map(persona => (
+            <div class="flex items-start gap-4">
+              <img src={persona.icon} alt="Checkbox" class="w-8 h-8 mt-1" />
+              <div>
+                <h4 class="font-h4 mb-1">{persona.title}</h4>
+                <p>{persona.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <!-- Feature Highlight, Screenshot, Quota, System Overview -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="flex flex-col gap-2">
+          <div>
+            <h4 class="font-h4 text-primary mb-4">Feature Highlight</h4>
+            <p class="text-neutral-200 mb-4">The Live Lead App <span class='bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded'>dramatically reduces response time to new</span> leads, enabling businesses to engage potential clients within minutes of their inquiry. This rapid, personalized interaction significantly increases the chances of converting leads into customers, maximizing the return on marketing investments and boosting overall sales efficiency.</p>
+          </div>
+          <img src="/images/case-studies/live-lead_scr1.png" alt="Live Lead App Screenshot" class="rounded-lg w-full my-6 livelead-screenshot" />
+          <div class="livelead-quote-overlap">
+            <Quota 
+              content="The real-time experience was our biggest challenge, but leveraging existing external APIs was a game-changer for that feature. What I love most about this app is the genuine 'wow' moment leads experience when they get a personalized response so quickly."
+              author="Maciej"
+              position="Deligo Owner"
+              avatarSrc="/src/images/avatar Maciej.png"
+              bgColor="#1DA6AE"
+              textColor="#fff"
+            />
+          </div>
+        </div>
+        <div>
+          <h4 class="font-h4 text-primary mb-4">System overview</h4>
+          <p class="text-neutral-200 mb-4">When a lead is captured, Live Lead App instantly begins processing. It leverages APIs to build a comprehensive lead profile, then notifies agents via Slack. The lead's information is synchronized with Hubspot, while the app facilitates immediate contact through personalized messages or calls.</p>
+          <img src="/images/case-studies/livelead-infographic.png" alt="Live Lead System Overview" class="w-full max-w-md mx-auto" />
+        </div>
       </div>
     </div>
   </section>
@@ -240,9 +339,34 @@ const caseStudies = [
         Let's discuss how DRADS can transform your business with custom software solutions tailored to your specific needs.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <PrimaryCTA title="Get Custom Quote" url="/contact" />
-        <SecondaryCTA title="Schedule Consultation" url="/contact?type=consultation" />
+        <!-- Link styled as a button, with dynamic title, URL, and optional arrow -->
+        <a class="group inline-flex items-center justify-center gap-x-2 rounded-lg px-4 py-3 text-sm font-bold text-neutral-50 ring-zinc-500 transition duration-300 focus-visible:ring-3 outline-hidden border border-transparent bg-orange-400 hover:bg-orange-500 active:bg-orange-500 dark:focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 2xl:text-base dark:ring-zinc-200" href="/contact">
+          Get Custom Quote
+          <!-- Display the arrow based on the 'noArrow' property -->
+          <svg class="h-4 w-4 shrink-0 transition duration-300 group-hover:translate-x-1" height="24" viewBox="0 0 24 24" width="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title></title><path d="m9 18 6-6-6-6" class=""></path></svg>
+        </a>
+        <!-- Styled hyperlink -->
+        <a class="inline-flex items-center justify-center gap-x-2 rounded-lg px-4 py-3 text-center text-sm font-medium text-neutral-600 shadow-xs outline-hidden ring-zinc-500 focus-visible:ring-3 transition duration-300 border border-neutral-200 bg-neutral-300 hover:bg-neutral-400/50 hover:text-neutral-600 active:text-neutral-700 disabled:pointer-events-none disabled:opacity-50 2xl:text-base ring-zinc-500 dark:border-neutral-700 dark:bg-zinc-700 dark:text-neutral-300 dark:ring-zinc-200 dark:hover:bg-zinc-600 dark:focus:outline-hidden" href="/contact?type=consultation">
+          Schedule Consultation
+        </a>
       </div>
     </div>
   </section>
-</MainLayout> 
+</MainLayout>
+
+<style>
+@media (min-width: 768px) {
+  .livelead-screenshot {
+    position: relative;
+    z-index: 1;
+  }
+  .livelead-quote-overlap {
+    margin-top: -4.5rem; /* Adjust as needed for 1/10 overlap */
+    z-index: 2;
+    position: relative;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style> 

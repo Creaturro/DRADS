@@ -21,6 +21,9 @@ import ThreeCards from "@components/ui/blocks/ThreeCards.astro";
 import SpeechBubble from "@components/ui/blocks/SpeechBubble.astro";
 import Icon from "@components/ui/icons/Icon.astro";
 import Quota from "@components/ui/blocks/Quota.astro";
+import ComparisonTable from "@components/ui/ComparisonTable.astro";
+import ReusableSectionCentered from "@components/sections/misc/ReusableSectionCentered.astro";
+import DevelopmentComparison from "../components/sections/infographic/DevelopmentComparison.astro";
 ---
 
 <MainLayout>
@@ -108,6 +111,46 @@ import Quota from "@components/ui/blocks/Quota.astro";
       </div>
     </div>
   </ReusableSection>
+
+  <section class="w-full px-4 md:px-8 pt-0 pb-12 bg-neutral-900 text-neutral-100">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-h2 text-left mb-2">The DRADS difference</h2>
+      <h3 class="font-h3 text-left w-full md:w-[70%] mb-8 text-gray-300">We are able to show the first working version of the application in 2-3 weeks, launch the v1 version in a maximum of 2 months for applications of medium complexity.</h3>
+      <ComparisonTable />
+    </div>
+  </section>
+
+  <DevelopmentComparison />
+
+  <ReusableSectionCentered
+    title="DRADS Ingredients"
+    description="Quick to Market, Quicker to Improve"
+  >
+    <div slot="leftContent">
+      <div class="text-3xl font-light mb-2">The rules</div>
+      <div class="text-xl font-normal mb-4 text-gray-400">Speed with Quality.</div>
+      <ul class="space-y-4">
+        <li><strong>Clear specs for accelerated timeline:</strong> Aim to deliver a first working draft within 3 weeks and a full app in 8 weeks.</li>
+        <li><strong>Don't reinvent the wheel:</strong> Utilise external APIs and existing solutions as much as possible to speed up development and focus on unique value-adding features.</li>
+        <li><strong>Collaborate closely:</strong> Work closely with clients, involving them in decision-making processes and regularly showcasing progress for immediate feedback.</li>
+        <li><strong>Speed with Quality:</strong> Show initial progress fast, but move towards full technical maturity as the project nears launch.</li>
+        <li><strong>Rapid Iterations:</strong> Embrace fast, frequent iterations. Be prepared to quickly adapt and modify based on client feedback.</li>
+        <li><strong>Fail Fast, Learn Faster:</strong> It's encouraged to move fast and break things, especially in early stages. Prioritise speed of execution, with higher tolerance for bugs balanced by rapid bug-fixing.</li>
+      </ul>
+    </div>
+    <div slot="rightContent">
+      <div class="text-3xl font-light mb-2">The tools</div>
+      <div class="text-xl font-normal mb-4 text-gray-400">Low Code Tools as the starting point.</div>
+      <ul class="space-y-4">
+        <li><strong>Frontend Framework:</strong> We utilise a modern, component-based frontend framework that enables rapid UI/UX development.</li>
+        <li><strong>Backend as a Service:</strong> Our backend solutions provide a robust API builder, database management and serverless functions, allowing for quick setup and scalable infrastructure.</li>
+        <li><strong>Integration Platforms:</strong> We use powerful integration platforms that connect thousands of services and automate workflows.</li>
+        <li><strong>Cloud Infrastructure:</strong> We leverage cloud services for hosting, ensuring scalability, reliability, and ease of deployment.</li>
+        <li><strong>Best Practice Toolchain:</strong> We employ a comprehensive, integrated toolset that adheres to industry best practices. This includes version control, CI/CD, testing, DRADS dev mode for working safely with production APIs, project management and living documentation.</li>
+        <li><strong>Tool Agnosticism:</strong> While we have our preferred set of tools, we're not rigidly attached to them. We're always open to adopting better solutions if they prove more effective for a specific project or task.</li>
+      </ul>
+    </div>
+  </ReusableSectionCentered>
 
   <ClientsSection
     title="Trusted by Industry Leaders"

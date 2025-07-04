@@ -1,0 +1,18 @@
+---
+// Props: title (string), description (string), leftContent (slot), rightContent (slot)
+const { title, description } = Astro.props;
+---
+<section class="w-full px-4 md:px-8 pt-[0px] pb-12 bg-neutral-900 text-neutral-100">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="font-h2 text-center">{title}</h2>
+    <h3 class="font-h3 text-center w-full mb-8">{description}</h3>
+    <div class="flex flex-col md:flex-row gap-8 md:gap-8">
+      <div class="w-full md:w-1/2">
+        <slot name="leftContent" />
+      </div>
+      <div class="w-full md:w-1/2">
+        <slot name="rightContent" />
+      </div>
+    </div>
+  </div>
+</section> 
