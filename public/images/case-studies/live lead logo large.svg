@@ -1,0 +1,6 @@
+<svg id="live_lead_logo_large" data-name="live lead logo large" xmlns="http://www.w3.org/2000/svg" width="369" height="92" viewBox="0 0 369 92">
+  <path id="Union_32" data-name="Union 32" d="M7560.156,17170H7512a10,10,0,0,1-10-10v-37a10,10,0,0,1,10-10h131a10,10,0,0,1,10,10v37a10,10,0,0,1-10,10h-48.158l-17.341,15Z" transform="translate(-7357 -17093)" fill="#e59711"/>
+  <text id="Live" transform="translate(0 67)" fill="#fff" font-size="69" font-family="Montserrat-SemiBold, Montserrat" font-weight="600" letter-spacing="-0.03em"><tspan x="0" y="0">Live</tspan></text>
+  <text id="Lead" transform="translate(163 66)" fill="#fff" font-size="48" font-family="Montserrat-Regular, Montserrat" letter-spacing="-0.01em"><tspan x="0" y="0">Lead</tspan></text>
+  <text id="app" transform="translate(309 67)" fill="#fff" font-size="32" font-family="Montserrat-Light, Montserrat" font-weight="300" letter-spacing="-0.03em"><tspan x="0" y="0">app</tspan></text>
+</svg>

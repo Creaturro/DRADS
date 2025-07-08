@@ -296,3 +296,7 @@
     border-color: var(--color-secondary) !important;
   }
 }
+
+body {
+  color: #E6E6E6;
+}

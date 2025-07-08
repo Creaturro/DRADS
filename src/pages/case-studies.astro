@@ -6,6 +6,7 @@ import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
 import ReusableSection from "@components/sections/misc/ReusableSection.astro";
 import Quota from "@components/ui/blocks/Quota.astro";
 import CaseStudyTemplate from "@components/sections/case-study/CaseStudyTemplate.astro";
+import ProjectCTA from "@components/ui/blocks/ProjectCTA.astro";
 
 // Case studies data
 const caseStudies = [
@@ -136,7 +137,7 @@ const liveLeadCost = {
 
 <MainLayout>
   <!-- Hero Section -->
-  <section class="relative py-20 bg-gradient-to-b from-third to-neutral-900">
+  <section class="relative py-20" style="background-color:#222730;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h1 class="font-h2 mb-6">
@@ -150,7 +151,7 @@ const liveLeadCost = {
   </section>
 
   <!-- Inbox App Case Study Section -->
-  <section class="relative py-20 bg-neutral-900" style="margin-bottom:100px;">
+  <section class="relative py-20" style="background-color:#222730;margin-bottom:100px;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Title Row: 1/4 + 3/4 columns -->
       <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
@@ -255,9 +256,10 @@ const liveLeadCost = {
       </div>
     </div>
   </section>
+  <hr class="border-t-0 border-b border-primary my-[50px]" />
 
   <!-- Live Lead Case Study Section (custom markup, not using CaseStudyTemplate) -->
-  <section class="relative py-20 bg-neutral-900">
+  <section class="relative py-20" style="background-color:#222730;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Title Row: 1/4 + 3/4 columns -->
       <div class="case-study-title-row flex flex-col md:flex-row items-center gap-8 mb-10">
@@ -330,28 +332,219 @@ const liveLeadCost = {
       </div>
     </div>
   </section>
+  <hr class="border-t-0 border-b border-primary my-[50px]" />
 
-  <!-- CTA Section -->
-  <section class="py-16 bg-gradient-to-r from-primary/10 to-secondary/10">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-h2 mb-6">Ready to Start Your Project?</h2>
-      <p class="font-h3 mb-8 text-neutral-300">
-        Let's discuss how DRADS can transform your business with custom software solutions tailored to your specific needs.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <!-- Link styled as a button, with dynamic title, URL, and optional arrow -->
-        <a class="group inline-flex items-center justify-center gap-x-2 rounded-lg px-4 py-3 text-sm font-bold text-neutral-50 ring-zinc-500 transition duration-300 focus-visible:ring-3 outline-hidden border border-transparent bg-orange-400 hover:bg-orange-500 active:bg-orange-500 dark:focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 2xl:text-base dark:ring-zinc-200" href="/contact">
-          Get Custom Quote
-          <!-- Display the arrow based on the 'noArrow' property -->
-          <svg class="h-4 w-4 shrink-0 transition duration-300 group-hover:translate-x-1" height="24" viewBox="0 0 24 24" width="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title></title><path d="m9 18 6-6-6-6" class=""></path></svg>
-        </a>
-        <!-- Styled hyperlink -->
-        <a class="inline-flex items-center justify-center gap-x-2 rounded-lg px-4 py-3 text-center text-sm font-medium text-neutral-600 shadow-xs outline-hidden ring-zinc-500 focus-visible:ring-3 transition duration-300 border border-neutral-200 bg-neutral-300 hover:bg-neutral-400/50 hover:text-neutral-600 active:text-neutral-700 disabled:pointer-events-none disabled:opacity-50 2xl:text-base ring-zinc-500 dark:border-neutral-700 dark:bg-zinc-700 dark:text-neutral-300 dark:ring-zinc-200 dark:hover:bg-zinc-600 dark:focus:outline-hidden" href="/contact?type=consultation">
-          Schedule Consultation
-        </a>
+  <!-- Printing Shop Case Study Section -->
+  <section class="relative py-20" style="background-color:#222730;">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Title Row: 1/4 + 3/4 columns -->
+      <div class="case-study-title-row flex flex-col md:flex-row items-center gap-8 mb-10">
+        <div class="w-full md:w-1/4 flex justify-start mb-4 md:mb-0 order-2 md:order-1">
+          <img src="/images/case-studies/printing logo large.svg" alt="Printing Shop Logo" class="h-20 w-auto case-study-logo" style="max-width:none;" />
+        </div>
+        <div class="w-full md:w-3/4 order-1 md:order-2">
+          <h3 class="font-h3 case-study-title">Improve printing shop operations with real-time management.</h3>
+        </div>
+      </div>
+      <!-- Hero Image -->
+      <div class="relative w-full mb-10">
+        <img src="/images/case-studies/printing_cover.png" alt="Printing Shop Cover" class="rounded-lg w-full object-cover border border-neutral-700 printingshop-cover" />
+      </div>
+      <!-- Intro: 1/2 + 1/2 columns, with quote overlapping cover image -->
+      <div class="flex flex-col md:flex-row gap-8 mb-10">
+        <div class="w-full md:w-1/2 flex flex-col justify-center">
+          <p class="text-neutral-200 max-w-3xl">The App was designed to meet the unique needs of a printing shop owner who previously struggled with a limiting and outdated system. The app allows for complete remote access, with customized features such as invoicing, and print job lifecycle management. It supports the shop's specific processes, from managing different paper types to handling press configurations, ensuring that all operations run smoothly and efficiently.</p>
+        </div>
+        <div class="w-full md:w-1/2 flex items-center">
+          <div class="w-full printingshop-quote-overlap">
+            <Quota 
+              content="One of the highlights for me was when the owner walked us through his shop with a camera on a video call showing us each step of his daily work. We were thousands of miles away but it gave us a real understanding of how his business works, and it was satisfying to build an app that fit so well with what he needed."
+              author="Maciej"
+              position="Deligo Owner"
+              avatarSrc="/src/images/avatar Maciej.png"
+              bgColor="#1DA6AE"
+              textColor="#fff"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Metrics & Personas -->
+      <div class="flex flex-col md:flex-row gap-12 mb-10">
+        <!-- Metrics -->
+        <div class="w-full md:w-1/2 flex flex-col gap-8">
+          <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+            <img src="/images/case-studies/fast results ico.svg" alt="Fast Results Icon" style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+            <div>
+              <h4 class="font-h4 text-primary mb-2">Fast results</h4>
+              <p class="text-neutral-200 text-sm">The implementation of a similar application will take 2 months, the first working version will be available as early as <span class="bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded">2-3 weeks</span> after the start of work.</p>
+            </div>
+          </div>
+          <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+            <img src="/images/case-studies/cost ico.svg" alt="Cost Icon" style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+            <div>
+              <h4 class="font-h4 text-primary mb-2">Cost</h4>
+              <p class="text-neutral-200 text-sm">Building an app similar in scope will cost around <span class="bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded">$12,000</span></p>
+            </div>
+          </div>
+        </div>
+        <!-- Personas -->
+        <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1">Shop Owner</h4>
+              <p>The owner gained operational efficiency with a smooth transition, thanks to the app's ability to import years of historical data. The app was customized to fit his established workflow, with features like print job lifecycle management, PDF invoice generation, and tailored UI, search, and filtering options. Rapid implementation of his ideas kept the app closely aligned with his evolving needs.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1">Customers of the printing shop</h4>
+              <p>Customers benefit from the app's ability to maintain consistency with ongoing jobs, this is critical for invoice templates or internal company documents that have been consistently printed over the years. The app simplifies looking up previous jobs, allowing for seamless continuation or easy modifications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Screenshots: first is full width -->
+      <div class="mb-10">
+        <img src="/images/case-studies/printing_screen1.png" alt="Printing Shop App Screenshot 1" class="rounded-lg border border-neutral-700 w-full object-cover mb-8 printingshop-screenshot1" />
+      </div>
+      <!-- Feature Highlight & Quote -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="flex flex-col gap-2">
+          <div>
+            <h4 class="font-h4 text-primary mb-4">Feature Highlight</h4>
+            <p class="text-neutral-200 mb-4">The app's key strength is its ability to mirror the actual shop floor operations, <span class='bg-yellow-400 text-neutral-900 px-2 py-0.5 rounded'>providing the owner with easier control over daily activities.</span> Used throughout the entire day, the app's extensive UI customizations allow the owner to tailor the experience to his specific workflow, from custom filters to specialized search functions, ensuring that the app fits seamlessly into the shop's routine.</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 printingshop-quote-overlap">
+          <Quota 
+            content="Creating the Printing Shop Management App was a unique challenge due to the niche nature of the printing industry. The real-time feedback and constant flow of ideas from the owner were instrumental in building an app that truly meets his needs. The ability to quickly implement these ideas and see the app evolve daily was incredibly rewarding."
+            author="Maciej"
+            position="Deligo Owner"
+            avatarSrc="/src/images/avatar Maciej.png"
+            bgColor="#1DA6AE"
+            textColor="#fff"
+          />
+        </div>
+      </div>
+      <!-- Last Screenshot: full width at the end -->
+      <div class="mt-12">
+        <img src="/images/case-studies/printing_screen2.png" alt="Printing Shop App Screenshot 2" class="rounded-lg w-full printingshop-screenshot2" />
       </div>
     </div>
   </section>
+
+  <!-- Divider between Printing Shop and Invoice Caddy -->
+  <hr class='border-0 border-b border-primary my-[50px]' />
+
+  <!-- Invoice Caddy Case Study Section -->
+  <section class="relative py-20" style="background-color:#222730;">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Title Row: 1/4 + 3/4 columns -->
+      <div class="case-study-title-row flex flex-col md:flex-row items-center gap-8 mb-10">
+        <div class="w-full md:w-1/4 flex justify-start mb-4 md:mb-0 order-2 md:order-1">
+          <img src="/images/case-studies/invoice logo large.svg" alt="Invoice Caddy Logo" class="h-20 w-auto case-study-logo" style="max-width:none;" />
+        </div>
+        <div class="w-full md:w-3/4 order-1 md:order-2">
+          <h3 class="font-h3 case-study-title">Streamline invoicing and payments for small businesses and freelancers. Connect payments to your DRADS app.</h3>
+        </div>
+      </div>
+      <!-- Cover Image -->
+      <div class="relative w-full mb-10">
+        <img src="/images/case-studies/InvoiceCaddy_cover.png" alt="Invoice Caddy Cover" class="rounded-lg w-full invoicecaddy-cover" />
+      </div>
+      <!-- Metrics & Features: 1/2 + 1/2 columns -->
+      <div class="flex flex-col md:flex-row gap-12 mb-10">
+        <!-- Left: Intro + Metrics -->
+        <div class="w-full md:w-1/2 flex flex-col gap-8">
+          <p class="text-neutral-200 max-w-3xl">Invoice Caddy is a comprehensive invoicing solution that we build, designed to simplify billing and payment processes for small businesses and freelancers. It offers seamless integration with QuickBooks, supports multiple payment gateways, and provides a user-friendly interface for both merchants and customers. With features like recurring billing and customisable templates, Invoice Caddy empowers businesses to manage their finances efficiently.</p>
+          <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+            <img src="/images/case-studies/fast results ico.svg" alt="Fast Results Icon" style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+            <div>
+              <h4 class="font-h4 text-primary mb-2">Fast results, competitive rates</h4>
+              <p class="text-neutral-200 text-sm">Integrate payments into your DRADS app in days. Use competitive payment processing rates and full support on the financial side by our US partners offering broad merchant payment services.</p>
+            </div>
+          </div>
+          <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+            <img src="/images/case-studies/cost ico.svg" alt="Cost Icon" style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+            <div>
+              <h4 class="font-h4 text-primary mb-2">Cost</h4>
+              <p class="text-neutral-200 text-sm">The price for the Invoice Caddy integration will be included in your DRADS app. Custom integration will be subject to separate arrangements.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Features List -->
+        <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1 text-yellow-400">Enhancing efficiency</h4>
+              <p>Leverage API to automate invoicing processes, enhancing efficiency.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1 text-yellow-400">Prototyping and implementation</h4>
+              <p>Rapid prototyping and implementation of advanced billing features.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1 text-yellow-400">Flexible payment</h4>
+              <p>Support for multiple payment gateways allows flexible payment options without individual integrations.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1 text-yellow-400">QuickBooks</h4>
+              <p>QuickBooks integration ensures financial data consistency and simplifies accounting.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1 text-yellow-400">Recurring billing</h4>
+              <p>Upcoming recurring billing features will allow efficiently manage subscription-based services.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <div>
+              <h4 class="font-h4 mb-1 text-yellow-400">Compliance and security</h4>
+              <p>Integration provides built-in compliance and security features for payment processing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Screenshots and Quote -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <div>
+          <img src="/images/case-studies/InvoiceCaddy_screen1.png" alt="Invoice Caddy Screenshot 1" class="rounded-lg w-full invoicecaddy-screenshot1" />
+        </div>
+        <div class="relative flex flex-col justify-end">
+          <img src="/images/case-studies/InvoiceCaddy_screen2.png" alt="Invoice Caddy Screenshot 2" class="rounded-lg border border-neutral-700 w-full object-cover invoicecaddy-screenshot2" />
+          <div class="invoicecaddy-quote-overlap">
+            <Quota 
+              content="While Invoice Caddy is built by our team using standard development practices, its API-first design makes it an ideal companion for DRADS apps giving them full payment processing and billing management capabilities."
+              author="Maciej"
+              position="Deligo Owner"
+              avatarSrc="/src/images/avatar Maciej.png"
+              bgColor="#1DA6AE"
+              textColor="#fff"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="h-[100px]"></div>
+
+  <!-- CTA Section -->
+  <ProjectCTA />
 </MainLayout>
 
 <style>
@@ -367,6 +560,41 @@ const liveLeadCost = {
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+  }
+  .printingshop-quote-overlap {
+    margin-top: -3.5rem;
+    z-index: 2;
+    position: relative;
+  }
+  .printingshop-cover {
+    min-height: 320px;
+    max-height: 480px;
+    object-fit: cover;
+  }
+  .printingshop-screenshot1 {
+    min-height: 320px;
+    max-height: 480px;
+    object-fit: cover;
+  }
+  .printingshop-screenshot2 {
+    /* Remove cropping and object-fit for last image */
+  }
+  .invoicecaddy-cover {
+    /* Remove border, keep roundness, no cropping */
+  }
+  .invoicecaddy-screenshot1 {
+    /* Remove cropping and object-fit for screen images */
+  }
+  .invoicecaddy-screenshot2 {
+    /* Remove cropping and object-fit for screen images */
+  }
+  .invoicecaddy-quote-overlap {
+    position: absolute;
+    left: 0;
+    bottom: -200px;
+    z-index: 2;
+    max-width: 90%;
+    margin-left: 1rem;
   }
 }
 </style> 

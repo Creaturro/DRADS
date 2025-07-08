@@ -1,0 +1,9 @@
+<svg id="Live_Lead_logo" data-name="Live Lead logo" xmlns="http://www.w3.org/2000/svg" width="254.401" height="92.597" viewBox="0 0 254.401 92.597">
+  <rect id="Rectangle_3994" data-name="Rectangle 3994" width="254.401" height="92.597" rx="9" fill="#26323a"/>
+  <g id="Group_30793" data-name="Group 30793" transform="translate(-337 -10689.332)">
+    <path id="Union_32" data-name="Union 32" d="M31.967,30.875H10a10,10,0,0,1-10-10V10A10,10,0,0,1,10,0H73A10,10,0,0,1,83,10V20.875a10,10,0,0,1-10,10H51.033L41.5,39Z" transform="translate(442 10721.332)" fill="#e59711"/>
+    <text id="Live" transform="translate(363 10746.332)" fill="#fff" font-size="37" font-family="Montserrat-SemiBold, Montserrat" font-weight="600" letter-spacing="-0.03em"><tspan x="0" y="0">Live</tspan></text>
+    <text id="Lead" transform="translate(452 10746.332)" fill="#fff" font-size="26" font-family="Montserrat-Regular, Montserrat" letter-spacing="-0.01em"><tspan x="0" y="0">Lead</tspan></text>
+    <text id="app" transform="translate(533 10745.332)" fill="#fff" font-size="17" font-family="Montserrat-Light, Montserrat" font-weight="300" letter-spacing="-0.03em"><tspan x="0" y="0">app</tspan></text>
+  </g>
+</svg>

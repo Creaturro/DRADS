@@ -1,0 +1,125 @@
+---
+// Props: logoSrc, logoAlt, title, intro, personas (array), fastResults, cost, featureHighlight, featureHighlightNote, quote, systemOverview, infographicSrc, infographicAlt, screenshots (array), aiTitle, aiText
+const {
+  logoSrc,
+  logoAlt,
+  title,
+  intro,
+  personas = [],
+  fastResults = {},
+  cost = {},
+  featureHighlight,
+  featureHighlightNote,
+  quote = {},
+  systemOverview,
+  infographicSrc,
+  infographicAlt,
+  screenshots = [],
+  aiTitle,
+  aiText
+} = Astro.props;
+import Quota from "@components/ui/blocks/Quota.astro";
+---
+<!-- Title Row: 1/4 + 3/4 columns -->
+<div class="case-study-title-row flex flex-col md:flex-row items-center gap-8 mb-10">
+  <div class="w-full md:w-1/4 flex justify-start mb-4 md:mb-0 order-2 md:order-1">
+    <img src={logoSrc} alt={logoAlt} class="h-20 w-auto case-study-logo" style="max-width:none;" />
+  </div>
+  <div class="w-full md:w-3/4 order-1 md:order-2">
+    <h3 class="font-h3 case-study-title">{title}</h3>
+  </div>
+</div>
+<style>
+.case-study-title-row {
+  /* Default: row, logo left, title right */
+}
+@media (max-width: 1170px) {
+  .case-study-title-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .case-study-logo {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    align-self: flex-start;
+    max-width: 160px;
+  }
+  .case-study-title {
+    word-break: break-word;
+    white-space: normal;
+    display: block;
+    margin-bottom: 0;
+  }
+}
+</style>
+<!-- 1/2 + 1/2 Columns Section -->
+<div class="flex flex-col md:flex-row gap-12">
+  <!-- Left: Main Value Proposition -->
+  <div class="w-full md:w-1/2">
+    <p class="text-neutral-200 mb-6">{intro}</p>
+    <div class="flex flex-col gap-8 mt-6">
+      <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+        <img src={fastResults.icon} alt={fastResults.iconAlt} style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+        <div>
+          <h4 class="font-h4 text-primary mb-2">{fastResults.title}</h4>
+          <p class="text-neutral-200 text-sm" set:html={fastResults.text} />
+        </div>
+      </div>
+      <div class="flex-1 bg-neutral-800 rounded-xl border border-neutral-700 p-6 flex items-center gap-4 min-w-[260px]">
+        <img src={cost.icon} alt={cost.iconAlt} style="width:30%;height:30%;min-width:24px;min-height:24px;max-width:40px;max-height:40px;" />
+        <div>
+          <h4 class="font-h4 text-primary mb-2">{cost.title}</h4>
+          <p class="text-neutral-200 text-sm" set:html={cost.text} />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Right: Persona Blocks -->
+  <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
+    {personas.map(persona => (
+      <div class="flex items-start gap-4">
+        <img src={persona.icon} alt="Checkbox" class="w-8 h-8 mt-1" />
+        <div>
+          <h4 class="font-h4 mb-1">{persona.title}</h4>
+          <p>{persona.text}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+<!-- Feature & System Overview -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+  <div class="flex flex-col gap-2">
+    <div>
+      <h4 class="font-h4 text-primary mb-4">Feature Highlight</h4>
+      <p class="text-neutral-200 mb-4">{featureHighlight}</p>
+      <p class="text-neutral-200 mb-8">{featureHighlightNote}</p>
+    </div>
+    <Quota {...quote} />
+  </div>
+  <div>
+    <h4 class="font-h4 text-primary mb-4">System overview</h4>
+    <p class="text-neutral-200 mb-4">{systemOverview}</p>
+    <img src={infographicSrc} alt={infographicAlt} class="w-full max-w-md mx-auto" />
+  </div>
+</div>
+<h3 class="font-h3 mb-0 mt-8">Clear inbox with deal statuses</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+  <div>
+    <img src={screenshots[0]} alt="Inbox Statuses Screenshot" class="rounded-lg border border-neutral-700 w-full h-128 object-cover" />
+  </div>
+  <div>
+    <img src={screenshots[1]} alt="Inbox Contact Screenshot" class="rounded-lg border border-neutral-700 w-full h-128 object-cover" />
+  </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12 items-center">
+  <div class="md:col-span-3">
+    <img src={screenshots[2]} alt="Inbox Deal Status Screenshot" class="rounded-lg border border-neutral-700 w-full" />
+  </div>
+  <div class="md:col-span-1 h-full flex items-center">
+    <div class="w-full flex flex-col justify-center h-full">
+      <h4 class="font-h4 text-primary mb-4" style="line-height: 1.4;">{aiTitle}</h4>
+      <p class="text-neutral-200 text-sm mt-6">{aiText}</p>
+    </div>
+  </div>
+</div> 

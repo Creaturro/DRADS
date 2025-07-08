@@ -1,0 +1,8 @@
+<svg id="inbox_logo_large" data-name="inbox logo large" xmlns="http://www.w3.org/2000/svg" width="300" height="94" viewBox="0 0 300 94">
+  <path id="Path_51040" data-name="Path 51040" d="M-12107.952,13102.2s-48.143-23.347-5.785-40.856c15.5-5.659,40.7-1.769,40.7-1.769s18.183,2.828,30.58-12.558,13.224-20.341,25.416-16.8,46.489,34.137,42.356,73.755-115.709,6.013-123.561,2.83S-12107.952,13102.2-12107.952,13102.2Z" transform="translate(12191.337 -13029.127)" fill="#1da6ae"/>
+  <g id="Group_30591" data-name="Group 30591" transform="translate(-0.12 9)">
+    <text id="Inbox" transform="translate(43.12 67)" fill="#fff" font-size="69" font-family="Montserrat-Medium, Montserrat" font-weight="500" letter-spacing="-0.03em"><tspan x="0" y="0">Inbox</tspan></text>
+    <text id="_" data-name="@" transform="translate(0.12 60)" fill="#fff" font-size="41" font-family="Montserrat-Light, Montserrat" font-weight="300" letter-spacing="-0.03em"><tspan x="0" y="0">@</tspan></text>
+    <text id="app" transform="translate(240.12 67)" fill="#fff" font-size="32" font-family="Montserrat-Light, Montserrat" font-weight="300" letter-spacing="-0.03em"><tspan x="0" y="0">app</tspan></text>
+  </g>
+</svg>
