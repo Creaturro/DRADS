@@ -1,0 +1,118 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import ReusableSection from "@components/sections/misc/ReusableSection.astro";
+import SpeechBubble from "@components/ui/blocks/SpeechBubble.astro";
+import StatsSmall from "@components/ui/blocks/StatsSmall.astro";
+import ThreeCards from "@components/ui/blocks/ThreeCards.astro";
+---
+
+<MainLayout>
+  <!-- Section 1: Speed Meets Best Practices -->
+  <ReusableSection
+    title="Speed Meets Best Practices"
+    description="While DRADS focuses on rapid development and leveraging modern tools, it doesn’t compromise on proven development and management techniques."
+  >
+    <div slot="leftContent">
+      <div class="mb-8 p-8 rounded-xl border border-neutral-700">
+        <h3 class="font-h3 text-white mb-2">People: The Heart of DRADS</h3>
+        <p class="text-base text-neutral-100">Our team consists of seasoned professionals who are adept at utilizing cutting-edge tools. In DRADS, tools amplify talent, but it’s our people who truly innovate. The combination of experience and modern technology creates a multiplier effect, significantly boosting productivity and quality.</p>
+      </div>
+      <div class="space-y-8">
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">Transparent Time Tracking</h4>
+            <p>With work billed per hour, we provide full time logs connected to specific tasks for complete transparency.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">Accountability</h4>
+            <p>We take full responsibility for our work. If an issue arises due to our changes, we commit to resolving it promptly and at no additional cost to the client.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">Unique Dev Mode</h4>
+            <p>DRADS features a distinctive work system with production APIs, allowing developers to work efficiently on external systems which is difficult to do otherwise. This mode enables real-time testing and development without compromising live data or user experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div slot="rightContent">
+      <div class="grid grid-cols-1 gap-6">
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">Testing and Staging Environments</h4>
+            <p>DRADS provides the ability to build and test on separate environments without affecting production data. This separation allows for thorough testing of new features and updates before they go live, reducing the risk of introducing bugs into the production environment.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">Versioning</h4>
+            <p>Both frontend and backend changes are fully versioned, facilitating effective team collaboration. This practice ensures that all modifications are trackable, reversible, and can be reviewed by team members.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">Effective Task Management</h4>
+            <p>Every request in DRADS is treated as a task with clear objectives and full context. This structured approach ensures that nothing falls through the cracks and that progress is easily trackable.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">Comprehensive Monitoring</h4>
+            <p>We implement robust error logs and audit logs, providing full visibility into system operations. Slack notifications are set up for immediate alerts, enabling fast reaction times to any issues.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <div>
+            <h4 class="font-h4 mb-1">Comprehensive Documentation</h4>
+            <p>We maintain full technical documentation for effective knowledge sharing among the team. This practice ensures that all team members have access to up-to-date information about the system architecture, API endpoints, and development processes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ReusableSection>
+
+  <!-- Section 2: Deligo: scale expertise with modern tools -->
+  <ReusableSection
+    title="Deligo: scale expertise with modern tools"
+    description="The people behind DRADS"
+  >
+    <div slot="leftContent">
+      <p>We have extensive e-commerce experience, operating in the industry since 2006. Over the years, we’ve expanded our expertise to cover all areas of digital presence. Although based in Poland, we have a comprehensive understanding of the US e-commerce and digital markets, gained through hundreds of thousands of hours working for US clients and firsthand experiences in the country.</p>
+      <p class="mt-4">Our team comprises seasoned professionals across various disciplines, including development, design, project management and devops. We’ve developed the Deligo Rapid App Development System (DRADS), which leverages our industry knowledge alongside modern tools and creates a multiplier effect, significantly boosting productivity.</p>
+      <div class="flex flex-row gap-4 mt-8">
+        <ThreeCards />
+      </div>
+    </div>
+    <div slot="rightContent">
+      <div class="mb-8">
+        <img src="/src/images/deligo_logo.svg" alt="Deligo Logo" class="w-[12rem] h-auto mb-4" />
+        <span class="inline-block bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">beyond technology</span>
+      </div>
+      <h3 class="font-h3 text-left mb-4">Our approach to work</h3>
+      <p>We work transparently and share concepts openly.</p>
+      <p class="mt-2">At Deligo, we believe in open communication and shared knowledge, keeping our processes visible and our clients informed at every step. This openness extends to our approach to challenges – when issues arise, we face them head-on, taking full accountability and working tirelessly to implement effective solutions. Our commitment to transparency and responsibility forms the bedrock of our client relationships, fostering trust and ensuring the delivery of high-quality, tailored solutions.</p>
+      <div class="mt-8">
+        <SpeechBubble bgColor="#1DA6AE" textColor="#fff">
+          If we compare a software company to a factory, most operate as black boxes. You submit your requirements at one end and receive a finished product at the other, with little visibility into the process...
+        </SpeechBubble>
+        <SpeechBubble bgColor="#1DA6AE" textColor="#fff" class="mt-4">
+          ...Deligo breaks this mold. We offer complete transparency, allowing our clients to observe and engage with our work, communications, and processes at any time. This openness fosters collaboration and ensures the final product truly meets their needs.
+        </SpeechBubble>
+      </div>
+      <div class="mt-8">
+        <img src="/images/About Us/team-illustration.svg" alt="Team Illustration" class="w-full h-auto rounded-xl" />
+      </div>
+    </div>
+  </ReusableSection>
+</MainLayout> 
