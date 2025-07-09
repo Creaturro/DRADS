@@ -2,7 +2,7 @@
 // Import the necessary components
 import MainLayout from "@/layouts/MainLayout.astro";
 import HeroSection from "@components/sections/landing/HeroSection.astro";
-import ClientsSection from "@components/sections/landing/ClientsSection.astro";
+
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
@@ -15,7 +15,7 @@ import featureImage from "@images/features-image.avif";
 import construction from "@images/construction-image.avif";
 import tools from "@images/automated-tools.avif";
 import dashboard from "@images/dashboard-image.avif";
-import { partnersData } from "@/data_files/constants";
+
 import ReusableSection from "@components/sections/misc/ReusableSection.astro";
 import ThreeCards from "@components/ui/blocks/ThreeCards.astro";
 import SpeechBubble from "@components/ui/blocks/SpeechBubble.astro";
@@ -24,6 +24,7 @@ import Quota from "@components/ui/blocks/Quota.astro";
 import ComparisonTable from "@components/ui/ComparisonTable.astro";
 import ReusableSectionCentered from "@components/sections/misc/ReusableSectionCentered.astro";
 import DevelopmentComparison from "../components/sections/infographic/DevelopmentComparison.astro";
+import ProjectCTA from "@components/ui/blocks/ProjectCTA.astro";
 ---
 
 <MainLayout>
@@ -52,28 +53,28 @@ import DevelopmentComparison from "../components/sections/infographic/Developmen
       </p>
       <div class="space-y-8">
         <div class="flex items-start gap-4">
-          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
           <div>
             <h4 class="font-h4 mb-1">For small business owners</h4>
             <p>DRADS can streamline operations by automating processes and providing custom tools tailored to your specific needs. It enables rapid development of cost-effective software solutions that grow with your business, from inventory management to customer relationship systems.</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
           <div>
             <h4 class="font-h4 mb-1">For legacy systems</h4>
             <p>DRADS can modernize your operations by working around limitations of existing systems (ERP, CRM, custom software) and creating seamless integrations. It enables you to connect disparate systems, such as linking your CRM to your website, without replacing entire infrastructures.</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
           <div>
             <h4 class="font-h4 mb-1">For internal teams</h4>
             <p>DRADS empowers your internal teams with custom tools tailored to their specific needs.</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+          <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
           <div>
             <h4 class="font-h4 mb-1">For building new software products</h4>
             <p>DRADS accelerates the development of SaaS and commercial applications, helping you bring your ideas to market faster. It enables rapid prototyping and iteration, allowing you to test and refine your product quickly.</p>
@@ -89,21 +90,21 @@ import DevelopmentComparison from "../components/sections/infographic/Developmen
         avatarSrc="/src/images/avatar Maciej.png"
       />
       <div class="flex items-start gap-4">
-        <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+        <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
         <div>
           <h4 class="font-h4 mb-1">For sales teams</h4>
           <p>DRADS can create customized CRM systems and lead management tools that integrate seamlessly with your existing workflows. It enables quick deployment of mobile-friendly applications for real-time data access and reporting, enhancing productivity and closing rates.</p>
         </div>
       </div>
       <div class="flex items-start gap-4">
-        <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+        <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
         <div>
           <h4 class="font-h4 mb-1">For marketing teams</h4>
           <p>DRADS can develop targeted campaign management platforms and analytics dashboards to track performance across multiple channels. It allows for rapid iteration of digital marketing tools, helping you stay agile in response to market trends and customer behavior.</p>
         </div>
       </div>
       <div class="flex items-start gap-4">
-        <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+        <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
         <div>
           <h4 class="font-h4 mb-1">For accounting teams</h4>
           <p>DRADS can build tailored financial management systems that automate data entry, reconciliation, and reporting processes. It enables the creation of secure, compliant software solutions that integrate with existing accounting software, improving accuracy and efficiency.</p>
@@ -152,18 +153,30 @@ import DevelopmentComparison from "../components/sections/infographic/Developmen
     </div>
   </ReusableSectionCentered>
 
-  <ClientsSection
-    title="Trusted by Industry Leaders"
-    subTitle="Experience the reliability chosen by industry giants."
-    partners={partnersData}
-  />
-
-  <FeaturesGeneral
-    title="Meeting Industry Demands"
-    subTitle="At DRADS, we tackle the unique challenges encountered in software development. From cutting-edge tools to expert services, we're dedicated to helping you overcome obstacles and achieve your goals."
-    src={featureImage}
-    alt="DRADS software development tools and services"
-    features={features}
+  <TestimonialsSection
+    title="Success Stories"
+    subTitle="Discover how DRADS has transformed businesses across industries with custom software solutions that drive real results."
+    statistics={[
+      {
+        count: "2-3 weeks",
+        description:
+          "first working version of applications delivered",
+      },
+      {
+        count: "2 months",
+        description:
+          "full v1 release for medium complexity apps",
+      },
+      {
+        count: "$12k-15k",
+        description:
+          "typical cost range for custom business apps",
+      },
+      {
+        count: "300%",
+        description: "performance improvement achieved in case studies",
+      },
+    ]}
   />
 
   <FeaturesNavs
@@ -174,7 +187,8 @@ import DevelopmentComparison from "../components/sections/infographic/Developmen
         content:
           "Empower your business with DRADS's custom software solutions. Experience enhanced efficiency in development with our sophisticated automated approaches.",
         svg: "tools",
-        src: tools,
+        videoSrc: "/images/Network_APIs.mp4",
+        coverSrc: "/images/Network_APIs_cover.webp",
         alt: "Custom software development tools and processes",
         first: true,
       },
@@ -183,7 +197,8 @@ import DevelopmentComparison from "../components/sections/infographic/Developmen
         content:
           "Navigate with ease using DRADS's rapid development methodology. Set up and oversee your projects seamlessly, with user-friendly processes designed for quick and effective delivery.",
         svg: "dashboard",
-        src: dashboard,
+        videoSrc: "/images/Cube.mp4",
+        coverSrc: "/images/Cube_cover.webp",
         alt: "Rapid application development dashboard and tools",
         second: true,
       },
@@ -192,39 +207,14 @@ import DevelopmentComparison from "../components/sections/infographic/Developmen
         content:
           "Minimize complexity, maximize quality. DRADS's robust testing processes are engineered to streamline your development workflow, delivering results that stand out for their excellence.",
         svg: "house",
-        src: construction,
+        videoSrc: "/images/DRADS_vertical.mp4",
+        coverSrc: "/images/DRADS_vertical_cover.webp",
         alt: "Quality assurance and testing processes",
       },
     ]}
   />
 
-  <TestimonialsSection
-    title="Success Stories"
-    subTitle="Discover how DRADS has transformed businesses across industries with custom software solutions that drive real results."
-    statistics={[
-      {
-        count: "70k+",
-        description:
-          "projects delivered — from startups to enterprise solutions",
-      },
-      {
-        count: "35%",
-        description:
-          "uptick in development efficiency with DRADS methodology",
-      },
-      {
-        count: "15.3%",
-        description:
-          "reduction in development costs reported by long-term clients",
-      },
-      {
-        count: "2x",
-        description: "quicker delivery using rapid development approach",
-      },
-    ]}
-  />
-
   <PricingSection pricing={pricing} />
-
-  <FAQ title="Frequently<br />asked questions" faqs={faqs} />
+  <FAQ title="Frequently asked questions" faqs={faqs} />
+  <ProjectCTA />
 </MainLayout>

@@ -22,42 +22,24 @@ interface Props {
 }
 // Define a helper function to generate ids dynamically.
 const makeId = (base: any, index: any) => `${base}${index + 1}`;
+
+// Split faqs into two columns
+const mid = Math.ceil(faqs.faqs.length / 2);
+const leftFaqs = faqs.faqs.slice(0, mid);
+const rightFaqs = faqs.faqs.slice(mid);
 ---
-
-<!-- Main container that holds all content. Customized for different viewport sizes. -->
-<section
-  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
->
-  <div class="grid gap-10 md:grid-cols-5">
-    <div class="md:col-span-2">
-      <div class="max-w-xs">
-        <h2
-          class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
-        >
-          <Fragment set:html={title} />
-        </h2>
-        <p class="mt-1 hidden text-neutral-600 dark:text-neutral-400 md:block">
-          {faqs.subTitle}
-        </p>
-      </div>
-    </div>
-    <!-- FAQ accordion items -->
-    <div class="md:col-span-3">
-      <div
-        class="hs-accordion-group divide-y divide-neutral-200 dark:divide-neutral-700"
-      >
-        {
-          faqs.faqs.map((question, i) => {
-            // Generate ids dynamically for each FAQ accordion item.
-            let id = makeId(
-              "hs-basic-with-title-and-arrow-stretched-heading-",
-              i
-            );
-            let collapseId = makeId(
-              "hs-basic-with-title-and-arrow-stretched-collapse",
-              i
-            );
-
+<section class="w-full px-4 md:px-8 pt-0 pb-12 text-neutral-100" style="background-color:#222730;">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="font-h2">{title}</h2>
+    {faqs.subTitle && (
+      <h3 class="font-h3 text-left w-full lg:w-[70%] mb-8">{faqs.subTitle}</h3>
+    )}
+    <div class="flex flex-col lg:flex-row gap-8 md:gap-8">
+      <div class="w-full lg:w-1/2 xl:w-1/2 lg:min-w-0 lg:flex-shrink">
+        <div class="hs-accordion-group divide-y divide-neutral-200 dark:divide-neutral-700">
+          {leftFaqs.map((question, i) => {
+            let id = makeId("hs-basic-with-title-and-arrow-stretched-heading-", i);
+            let collapseId = makeId("hs-basic-with-title-and-arrow-stretched-collapse", i);
             return (
               <AccordionItem
                 {...question}
@@ -66,8 +48,26 @@ const makeId = (base: any, index: any) => `${base}${index + 1}`;
                 first={i === 0}
               />
             );
-          })
-        }
+          })}
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 xl:w-1/2 lg:flex-shrink-0">
+        <div class="hs-accordion-group divide-y divide-neutral-200 dark:divide-neutral-700">
+          {rightFaqs.map((question, i) => {
+            // Offset index for unique IDs
+            let idx = i + leftFaqs.length;
+            let id = makeId("hs-basic-with-title-and-arrow-stretched-heading-", idx);
+            let collapseId = makeId("hs-basic-with-title-and-arrow-stretched-collapse", idx);
+            return (
+              <AccordionItem
+                {...question}
+                id={id}
+                collapseId={collapseId}
+                first={false}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   </div>

@@ -1,29 +1,37 @@
 {
-  "subTitle": "Ask us anything about our brand and products, and get factual responses.",
+  "subTitle": "Frequently asked questions about DRADS apps, process, and support.",
   "faqs": [
     {
-      "question": "What types of tools are included in the Starter Kit?",
-      "answer": "The Starter Kit features essential hand and power tools for diverse DIY projects, including hammers, drills, screwdrivers, and a variety of fasteners. It's a curated selection to help beginners and experienced DIYers alike tackle most home improvement tasks."
+      "question": "Can you really build all apps in just 2 months?",
+      "answer": "We’re not magicians, we won’t build a Facebook clone in 2 months, but... we have a pretty good grasp on how fast we can go. The key is to build initial specifications that are precise enough that we can hit that eight-week milestone. We aim to have production-ready code in this timeframe. Sometimes that’s the full app, sometimes it’s a practical piece that starts bringing you value while we work on other parts. Think of it as building a house - we’ll get you a comfy living room to relax in while we’re still working on that fancy home theater room."
     },
     {
-      "question": "Can I upgrade from the Starter Kit to the Professional Toolbox?",
-      "answer": "Absolutely! You can upgrade to the Professional Toolbox at any time to access a wider range of high-quality tools, enjoy priority customer support, and receive exclusive content. Contact our support team for a seamless transition."
+      "question": "What are the billing options with the apps?",
+      "answer": "You can pay per billable hour, opt for a fixed app fee, or we can whip up a hybrid approach. It’s heavily app-dependent and can also be tailored to your personal preference."
     },
     {
-      "question": "What discounts are available for bulk orders through the Professional Toolbox plan?",
-      "answer": "Professional Toolbox members are entitled to exclusive discounts on bulk orders, the percentage of which may vary depending on the order volume. Get in touch with us to discuss your needs, and we'll provide a tailored discount structure."
+      "question": "Are there ongoing costs after you’ve built my app?",
+      "answer": "Yes, in practice, it’s somewhere around $100-$150/month, depending on your app’s type and usage patterns. It can go higher if your app is chatty with external services or its popularity explodes."
     },
     {
-      "question": "What kind of customer support can I expect?",
-      "answer": "All our customers receive dedicated email support. With the Starter Kit, you'll receive our standard support, while the Professional Toolbox plan upgrades you to priority support, meaning faster response times and specialized assistance."
+      "question": "I’ve got a rough idea but I’m no app wizard. Can you help me out?",
+      "answer": "YES! Let’s talk. We’re part developers, part mind readers. We’ll build the full work specifications with you, divide the work into bite-sized milestones, and help you ask the right questions."
     },
     {
-      "question": "How current are the online resources and tutorials?",
-      "answer": "We regularly update our online resources and tutorials to reflect the latest trends in DIY and construction, as well as introductions to new tools and techniques. Our material aims to be comprehensive and user-friendly for all skill levels."
+      "question": "What kind of support do you offer?",
+      "answer": "We’re in it for the long haul. We offer full training, bug fixes, new features. You can start small and grow, or start larger and grow bigger. We’re like a choose-your-own-adventure book, but for app support."
     },
     {
-      "question": "Does ScrewFast offer services for large-scale construction projects?",
-      "answer": "Yes, our Enterprise Solutions are designed for larger companies requiring comprehensive services. We provide consultation, planning, and supply of high-grade tools and materials, as well as staffing solutions for substantial construction needs. Contact us for a customized quote."
+      "question": "How customizable are the apps you build?",
+      "answer": "We’re not in the business of one-size-fits-all solutions. Our apps are built from the ground up to meet your specific needs. Whether you need a simple tool or a complex system, we’ll tailor it to fit your business."
+    },
+    {
+      "question": "Can you integrate the app with my existing systems?",
+      "answer": "Absolutely! Whether you’re using Quickbooks, Hubspot, Mailchimp or some obscure system from the 90s, we’ll find a way to make them all sing in harmony."
+    },
+    {
+      "question": "How involved do I need to be in the development process?",
+      "answer": "As involved as you want to be! Some clients like to be in the passenger seat, offering direction at every turn. Others prefer to kick back in the back seat and enjoy the ride. We’re flexible – you can be as hands-on or hands-off as you like. Just remember, it’s your app baby, and we’re here to help you raise it right!"
     }
   ]
 }

@@ -24,22 +24,6 @@ const { title, subTitle, src, alt, features } = Astro.props;
 <section
   class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
 >
-  <!-- Block to display the feature image -->
-  <div class="relative mb-6 overflow-hidden md:mb-8">
-    {
-      src && alt && (
-        <Image
-          src={src}
-          alt={alt}
-          class="h-full w-full object-cover object-center"
-          draggable={"false"}
-          format={"avif"}
-          loading={"eager"}
-        />
-      )
-    }
-  </div>
-
   <!-- Displaying the main content consisting of title, subtitle, and several `IconBlock` components -->
   <div class="mt-5 grid gap-8 lg:mt-16 lg:grid-cols-3 lg:gap-12">
     <!-- Block for title and subtitle -->
@@ -54,7 +38,7 @@ const { title, subTitle, src, alt, features } = Astro.props;
       {
         subTitle && (
           <p class="mt-2 text-pretty text-neutral-600 dark:text-neutral-400 md:mt-4">
-            {subTitle}
+            In DRADS, we prioritize efficient development by leveraging existing solutions.
           </p>
         )
       }
@@ -63,14 +47,12 @@ const { title, subTitle, src, alt, features } = Astro.props;
     <!-- Block to display the IconBlock components -->
     <div class="lg:col-span-2">
       <div class="grid gap-8 sm:grid-cols-2 md:gap-12">
-        <!-- Injecting IconBlock components with different properties -->
-        { features &&
-          features.map((feature) => (
-            <IconBlock heading={feature.heading} content={feature.content}>
-              <Icon name={feature.svg} />
-            </IconBlock>
-          ))
-        }
+        <IconBlock heading="Seamless Communication & Notifications" content="With DRADS, implementing complex communication features becomes a breeze. Reading and sending emails, dispatching text messages, integrating Slack or WhatsApp notifications, and even initiating phone calls can be set up in mere minutes."><Icon name="groups" class="text-[#1DA6AE]" /></IconBlock>
+        <IconBlock heading="Efficient System Integration" content="Whether you're linking your time tracking system with billing software or integrating any other combination of tools, DRADS simplifies the process, ensuring smooth data flow between systems."><Icon name="dashboard" class="text-[#1DA6AE]" /></IconBlock>
+        <IconBlock heading="Dynamic Visualizations & Analytics" content="DRADS enables the creation of quick forms for efficient data capture and personalized interfaces for data presentation. Within hours, you can have a fully functional system that not only collects critical information but also displays it in user-friendly tables and dashboards."><Icon name="frame" class="text-[#1DA6AE]" /></IconBlock>
+        <IconBlock heading="Swift Data Capture & Presentation" content="DRADS enables the creation of quick forms for efficient data capture and personalized interfaces for data presentation. Within hours, you can have a fully functional system that not only collects critical information but also displays it in user-friendly tables and dashboards."><Icon name="books" class="text-[#1DA6AE]" /></IconBlock>
+        <IconBlock heading="Enhancing Legacy Systems" content="DRADS offers a lifeline for outdated systems. It can either partially replace their functionality or connect to them, enhancing their features without the need for a complete overhaul."><Icon name="verified" class="text-[#1DA6AE]" /></IconBlock>
+        <IconBlock heading="AI-Powered Data Processing" content="DRADS shines in implementing value-adding AI assistance. It excels at processing large volumes of data automatically, transforming noisy, unstructured information into logical, structured formats."><Icon name="tools" class="text-[#1DA6AE]" /></IconBlock>
       </div>
     </div>
   </div>

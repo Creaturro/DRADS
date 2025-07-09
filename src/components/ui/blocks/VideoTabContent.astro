@@ -1,0 +1,101 @@
+---
+// Import the Image component from astro:assets
+import { Image } from "astro:assets";
+
+// Destructure the component properties from Astro.props
+const { id, aria, videoSrc, coverSrc, alt, first, second } = Astro.props;
+
+// Define TypeScript interface for the properties
+interface Props {
+  id: string;
+  aria: string;
+  videoSrc?: string;
+  coverSrc?: any;
+  alt: string;
+  first?: boolean;
+  second?: boolean;
+}
+
+// Set class based on 'first' property
+// If 'first' is present, show the tab content immediately
+const firstClass = first ? "" : "hidden";
+
+// Set class based on 'second' property
+// If 'second' is present, use an alternate style for the image
+const secondClass = second
+  ? "shadow-xl aspect-5/4 bg-neutral-300 dark:bg-neutral-600 object-cover p-0.5 lg:aspect-auto shadow-neutral-200 rounded-xl dark:shadow-neutral-900/[.2] border border-neutral-700"
+  : "shadow-xl aspect-3/2 object-cover lg:aspect-auto shadow-neutral-200 rounded-xl dark:shadow-neutral-900/[.2] border border-neutral-700";
+---
+
+<!-- Container for tab content that controls visibility and accessibility -->
+<div id={id} role="tabpanel" class={firstClass} aria-labelledby={aria}>
+  <!-- Desktop Video (hidden on mobile) -->
+  <div class="hidden lg:block">
+    <video
+      id={`video-${id}`}
+      class={`${secondClass} max-h-[740px]`}
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src={videoSrc} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  
+  <!-- Mobile Cover Image (hidden on desktop) -->
+  <div class="lg:hidden">
+    <Image
+      src={coverSrc}
+      alt={alt}
+      class={secondClass}
+      draggable={"false"}
+      format={"webp"}
+      loading={"eager"}
+      width={800}
+      height={600}
+    />
+  </div>
+</div>
+
+<script>
+  // Handle video play/pause on click
+  document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('video[id^="video-"]');
+    
+    videos.forEach(video => {
+      video.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    });
+  });
+
+  // Handle tab switching to play video when tab becomes active
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('[data-hs-tab]');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-hs-tab');
+        const video = document.querySelector(`video[id="video-${targetId}"]`);
+        
+        if (video) {
+          // Pause all videos first
+          document.querySelectorAll('video[id^="video-"]').forEach(v => {
+            v.pause();
+          });
+          
+          // Play the video for the active tab
+          video.currentTime = 0;
+          video.play();
+        }
+      });
+    });
+  });
+</script> 

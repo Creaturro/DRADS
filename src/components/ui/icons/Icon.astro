@@ -6,17 +6,20 @@ interface Path {
   class?: string;
 }
 
-const { name } = Astro.props;
+const { name, class: className } = Astro.props;
 
 let icon = (Icons as any)[name] || {};
 
 let paths: Path[] = icon.paths || [];
+
+// Combine the icon's default class with any passed class
+const combinedClass = className ? `${icon.class} ${className}` : icon.class;
 ---
 
 {
   icon ? (
     <svg
-      class={icon.class}
+      class={combinedClass}
       height={icon.height}
       viewBox={icon.viewBox}
       width={icon.width}

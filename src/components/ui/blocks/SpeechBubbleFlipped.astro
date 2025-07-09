@@ -1,0 +1,11 @@
+---
+// Props: bgColor (default: #1DA6AE), textColor (default: white), tailSize (default: 40), class (optional)
+const { bgColor = '#1DA6AE', textColor = '#fff', tailSize = 40, class: customClass = '' } = Astro.props;
+---
+<div class={`relative rounded-xl ${customClass}`} style={`background:${bgColor}; color:${textColor};`}>
+  <div class="relative z-10 flex flex-col justify-between text-center p-4 pb-8">
+    <slot />
+  </div>
+  <!-- Speech bubble tail (bottom right, flipped triangle) -->
+  <div class="absolute right-0 -bottom-5 z-20" style={`width:0;height:0;border-top:${tailSize}px solid ${bgColor};border-left:${tailSize}px solid transparent;`}></div>
+</div> 

@@ -104,17 +104,17 @@ const caseStudies = [
 
 const liveLeadPersonas = [
   {
-    icon: '/src/images/checkbox.svg',
+    icon: '/images/checkbox.svg',
     title: 'Lead',
     text: 'Leads experience a wow factor with lightning-fast human interaction, receiving personalised outreach within minutes of submitting their information. This immediate response creates a positive first impression and demonstrates the company\'s commitment to exceptional service.'
   },
   {
-    icon: '/src/images/checkbox.svg',
+    icon: '/images/checkbox.svg',
     title: 'Sales Agent',
     text: 'Sales agents gain a competitive edge through real-time lead notifications and a user-friendly interface, allowing them to quickly claim and engage with potential clients. The app\'s comprehensive lead profile generation enables agents to tailor their approach, increasing their chances of successful conversions.'
   },
   {
-    icon: '/src/images/checkbox.svg',
+    icon: '/images/checkbox.svg',
     title: 'Manager',
     text: 'Managers benefit from enhanced visibility into the sales process, with access to real-time performance metrics and automated daily summaries. This data-driven approach allows for more effective team management, optimized lead distribution, and the ability to identify and replicate successful strategies across the team.'
   }
@@ -150,8 +150,80 @@ const liveLeadCost = {
     </div>
   </section>
 
+  <!-- Case Study Navigation Buttons -->
+  <section class="relative py-12" style="background-color:#222730;">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a 
+          href="#inbox"
+          class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
+          onclick="scrollToSection(event, 'inbox')"
+        >
+          <div class="flex flex-col items-center gap-5">
+            <img 
+              src="/images/case-studies/inbox logo large.svg" 
+              alt="Inbox App"
+              class="h-16 w-auto transition-transform duration-300 group-hover:scale-110"
+            />
+            <div>
+              <p class="text-xs text-neutral-400 line-clamp-2 no-underline">Transforming cluttered inquiries into structured deals</p>
+            </div>
+          </div>
+        </a>
+        <a 
+          href="#live-lead"
+          class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
+          onclick="scrollToSection(event, 'live-lead')"
+        >
+          <div class="flex flex-col items-center gap-5">
+            <img 
+              src="/images/case-studies/live lead logo large.svg" 
+              alt="Live Lead"
+              class="h-16 w-auto transition-transform duration-300 group-hover:scale-110"
+            />
+            <div>
+              <p class="text-xs text-neutral-400 line-clamp-2 no-underline">Turning inquiries into sales opportunities at lightning speed</p>
+            </div>
+          </div>
+        </a>
+        <a 
+          href="#printing-shop"
+          class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
+          onclick="scrollToSection(event, 'printing-shop')"
+        >
+          <div class="flex flex-col items-center gap-5">
+            <img 
+              src="/images/case-studies/printing logo large.svg" 
+              alt="Printing Shop"
+              class="h-16 w-auto transition-transform duration-300 group-hover:scale-110"
+            />
+            <div>
+              <p class="text-xs text-neutral-400 line-clamp-2 no-underline">Improve printing shop operations with real-time management</p>
+            </div>
+          </div>
+        </a>
+        <a 
+          href="#invoice-caddy"
+          class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
+          onclick="scrollToSection(event, 'invoice-caddy')"
+        >
+          <div class="flex flex-col items-center gap-5">
+            <img 
+              src="/images/case-studies/invoice logo large.svg" 
+              alt="Invoice Caddy"
+              class="h-16 w-auto transition-transform duration-300 group-hover:scale-110"
+            />
+            <div>
+              <p class="text-xs text-neutral-400 line-clamp-2 no-underline">Streamline invoicing and payments for small businesses</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Inbox App Case Study Section -->
-  <section class="relative py-20" style="background-color:#222730;margin-bottom:100px;">
+  <section id="inbox" class="relative py-20" style="background-color:#222730;margin-bottom:100px;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Title Row: 1/4 + 3/4 columns -->
       <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
@@ -187,21 +259,21 @@ const liveLeadCost = {
         <!-- Right: Persona Blocks -->
         <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1">Customer</h4>
               <p>Customers receive rapid responses, ensuring they always know the status of their inquiry. They experience a sense of immediate, professional attention, enhancing their confidence in the service.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1">Sales Agent</h4>
               <p>Can dramatically increase their productivity while reducing errors. They maintain full control over the process but now benefit from an AI assistant that automates data extraction and processing. This allows agents to focus on high-value tasks. The system aids in deal creation, ensuring consistency and accuracy.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1">Manager</h4>
               <p>Managers gain access to a wealth of structured data, providing unprecedented visibility into the deal flow and agent performance. This structured approach enables easy deal status and workflow analysis, supporting data-driven decision making. Managers can quickly identify trends, optimize processes, and provide targeted support to their team.</p>
@@ -259,7 +331,7 @@ const liveLeadCost = {
   <hr class="border-t-0 border-b border-primary my-[50px]" />
 
   <!-- Live Lead Case Study Section (custom markup, not using CaseStudyTemplate) -->
-  <section class="relative py-20" style="background-color:#222730;">
+  <section id="live-lead" class="relative py-20" style="background-color:#222730;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Title Row: 1/4 + 3/4 columns -->
       <div class="case-study-title-row flex flex-col md:flex-row items-center gap-8 mb-10">
@@ -335,7 +407,7 @@ const liveLeadCost = {
   <hr class="border-t-0 border-b border-primary my-[50px]" />
 
   <!-- Printing Shop Case Study Section -->
-  <section class="relative py-20" style="background-color:#222730;">
+  <section id="printing-shop" class="relative py-20" style="background-color:#222730;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Title Row: 1/4 + 3/4 columns -->
       <div class="case-study-title-row flex flex-col md:flex-row items-center gap-8 mb-10">
@@ -390,14 +462,14 @@ const liveLeadCost = {
         <!-- Personas -->
         <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1">Shop Owner</h4>
               <p>The owner gained operational efficiency with a smooth transition, thanks to the app's ability to import years of historical data. The app was customized to fit his established workflow, with features like print job lifecycle management, PDF invoice generation, and tailored UI, search, and filtering options. Rapid implementation of his ideas kept the app closely aligned with his evolving needs.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1">Customers of the printing shop</h4>
               <p>Customers benefit from the app's ability to maintain consistency with ongoing jobs, this is critical for invoice templates or internal company documents that have been consistently printed over the years. The app simplifies looking up previous jobs, allowing for seamless continuation or easy modifications.</p>
@@ -439,7 +511,7 @@ const liveLeadCost = {
   <hr class='border-0 border-b border-primary my-[50px]' />
 
   <!-- Invoice Caddy Case Study Section -->
-  <section class="relative py-20" style="background-color:#222730;">
+  <section id="invoice-caddy" class="relative py-20" style="background-color:#222730;">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Title Row: 1/4 + 3/4 columns -->
       <div class="case-study-title-row flex flex-col md:flex-row items-center gap-8 mb-10">
@@ -477,42 +549,42 @@ const liveLeadCost = {
         <!-- Features List -->
         <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1 text-yellow-400">Enhancing efficiency</h4>
               <p>Leverage API to automate invoicing processes, enhancing efficiency.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1 text-yellow-400">Prototyping and implementation</h4>
               <p>Rapid prototyping and implementation of advanced billing features.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1 text-yellow-400">Flexible payment</h4>
               <p>Support for multiple payment gateways allows flexible payment options without individual integrations.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1 text-yellow-400">QuickBooks</h4>
               <p>QuickBooks integration ensures financial data consistency and simplifies accounting.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1 text-yellow-400">Recurring billing</h4>
               <p>Upcoming recurring billing features will allow efficiently manage subscription-based services.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <img src="/src/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
+            <img src="/images/checkbox.svg" alt="Checkbox" class="w-8 h-8 mt-1" />
             <div>
               <h4 class="font-h4 mb-1 text-yellow-400">Compliance and security</h4>
               <p>Integration provides built-in compliance and security features for payment processing.</p>
@@ -546,6 +618,39 @@ const liveLeadCost = {
   <!-- CTA Section -->
   <ProjectCTA />
 </MainLayout>
+
+<script>
+  function scrollToSection(event, sectionId) {
+    event.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (!element) return;
+
+    const targetY = element.offsetTop - 50; // -50px margin as before
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const duration = 2000; // 2000ms = 2s
+    let startTime = null;
+
+    function animateScroll(currentTime) {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      // Ease function (easeInOutQuad)
+      const ease = progress < 0.5
+        ? 2 * progress * progress
+        : -1 + (4 - 2 * progress) * progress;
+
+      window.scrollTo(0, startY + distance * ease);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    }
+
+    requestAnimationFrame(animateScroll);
+  }
+</script>
 
 <style>
 @media (min-width: 768px) {

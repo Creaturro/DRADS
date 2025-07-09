@@ -138,6 +138,10 @@
   a:hover, a:focus {
     color: var(--color-secondary);
   }
+
+  h2 {
+    margin-top: 32px;
+  }
 }
 
 /* DRADS Custom Typography Classes */
@@ -299,4 +303,15 @@
 
 body {
   color: #E6E6E6;
+}
+
+.deligo-bg {
+  background: none;
+}
+@media (min-width: 1024px) {
+  .deligo-bg {
+    background: url('/images/AboutUs/cubes-alt1.png') no-repeat left center;
+    background-size: auto;
+    min-height: 1000px;
+  }
 }

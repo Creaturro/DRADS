@@ -32,31 +32,35 @@ type StatProps = {
   description: string;
 };
 
-// Featured case studies data
-const featuredCaseStudies = [
+// Case study logos data
+const caseStudyLogos = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    client: "TechRetail Inc.",
-    description: "Complete overhaul of legacy e-commerce system with modern microservices architecture.",
-    metrics: "300% performance improvement",
-    image: "/images/case-studies/ecommerce-platform.avif"
+    title: "Inbox App",
+    description: "Transforming cluttered inquiries into structured deals",
+    logo: "/images/case-studies/inbox logo large.svg",
+    url: "/case-studies#inbox"
   },
   {
     id: 2,
-    title: "Healthcare Management",
-    client: "MediCare Solutions",
-    description: "Custom patient management system with HIPAA compliance and real-time data synchronization.",
-    metrics: "250% efficiency increase",
-    image: "/images/case-studies/healthcare-system.avif"
+    title: "Live Lead",
+    description: "Turning inquiries into sales opportunities at lightning speed",
+    logo: "/images/case-studies/live lead logo large.svg",
+    url: "/case-studies#live-lead"
   },
   {
     id: 3,
-    title: "Financial Trading Platform",
-    client: "TradeFlow Capital",
-    description: "High-frequency trading platform with real-time market data processing.",
-    metrics: "0.1ms latency",
-    image: "/images/case-studies/trading-platform.avif"
+    title: "Printing Shop",
+    description: "Improve printing shop operations with real-time management",
+    logo: "/images/case-studies/printing logo large.svg",
+    url: "/case-studies#printing-shop"
+  },
+  {
+    id: 4,
+    title: "Invoice Caddy",
+    description: "Streamline invoicing and payments for small businesses",
+    logo: "/images/case-studies/invoice logo large.svg",
+    url: "/case-studies#invoice-caddy"
   }
 ];
 ---
@@ -66,9 +70,9 @@ const featuredCaseStudies = [
 >
   <!-- Container for the case studies preview -->
   <div
-    class="lg:grid lg:grid-cols-12 lg:items-center lg:justify-between lg:gap-16"
+    class="lg:grid lg:grid-cols-12 lg:items-center lg:justify-between lg:gap-32"
   >
-    <div class="lg:col-span-5 lg:col-start-1">
+    <div class="lg:col-span-8 lg:col-start-1">
       <!-- Title and Subtitle -->
       <div class="mb-8">
         <h2 class="font-h2">{title}</h2>
@@ -79,27 +83,24 @@ const featuredCaseStudies = [
       }
       </div>
 
-      <!-- Featured Case Studies Preview -->
-      <div class="space-y-6 mb-8">
-        {featuredCaseStudies.map((caseStudy) => (
-          <div class="bg-third rounded-lg p-4 border border-neutral-700 hover:border-primary/50 transition-colors">
-            <div class="flex items-start gap-4">
-              <div class="image-container overflow-hidden flex-shrink-0">
-                <img 
-                  src={caseStudy.image} 
-                  alt={caseStudy.title}
-                  class="w-16 h-16 object-cover"
-                  onerror="this.src='/images/placeholder-case-study.avif'"
-                />
-              </div>
-              <div class="flex-1 min-w-0">
-                <h3 class="font-h4 mb-1">{caseStudy.title}</h3>
-                <p class="text-sm text-neutral-400 mb-2">{caseStudy.client}</p>
-                <p class="text-sm text-neutral-300 mb-2 line-clamp-2">{caseStudy.description}</p>
-                <div class="text-xs text-primary font-semibold">{caseStudy.metrics}</div>
+      <!-- Case Study Logo Buttons -->
+      <div class="grid grid-cols-2 gap-4 mb-8">
+        {caseStudyLogos.map((caseStudy) => (
+          <a 
+            href={caseStudy.url}
+            class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
+          >
+            <div class="flex flex-col items-center gap-5">
+              <img 
+                src={caseStudy.logo} 
+                alt={caseStudy.title}
+                class="h-16 w-auto transition-transform duration-300 group-hover:scale-110"
+              />
+              <div>
+                <p class="text-xs text-neutral-400 line-clamp-2 no-underline">{caseStudy.description}</p>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
@@ -111,15 +112,15 @@ const featuredCaseStudies = [
     </div>
 
     {statistics &&
-      <div class="mt-10 lg:col-span-6 lg:col-end-13 lg:mt-0">
+      <div class="mt-10 lg:col-span-4 lg:col-end-13 lg:mt-[112px]">
         <div class="space-y-6 sm:space-y-8">
           <ul
-            class="grid grid-cols-2 divide-x-2 divide-y-2 divide-neutral-700 overflow-hidden"
+            class="grid grid-cols-1 divide-y-2 divide-neutral-700 overflow-hidden"
           >
             <!-- Generate a list item for each stat in the statistics array by mapping over the array. -->
             {
               statistics.map((stat, index) => (
-              <StatsGrid count={stat.count} description={stat.description} index={index}/>
+                <StatsGrid count={stat.count} description={stat.description} index={index}/>
               ))
             }
           </ul>
