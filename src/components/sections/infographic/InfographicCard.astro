@@ -23,10 +23,10 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
   data-reversed={reversed}
 >
   <!-- Mobile Layout -->
-  <div class="lg:hidden flex flex-col justify-end items-start h-full w-full p-0" data-name="content-mobile">
+  <div class="timeline-card-mobile flex flex-col justify-end items-start h-full w-full p-0" data-name="content-mobile">
     <!-- Icon/Image slot - on top in mobile layout -->
     <div class="flex justify-center w-full pt-2">
-      <div class="relative h-[150px] w-[200px] lg:h-[289px] lg:w-[368px] rounded-lg flex items-center justify-center" style="margin-top: -30px;">
+      <div class="relative h-[150px] w-[200px] timeline-image-desktop rounded-lg flex items-center justify-center" style="margin-top: -30px;">
         <slot name="icon" />
       </div>
     </div>
@@ -54,7 +54,7 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
   </div>
 
   <!-- Desktop Layout - Flexbox with gap -->
-  <div class={`hidden lg:flex lg:flex-row lg:items-center lg:gap-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:z-20 ${reversed ? 'lg:-left-[100px]' : 'lg:left-[26px]'}`} data-name="content-desktop">
+  <div class={`timeline-card-desktop flex flex-row items-center gap-0 absolute top-1/2 -translate-y-1/2 z-20 ${reversed ? 'timeline-card-reversed' : 'left-[26px]'}`} data-name="content-desktop">
     <!-- Text - first on desktop (unless reversed) -->
     <div class={`w-[270px] flex-shrink-0 ${reversed ? 'order-2' : 'order-1'}`}>
       <div
@@ -301,5 +301,35 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
   
   .expand-btn:hover {
     opacity: 0.8;
+  }
+
+  /* Custom breakpoint at 1400px for timeline cards */
+  .timeline-card-mobile {
+    display: flex;
+  }
+  
+  .timeline-card-desktop {
+    display: none;
+  }
+  
+  /* Switch to desktop layout at 1400px */
+  @media (min-width: 1400px) {
+    .timeline-card-mobile {
+      display: none;
+    }
+    
+    .timeline-card-desktop {
+      display: flex;
+    }
+    
+    .timeline-image-desktop {
+      height: 289px;
+      width: 368px;
+    }
+    
+    /* Special positioning for reversed cards */
+    .timeline-card-reversed {
+      left: -150px;
+    }
   }
 </style> 

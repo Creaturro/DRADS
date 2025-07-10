@@ -199,25 +199,25 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
   <div class="w-full md:w-[40%] bg-[#25202D] overflow-visible flex flex-col items-start p-4">
     <div class="flex flex-col gap-y-2 w-full">
       <InfographicCard title="Brief and Research" description="The initial specs are narrow and highly focused with the goal of starting the implementation ASAP.">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/brief.png" alt="Brief and Research" class="w-[240px] h-[180px] lg:w-[331px] lg:h-[248px] object-contain" style="margin-top: 60px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/brief.png" alt="Brief and Research" class="w-[240px] h-[180px] timeline-image-brief object-contain" style="margin-top: 60px;" />
       </InfographicCard>
       <InfographicCard title="Asynchronous Frontend Coding" description="We can work on your app's user interface and logic simultaneously. This parallel development eliminates bottlenecks, speeding up the entire process." reversed={true}>
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/front.png" alt="Asynchronous Frontend Coding" class="w-[240px] h-[180px] lg:w-[294px] lg:h-[221px] object-contain" style="margin-top: 60px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/front.png" alt="Asynchronous Frontend Coding" class="w-[240px] h-[180px] timeline-image-frontend object-contain" style="margin-top: 60px;" />
       </InfographicCard>
       <InfographicCard title="Asynchronous Design Work" description="Design is happening along side the app development. The interface elements are added into the app directly and are instantly connected to the app code.">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/design.png" alt="Asynchronous Design Work" class="w-[240px] h-[180px] lg:w-[331px] lg:h-[248px] object-contain" style="margin-top: 60px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/design.png" alt="Asynchronous Design Work" class="w-[240px] h-[180px] timeline-image-design object-contain" style="margin-top: 60px;" />
       </InfographicCard>
       <InfographicCard title="“Glueing” systems through APIs" description="Developers quickly integrate various services and functionalities using pre-built or custom APIs, ensuring seamless data flow and communication." reversed={true}>
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/GlueAPI.png" alt="Glueing systems through APIs" class="w-[230px] h-[173px] lg:w-[360px] lg:h-[208px] object-contain" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/GlueAPI.png" alt="Glueing systems through APIs" class="w-[230px] h-[173px] timeline-image-glue object-contain" />
       </InfographicCard>
       <div class="mt-[130px]">
         <InfographicCard title="Live Testing" description="The application is swiftly deployed using pre-configured environments, allowing immediate testing and validation to ensure the app meets the desired specifications and functions correctly.">
-          <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/Testing.png" alt="Live Testing" class="w-[240px] h-[180px] lg:w-[368px] lg:h-[276px] object-contain" style="margin-top: 60px;" />
+          <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/Testing.png" alt="Live Testing" class="w-[240px] h-[180px] timeline-image-testing object-contain" style="margin-top: 60px;" />
         </InfographicCard>
       </div>
     </div>
     <!-- QUOTE BOX BELOW MAGENTA CARDS -->
-    <div class="mt-[100px] w-full lg:block hidden">
+    <div class="mt-[100px] w-full timeline-quotes">
       <div class="relative rounded-xl mb-8" style="background:#45414C; color:#fff; margin-left:50px; margin-right:50px;">
         <div class="relative z-10 flex flex-col justify-between" style="padding:28px 28px 28px 16px;">
           <div class="flex items-start gap-[4px]">
@@ -225,7 +225,7 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
               <img src="/src/images/format_quote_white_24dp.svg" alt="Quote icon" class="w-12 h-12" />
             </div>
             <div class="flex-1 text-left" style="font-family: 'Montserrat', sans-serif; font-style: italic;">
-              With DRADS, we kick off your project immediately with focused specs and start building right away. Our unique approach allows us to work on design, frontend, and backend simultaneously, while seamlessly integrating various systems. This means you’ll see a working prototype faster, with live testing happening sooner than you might expect from traditional development methods.
+              With DRADS, we kick off your project immediately with focused specs and start building right away. Our unique approach allows us to work on design, frontend, and backend simultaneously, while seamlessly integrating various systems. This means you'll see a working prototype faster, with live testing happening sooner than you might expect from traditional development methods.
             </div>
           </div>
         </div>
@@ -242,7 +242,7 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
     </div>
     
     <!-- SECOND QUOTE BOX -->
-    <div class="mt-[50px] w-full lg:block hidden">
+    <div class="mt-[50px] w-full timeline-quotes">
       <div class="relative rounded-xl mb-8" style="background:#45414C; color:#fff; margin-right:50px;">
         <div class="relative z-10 flex flex-col justify-between" style="padding:28px 28px 28px 16px;">
           <div class="flex items-start gap-[4px]">
@@ -267,7 +267,7 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
     </div>
     
     <!-- THIRD QUOTE BOX -->
-    <div class="mt-[50px] w-full lg:block hidden">
+    <div class="mt-[50px] w-full timeline-quotes">
       <div class="relative rounded-xl mb-8" style="background:#45414C; color:#fff; margin-left:50px; margin-right:50px;">
         <div class="relative z-10 flex flex-col justify-between" style="padding:28px 28px 28px 16px;">
           <div class="flex items-start gap-[4px]">
@@ -299,22 +299,22 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
   <div class="w-full md:w-[40%] bg-[#1D282F] overflow-visible flex flex-col items-end p-4">
     <div class="flex flex-col justify-between h-[2800px] w-full">
       <InfographicCard title="Brief and Research" description="This initial phase involves understanding the project requirements, target audience, and goals, followed by researching the market and competitors. However, in classical development, this stage often results in overly broad or imprecise scopes. Without rapid prototyping, there's a risk of committing to features that may not align with actual user needs or market demands." bgColor="blue">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/brief.png" alt="Brief and Research" class="w-[270px] h-[202px] lg:w-[338px] lg:h-[253px] object-contain" style="margin-top: 40px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/brief.png" alt="Brief and Research" class="w-[270px] h-[202px] timeline-image-traditional-brief object-contain" style="margin-top: 40px;" />
       </InfographicCard>
       <InfographicCard title="UI/UX Design" description="Designers create wireframes and prototypes to map out the user journey and visual layout. However, without rapid real-world validation, these initial mockups may lead to designs that look great but perform poorly in practice. This can result in significant rework later, as actual user interactions often reveal usability issues that weren't apparent in static designs." bgColor="blue">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/Design.png" alt="UI/UX Design" class="w-[300px] h-[225px] lg:w-[375px] lg:h-[281px] object-contain" style="margin-top: 40px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/Design.png" alt="UI/UX Design" class="w-[300px] h-[225px] timeline-image-traditional-design object-contain" style="margin-top: 40px;" />
       </InfographicCard>
       <InfographicCard title="Frontend Coding" description="Developers build the client-side of the application, translating designs into functional code using HTML, CSS, and JavaScript. Without iterative development, larger redesigns may be needed as user needs evolve or initial assumptions prove incorrect." bgColor="blue">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/front.png" alt="Frontend Coding" class="w-[300px] h-[225px] lg:w-[375px] lg:h-[281px] object-contain" style="margin-top: 40px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/front.png" alt="Frontend Coding" class="w-[300px] h-[225px] timeline-image-traditional-frontend object-contain" style="margin-top: 40px;" />
       </InfographicCard>
       <InfographicCard title="Backend Coding" description="This stage involves developing the server-side logic, databases, handling of data processing. With classic development approaches and without leveraging existing external systems via APIs, this phase can become extremely time-consuming, often leading to reinventing the wheel and delaying overall project timelines." bgColor="blue">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/backend.png" alt="Backend Coding" class="w-[300px] h-[225px] lg:w-[338px] lg:h-[253px] object-contain" style="margin-top: 40px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/backend.png" alt="Backend Coding" class="w-[300px] h-[225px] timeline-image-traditional-backend object-contain" style="margin-top: 40px;" />
       </InfographicCard>
       <InfographicCard title="Testing" description="The application undergoes rigorous testing, including unit, integration, and user acceptance tests, to identify and fix bugs. In classical development, testing is typically done on larger chunks of work. This approach means that when changes occur, the retesting process becomes lengthy and cumbersome, potentially slowing down the entire development cycle." bgColor="blue">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/test.png" alt="Testing" class="w-[300px] h-[225px] lg:w-[338px] lg:h-[253px] object-contain" style="margin-top: 40px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/test.png" alt="Testing" class="w-[300px] h-[225px] timeline-image-traditional-testing object-contain" style="margin-top: 40px;" />
       </InfographicCard>
       <InfographicCard title="Setting up the production environment" description="Developers deploy the application to a live server, configure necessary services, and ensure security measures are in place, preparing the app for public use. In the standard approach, this phase can be significantly time-consuming. This process often involves complex infrastructure decisions and implementations that can delay the actual launch of the application." bgColor="blue" class="self-end">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/devops.png" alt="Setting up the production environment" class="w-[230px] h-[173px] lg:w-[270px] lg:h-[203px] object-contain" style="margin-top: 20px;" />
+        <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/devops.png" alt="Setting up the production environment" class="w-[230px] h-[173px] timeline-image-traditional-devops object-contain" style="margin-top: 20px;" />
       </InfographicCard>
     </div>
   </div>
@@ -409,5 +409,74 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
   .font-montserrat-semibold {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+  }
+
+  /* Custom breakpoint at 1400px for timeline quotes */
+  .timeline-quotes {
+    display: none;
+  }
+  
+  /* Show quotes at 1400px and above */
+  @media (min-width: 1400px) {
+    .timeline-quotes {
+      display: block;
+    }
+    
+    /* DRADS cards (left column) image sizing */
+    .timeline-image-brief {
+      width: 331px;
+      height: 248px;
+    }
+    
+    .timeline-image-frontend {
+      width: 294px;
+      height: 221px;
+    }
+    
+    .timeline-image-design {
+      width: 331px;
+      height: 248px;
+    }
+    
+    .timeline-image-glue {
+      width: 360px;
+      height: 208px;
+    }
+    
+    .timeline-image-testing {
+      width: 368px;
+      height: 276px;
+    }
+    
+    /* Traditional cards (right column) image sizing */
+    .timeline-image-traditional-brief {
+      width: 338px;
+      height: 253px;
+    }
+    
+    .timeline-image-traditional-design {
+      width: 375px;
+      height: 281px;
+    }
+    
+    .timeline-image-traditional-frontend {
+      width: 375px;
+      height: 281px;
+    }
+    
+    .timeline-image-traditional-backend {
+      width: 338px;
+      height: 253px;
+    }
+    
+    .timeline-image-traditional-testing {
+      width: 338px;
+      height: 253px;
+    }
+    
+    .timeline-image-traditional-devops {
+      width: 270px;
+      height: 203px;
+    }
   }
 </style> 
