@@ -1,0 +1,105 @@
+---
+// InfographicTemplateFrontend - Purple Theme
+// Converted from React to Astro for testing
+---
+
+<div
+  class="bg-[#25202d] relative size-full min-h-[360px] md:min-h-[261px] pb-4"
+  data-name="infographic_template_frontend"
+>
+  <!-- Card Background (static in mobile, absolute in desktop) -->
+  <div
+    class="w-full h-auto relative z-0 lg:absolute lg:left-0 lg:top-0 lg:h-[261px] lg:w-[595px] bg-[#302A38] lg:bg-transparent"
+    data-name="card bg"
+  ></div>
+
+  <!-- Text Background (desktop only) -->
+  <div
+    class="hidden lg:block bg-[#302a38] rounded-xl w-full h-auto relative z-0 mt-4 lg:absolute lg:h-64 lg:left-[13px] lg:top-1/2 lg:-translate-y-1/2 lg:w-[350px] lg:right-auto lg:bottom-auto lg:z-0"
+    data-name="text bg"
+  ></div>
+
+  <!-- Mobile Layout - Absolute positioning -->
+  <div class="lg:hidden flex flex-col justify-end items-start h-full w-full p-0" data-name="content-mobile">
+    <!-- Image - on top in mobile layout -->
+    <div class="flex justify-center w-full pt-4">
+      <div class="relative h-48 w-64 bg-gray-600 rounded-lg flex items-center justify-center">
+        <!-- SVG Icon for Frontend -->
+        <svg class="w-full h-full text-white" fill="currentColor" viewBox="0 0 246 201" preserveAspectRatio="xMidYMid meet">
+          <rect width="246" height="201" rx="24" fill="#3B4252" />
+          <path d="M123 40C90 40 66 64 66 97s24 57 57 57 57-24 57-57-24-57-57-57zm-11 85l-28-28 7.9-7.9L112 108.2l44.7-44.7 7.9 7.9-52.6 52.6z" fill="#fff"/>
+        </svg>
+      </div>
+    </div>
+    <!-- Text - at bottom, right-aligned -->
+    <div class="w-full flex justify-start pb-4">
+      <div class="relative z-30 box-border content-stretch flex flex-col font-['Open_Sans:Regular',_sans-serif] gap-3.5 items-start justify-end leading-[0] not-italic p-[16px] rounded-lg shrink-0 text-[#ffffff] text-left h-auto w-[calc(100%-32px)]" data-name="text">
+        <!-- Text background for mobile -->
+        <div class="absolute inset-0 bg-[#302a38] rounded-xl z-0"></div>
+        <div class="relative z-10 text-[20px] w-full text-left">
+          <p class="block leading-[normal]">Asynchronous Frontend Coding</p>
+        </div>
+        <div class="relative z-10 text-[14px] w-full h-auto text-left">
+          <p class="block leading-[22px]">
+            Our frontend development approach enables parallel work streams while
+            maintaining design consistency. By using component libraries and
+            establishing clear interfaces early, frontend development can proceed
+            asynchronously with backend services.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Layout - Flexbox with gap -->
+  <div class="hidden lg:flex lg:flex-row lg:items-center lg:gap-1 lg:absolute lg:left-[26px] lg:top-1/2 lg:-translate-y-1/2 lg:z-20" data-name="content-desktop">
+    <!-- Text - first on desktop -->
+    <div class="w-[291px] flex-shrink-0">
+      <div
+        class="box-border content-stretch flex flex-col font-['Open_Sans:Regular',_sans-serif] gap-3.5 items-start justify-start leading-[0] not-italic p-[16px] relative rounded-lg shrink-0 text-[#ffffff] text-left h-auto w-[calc(100%-32px)] md:h-[202px] md:w-[291px]"
+        data-name="text"
+      >
+        <div class="relative shrink-0 text-[20px] w-full">
+          <p class="block leading-[normal]">Asynchronous Frontend Coding</p>
+        </div>
+        <div class="relative shrink-0 text-[14px] w-full h-auto md:h-[134px]">
+          <p class="block leading-[22px]">
+            Our frontend development approach enables parallel work streams while
+            maintaining design consistency. By using component libraries and
+            establishing clear interfaces early, frontend development can proceed
+            asynchronously with backend services.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Image - second on desktop -->
+    <div class="flex-shrink-0">
+      <div
+        class="relative h-48 w-64 overflow-visible md:h-[201px] md:w-[246px] md:overflow-clip"
+        data-name="Frontend img"
+      >
+        <div class="absolute flex h-[201px] items-center justify-center w-[246px] left-0 top-0">
+          <div
+            class="bg-center bg-cover bg-no-repeat h-[201px] w-[246px] bg-gray-600 rounded-lg flex items-center justify-center"
+            data-name="image"
+          >
+            <!-- SVG Icon for Frontend -->
+            <svg class="w-full h-full text-white" fill="currentColor" viewBox="0 0 246 201" preserveAspectRatio="xMidYMid meet">
+              <rect width="246" height="201" rx="24" fill="#3B4252" />
+              <path d="M123 40C90 40 66 64 66 97s24 57 57 57 57-24 57-57-24-57-57-57zm-11 85l-28-28 7.9-7.9L112 108.2l44.7-44.7 7.9 7.9-52.6 52.6z" fill="#fff"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Open Sans font for the component */
+  .font-\[Open_Sans\:Regular\,\_sans-serif\] {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+  }
+</style> 

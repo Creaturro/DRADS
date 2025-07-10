@@ -1,0 +1,218 @@
+---
+// InfographicCard - Reusable card for timeline
+// Props: title (string), description (string), icon (slot, optional), bgColor (string: 'default' | 'blue'), defaultExpanded (boolean)
+const { title, description, bgColor = 'default', defaultExpanded = bgColor === 'blue' } = Astro.props;
+const textBg = bgColor === 'blue' ? '#26323A' : '#302A38';
+// Extract first sentence for excerpt
+const firstSentence = description.split('. ')[0] + (description.includes('.') ? '...' : '');
+---
+
+<div
+  class="relative size-full min-h-[360px] md:min-h-[261px] pb-4"
+  data-name="infographic_card"
+  data-default-expanded={defaultExpanded}
+  data-bg-color={bgColor}
+>
+  <!-- Mobile Layout -->
+  <div class="lg:hidden flex flex-col justify-end items-start h-full w-full p-0" data-name="content-mobile">
+    <!-- Icon/Image slot - on top in mobile layout -->
+    <div class="flex justify-center w-full pt-2">
+      <div class="relative h-[150px] w-[200px] lg:h-[289px] lg:w-[368px] rounded-lg flex items-center justify-center" style="margin-top: -30px;">
+        <slot name="icon" />
+      </div>
+    </div>
+    <!-- Text - at bottom, left-aligned -->
+    <div class="w-full flex justify-start pb-0 mt-0">
+      <div class="box-border content-stretch flex flex-col font-['Open_Sans:Regular',_sans-serif] gap-3.5 items-start justify-end leading-[0] not-italic p-[16px] rounded-lg shrink-0 text-[#ffffff] text-left h-auto w-[calc(100%-32px)] transition-all duration-500 relative z-[99] pb-2 bg-red-500/50" data-name="text" style={`background-color: ${textBg}`}> 
+        <div class="text-[20px] w-full text-left">
+          <p class="block leading-[normal]">{title}</p>
+        </div>
+        <div class="text-[14px] w-full h-auto overflow-hidden transition-all duration-500 description-content" style={defaultExpanded ? "max-height: 200px;" : "max-height: 44px;"}>
+          <p class="block leading-[22px] description-text" class:list={[defaultExpanded ? "hidden" : ""]}>
+            {firstSentence}
+          </p>
+          <p class="block leading-[22px] description-full" class:list={[defaultExpanded ? "" : "hidden"]}>
+            {description}
+          </p>
+        </div>
+        <div class="flex justify-start w-full">
+          <button class="focus:outline-none expand-btn cursor-pointer" aria-label={defaultExpanded ? "Collapse details" : "Expand details"} tabindex="0" aria-expanded={defaultExpanded}>
+            <svg class="transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style={defaultExpanded ? "transform: rotate(180deg);" : ""}><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Layout - Flexbox with gap -->
+  <div class="hidden lg:flex lg:flex-row lg:items-center lg:gap-0 lg:absolute lg:left-[26px] lg:top-1/2 lg:-translate-y-1/2 lg:z-20" data-name="content-desktop">
+    <!-- Text - first on desktop -->
+    <div class="w-[270px] flex-shrink-0">
+      <div
+        class="box-border content-stretch flex flex-col font-['Open_Sans:Regular',_sans-serif] gap-3.5 items-start justify-start leading-[0] not-italic p-[16px] rounded-lg shrink-0 text-[#ffffff] text-left h-auto w-[calc(100%-32px)] md:w-[291px] transition-all duration-500"
+        data-name="text"
+        style={`background-color: ${textBg}`}
+      >
+        <div class="shrink-0 text-[20px] w-full">
+          <p class="block leading-[normal]">{title}</p>
+        </div>
+        <div class="shrink-0 text-[14px] w-full h-auto overflow-hidden transition-all duration-500 description-content" style={defaultExpanded ? "max-height: 200px;" : "max-height: 28px;"}>
+          <p class="block leading-[22px] description-text" class:list={[defaultExpanded ? "hidden" : ""]}>
+            {firstSentence}
+          </p>
+          <p class="block leading-[22px] description-full" class:list={[defaultExpanded ? "" : "hidden"]}>
+            {description}
+          </p>
+        </div>
+        <div class="flex justify-start w-full">
+          <button class="focus:outline-none expand-btn cursor-pointer" aria-label={defaultExpanded ? "Collapse details" : "Expand details"} tabindex="0" aria-expanded={defaultExpanded}>
+            <svg class="transition-transform duration-300 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style={defaultExpanded ? "transform: rotate(180deg);" : ""}><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Icon/Image slot - second on desktop -->
+    <div class="flex-shrink-0 lg:-ml-[50px] transition-all duration-500 z-0" data-name="icon-container">
+      <div
+        class="relative h-[289px] w-[368px] overflow-visible md:h-[289px] md:w-[368px] md:overflow-clip rounded-lg flex items-center justify-center transition-all duration-500 z-0"
+        data-name="icon-img"
+      >
+        <slot name="icon" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Inline script to handle expand/collapse functionality
+  function initExpandButtons() {
+    console.log('Initializing expand buttons...');
+    const expandButtons = document.querySelectorAll('.expand-btn');
+    console.log('Found', expandButtons.length, 'expand buttons');
+    
+    expandButtons.forEach(function(button, index) {
+      console.log('Setting up button', index);
+      
+      // Check if this card should be expanded by default
+      const card = button.closest('[data-name="infographic_card"]');
+      const defaultExpanded = card.getAttribute('data-default-expanded') === 'true';
+      const bgColor = card.getAttribute('data-bg-color');
+      
+      // Set initial state based on defaultExpanded
+      if (defaultExpanded) {
+        const textContainer = button.closest('[data-name="text"]');
+        const content = textContainer.querySelector('.description-content');
+        const svg = button.querySelector('svg');
+        const descriptionText = textContainer.querySelector('.description-text');
+        const descriptionFull = textContainer.querySelector('.description-full');
+        
+        content.style.maxHeight = '200px';
+        svg.style.transform = 'rotate(180deg)';
+        button.setAttribute('aria-label', 'Collapse details');
+        button.setAttribute('aria-expanded', 'true');
+        descriptionText.classList.add('hidden');
+        descriptionFull.classList.remove('hidden');
+      }
+      
+      // Set initial image position for collapsed magenta cards
+      if (!defaultExpanded && bgColor === 'default') {
+        const iconContainer = card.querySelector('[data-name="icon-container"]');
+        if (iconContainer) {
+          iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
+        }
+      }
+      
+      // Set initial image position for collapsed cyan cards (they start expanded, but if manually collapsed)
+      if (!defaultExpanded && bgColor === 'blue') {
+        const iconContainer = card.querySelector('[data-name="icon-container"]');
+        if (iconContainer) {
+          iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
+        }
+      }
+      
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Button clicked!');
+        
+        // Find the closest text container
+        const textContainer = this.closest('[data-name="text"]');
+        const content = textContainer.querySelector('.description-content');
+        const svg = this.querySelector('svg');
+        const descriptionText = textContainer.querySelector('.description-text');
+        const descriptionFull = textContainer.querySelector('.description-full');
+        const iconContainer = card.querySelector('[data-name="icon-container"]');
+        
+        // Check if currently expanded
+        const isExpanded = content.style.maxHeight !== '28px';
+        console.log('Is expanded:', isExpanded);
+        
+        if (isExpanded) {
+          // Collapse
+          content.style.maxHeight = '28px';
+          svg.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-label', 'Expand details');
+          this.setAttribute('aria-expanded', 'false');
+          descriptionText.classList.remove('hidden');
+          descriptionFull.classList.add('hidden');
+          
+          // Move image closer for collapsed magenta cards
+          if (bgColor === 'default' && iconContainer) {
+            iconContainer.style.marginLeft = '-90px';
+          }
+          
+          // Move image closer for collapsed cyan cards
+          if (bgColor === 'blue' && iconContainer) {
+            iconContainer.style.marginLeft = '-90px';
+          }
+          
+          console.log('Collapsed');
+        } else {
+          // Expand
+          content.style.maxHeight = '200px';
+          svg.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-label', 'Collapse details');
+          this.setAttribute('aria-expanded', 'true');
+          descriptionText.classList.add('hidden');
+          descriptionFull.classList.remove('hidden');
+          
+          // Move image back to original position for expanded cards
+          if (iconContainer) {
+            iconContainer.style.marginLeft = '-50px';
+          }
+          
+          console.log('Expanded');
+        }
+      });
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initExpandButtons);
+  } else {
+    initExpandButtons();
+  }
+
+  // Also initialize for Astro page loads
+  document.addEventListener('astro:page-load', initExpandButtons);
+</script>
+
+<style>
+  /* Open Sans font for the component */
+  .font-\[Open_Sans\:Regular\,\_sans-serif\] {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+  }
+  
+  /* Ensure buttons are clickable */
+  .expand-btn {
+    cursor: pointer;
+    z-index: 10;
+    position: relative;
+  }
+  
+  .expand-btn:hover {
+    opacity: 0.8;
+  }
+</style> 
