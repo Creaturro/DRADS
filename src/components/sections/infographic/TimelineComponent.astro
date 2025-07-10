@@ -297,7 +297,7 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
   <div class={`w-full md:w-[20%] h-[2800px]`} style="background: linear-gradient(to right, #25202D 50%, #1D282F 50%);"></div>
   
   <!-- Right Column (Traditional) -->
-  <div class="w-full md:w-[40%] bg-[#1D282F] overflow-visible flex flex-col items-end p-4">
+  <div class="w-full md:w-[40%] bg-[#1D282F] overflow-visible flex flex-col items-end p-4 relative">
     <div class="flex flex-col justify-between h-[2800px] w-full">
       <InfographicCard title="Brief and Research" description="This initial phase involves understanding the project requirements, target audience, and goals, followed by researching the market and competitors. However, in classical development, this stage often results in overly broad or imprecise scopes. Without rapid prototyping, there's a risk of committing to features that may not align with actual user needs or market demands." bgColor="blue">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/brief.png" alt="Brief and Research" class="w-[270px] h-[202px] timeline-image-traditional-brief object-contain" style="margin-top: 40px;" />
@@ -317,6 +317,39 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
       <InfographicCard title="Setting up the production environment" description="Developers deploy the application to a live server, configure necessary services, and ensure security measures are in place, preparing the app for public use. In the standard approach, this phase can be significantly time-consuming. This process often involves complex infrastructure decisions and implementations that can delay the actual launch of the application." bgColor="blue" class="self-end">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/devops.png" alt="Setting up the production environment" class="w-[230px] h-[173px] timeline-image-traditional-devops object-contain" style="margin-top: 20px;" />
       </InfographicCard>
+    </div>
+    
+    <!-- Linear arrows connecting Cyan cards -->
+    <div class="absolute right-0 top-0 w-full h-full pointer-events-none">
+      <!-- Arrow from Brief and Research to UI/UX Design -->
+      <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+        <defs>
+          <marker id="arrowhead-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#1DA6AE" />
+          </marker>
+        </defs>
+        <line x1="85%" y1="16.67%" x2="85%" y2="33.33%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+      </svg>
+      
+      <!-- Arrow from UI/UX Design to Frontend Coding -->
+      <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+        <line x1="85%" y1="33.33%" x2="85%" y2="50%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+      </svg>
+      
+      <!-- Arrow from Frontend Coding to Backend Coding -->
+      <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+        <line x1="85%" y1="50%" x2="85%" y2="66.67%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+      </svg>
+      
+      <!-- Arrow from Backend Coding to Testing -->
+      <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+        <line x1="85%" y1="66.67%" x2="85%" y2="83.33%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+      </svg>
+      
+      <!-- Arrow from Testing to Production Environment -->
+      <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+        <line x1="85%" y1="83.33%" x2="85%" y2="100%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+      </svg>
     </div>
   </div>
 
