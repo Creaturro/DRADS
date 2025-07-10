@@ -1,0 +1,31 @@
+---
+// TimelineTooltip.astro
+// Props: text (string), color (string), direction ("left" | "right"), textColor (optional), showConnector (optional, default false)
+import TooltipBox from "./TooltipBox.astro";
+const { text, color = '#1DA6AE', direction = 'right', textColor = '#fff', showConnector = false } = Astro.props;
+const tailSide = direction === 'left' ? 'right' : 'left';
+---
+<div class="relative inline-flex items-center" style="overflow: visible; min-width: 56px;">
+  {showConnector && tailSide === 'right' && (
+    <div class="absolute top-1/2 -translate-y-1/2 flex items-center" style="right: -56px; width: 48px; height: 1px; z-index: 100; pointer-events: none;">
+      <div style={`width:48px;height:1px;background:${color};border-radius:1px;position:relative;`}></div>
+      <div style={`width:8px;height:8px;background:${color};border-radius:50%;position:absolute;right:-4px;top:-3.5px;`} ></div>
+    </div>
+  )}
+  {showConnector && tailSide === 'left' && (
+    <div class="absolute top-1/2 -translate-y-1/2 flex items-center" style="left: -56px; width: 48px; height: 1px; z-index: 100; pointer-events: none;">
+      <div style={`width:48px;height:1px;background:${color};border-radius:1px;position:relative;`}></div>
+      <div style={`width:8px;height:8px;background:${color};border-radius:50%;position:absolute;left:-4px;top:-3.5px;`} ></div>
+    </div>
+  )}
+  <TooltipBox color={color} tailSide={tailSide} textColor={textColor}>
+    <slot name="icon" />
+    {text}
+  </TooltipBox>
+</div>
+
+<style>
+  .shadow-lg {
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.18);
+  }
+</style> 
