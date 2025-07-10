@@ -1,0 +1,100 @@
+---
+// Astro version of the Timeline component
+import svgPaths from '../imports/svg-salhtp65jk';
+
+// Frame component data
+const frames = [
+  { number: "1", text: "week", top: "calc(50% - 1245.43px)" },
+  { number: "2", text: "weeks", top: "calc(50% - 1049.46px)" },
+  { number: "3", text: "weeks", top: "calc(50% - 854.461px)" },
+  { number: "4", text: "weeks", top: "calc(50% - 658.461px)" },
+  { number: "8", text: "weeks", top: "calc(50% + 39.5389px)" },
+  { number: "16", text: "weeks", top: "calc(50% + 636.539px)" },
+  { number: "24-32", text: "weeks", top: "calc(50% + 1143.54px)" }
+];
+
+// Arrow configurations
+const arrows = [
+  { height: "138px", top: "11px", width: "138px", pathKey: "p34cbdc80", viewBox: "0 0 150 12" },
+  { height: "90px", top: "255px", width: "90px", pathKey: "pf96a480", viewBox: "0 0 102 12" },
+  { height: "90px", top: "451px", width: "90px", pathKey: "pf96a480", viewBox: "0 0 102 12" },
+  { height: "90px", top: "646px", width: "90px", pathKey: "pf96a480", viewBox: "0 0 102 12" },
+  { height: "592px", top: "842px", width: "592px", pathKey: "pc45f80", viewBox: "0 0 604 12" },
+  { height: "234px", top: "2137px", width: "234px", pathKey: "p1411a500", viewBox: "0 0 240 12" },
+  { height: "184px", top: "1847px", width: "184px", pathKey: "p2311e3c0", viewBox: "0 0 190 12" },
+  { height: "148px", top: "2390px", width: "148px", pathKey: "p201ad800", viewBox: "0 0 154 12" }
+];
+---
+
+<div 
+  class="absolute h-[2894.92px] overflow-clip translate-x-[-50%] translate-y-[-50%] w-[455.681px]"
+  style="top: calc(50% - 0.0389404px); left: calc(50% + 0.3405px)"
+>
+  <!-- Diagonal Lines -->
+  <div class="absolute bottom-[17.158%] left-[34.707%] right-[34.997%] top-[80.972%]">
+    <svg class="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 139 55">
+      <path d={svgPaths.p34c0f00} fill="white" />
+    </svg>
+  </div>
+  
+  <div class="absolute bottom-[16.502%] left-[34.707%] right-[34.997%] top-[81.629%]">
+    <svg class="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 139 55">
+      <path d={svgPaths.p34c0f00} fill="white" />
+    </svg>
+  </div>
+
+  <!-- Timeline Frames -->
+  {frames.map((frame, index) => (
+    <div
+      class="absolute bg-[#3d515e] box-border content-stretch flex flex-col items-start justify-end leading-[0] not-italic p-[8px] rounded-lg text-[#ffffff] text-center translate-x-[-50%] translate-y-[-50%]"
+      style={`top: ${frame.top}; left: calc(50% - 0.3405px)`}
+    >
+      <div class="font-['Montserrat:Bold',_sans-serif] h-[58px] relative shrink-0 text-[56px] w-full">
+        <p class="block leading-[normal]">{frame.number}</p>
+      </div>
+      <div class="font-['Montserrat:SemiBold',_sans-serif] h-8 relative shrink-0 text-[20px] w-[86px]">
+        <p class="block leading-[normal]">{frame.text}</p>
+      </div>
+    </div>
+  ))}
+
+  <!-- Vertical Connecting Line -->
+  <div
+    class="absolute w-[2px] bg-white"
+    style="left: calc(50% - 1px); top: calc(50% + 89.5389px); height: 320px"
+  ></div>
+  
+  <!-- Dot at the top of the vertical line -->
+  <div
+    class="absolute w-[6px] h-[6px] bg-white rounded-full translate-x-[-50%] translate-y-[-50%]"
+    style="left: calc(50%); top: calc(50% + 89.5389px)"
+  ></div>
+
+  <!-- More Diagonal Lines -->
+  <div class="absolute bottom-[35.906%] left-[34.707%] right-[34.997%] top-[62.224%]">
+    <svg class="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 139 55">
+      <path d={svgPaths.p34c0f00} fill="white" />
+    </svg>
+  </div>
+  
+  <div class="absolute bottom-[35.25%] left-[34.707%] right-[34.997%] top-[62.88%]">
+    <svg class="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 139 55">
+      <path d={svgPaths.p34c0f00} fill="white" />
+    </svg>
+  </div>
+
+  <!-- Timeline Arrows -->
+  {arrows.map((arrow, index) => (
+    <div class={`absolute flex items-center justify-center left-[228px] w-[0px]`} style={`height: ${arrow.height}; top: ${arrow.top}`}>
+      <div class="flex-none rotate-[90deg]">
+        <div class="h-0 relative" style={`width: ${arrow.width}`}>
+          <div class="absolute bottom-[-5.333px] left-[-1.852%] right-0 top-[-5.333px]">
+            <svg class="block size-full" fill="none" preserveAspectRatio="none" viewBox={arrow.viewBox}>
+              <path d={svgPaths[arrow.pathKey]} fill="white" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

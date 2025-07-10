@@ -1,17 +1,26 @@
 ---
 // InfographicCard - Reusable card for timeline
 // Props: title (string), description (string), icon (slot, optional), bgColor (string: 'default' | 'blue'), defaultExpanded (boolean)
-const { title, description, bgColor = 'default', defaultExpanded = bgColor === 'blue' } = Astro.props;
+export interface Props {
+  title: string;
+  description: string;
+  bgColor?: 'default' | 'blue';
+  defaultExpanded?: boolean;
+  reversed?: boolean; // New prop for reversed layout
+}
+
+const { title, description, bgColor = 'default', defaultExpanded = bgColor === 'blue', reversed = false } = Astro.props;
 const textBg = bgColor === 'blue' ? '#26323A' : '#302A38';
 // Extract first sentence for excerpt
 const firstSentence = description.split('. ')[0] + (description.includes('.') ? '...' : '');
 ---
 
 <div
-  class="relative size-full min-h-[360px] md:min-h-[261px] pb-4"
+  class="relative size-full min-h-[360px] md:min-h-[200px] pb-4"
   data-name="infographic_card"
   data-default-expanded={defaultExpanded}
   data-bg-color={bgColor}
+  data-reversed={reversed}
 >
   <!-- Mobile Layout -->
   <div class="lg:hidden flex flex-col justify-end items-start h-full w-full p-0" data-name="content-mobile">
@@ -45,9 +54,9 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
   </div>
 
   <!-- Desktop Layout - Flexbox with gap -->
-  <div class="hidden lg:flex lg:flex-row lg:items-center lg:gap-0 lg:absolute lg:left-[26px] lg:top-1/2 lg:-translate-y-1/2 lg:z-20" data-name="content-desktop">
-    <!-- Text - first on desktop -->
-    <div class="w-[270px] flex-shrink-0">
+  <div class={`hidden lg:flex lg:flex-row lg:items-center lg:gap-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:z-20 ${reversed ? 'lg:-left-[100px]' : 'lg:left-[26px]'}`} data-name="content-desktop">
+    <!-- Text - first on desktop (unless reversed) -->
+    <div class={`w-[270px] flex-shrink-0 ${reversed ? 'order-2' : 'order-1'}`}>
       <div
         class="box-border content-stretch flex flex-col font-['Open_Sans:Regular',_sans-serif] gap-3.5 items-start justify-start leading-[0] not-italic p-[16px] rounded-lg shrink-0 text-[#ffffff] text-left h-auto w-[calc(100%-32px)] md:w-[291px] transition-all duration-500"
         data-name="text"
@@ -71,8 +80,8 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
         </div>
       </div>
     </div>
-    <!-- Icon/Image slot - second on desktop -->
-    <div class="flex-shrink-0 lg:-ml-[50px] transition-all duration-500 z-0" data-name="icon-container">
+    <!-- Icon/Image slot - second on desktop (unless reversed) -->
+    <div class={`flex-shrink-0 transition-all duration-500 z-0 ${reversed ? 'order-1 -mr-[50px]' : 'order-2 -ml-[50px]'}`} data-name="icon-container">
       <div
         class="relative h-[289px] w-[368px] overflow-visible md:h-[289px] md:w-[368px] md:overflow-clip rounded-lg flex items-center justify-center transition-all duration-500 z-0"
         data-name="icon-img"
@@ -112,13 +121,29 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
         button.setAttribute('aria-expanded', 'true');
         descriptionText.classList.add('hidden');
         descriptionFull.classList.remove('hidden');
+        
+        // Set initial image position for expanded cards (cyan cards are expanded by default)
+        const iconContainer = card.querySelector('[data-name="icon-container"]');
+        if (iconContainer) {
+          const isReversed = card.getAttribute('data-reversed') === 'true';
+          if (isReversed) {
+            iconContainer.style.marginRight = '-50px';
+          } else {
+            iconContainer.style.marginLeft = '-50px';
+          }
+        }
       }
       
       // Set initial image position for collapsed magenta cards
       if (!defaultExpanded && bgColor === 'default') {
         const iconContainer = card.querySelector('[data-name="icon-container"]');
         if (iconContainer) {
-          iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
+          const isReversed = card.getAttribute('data-reversed') === 'true';
+          if (isReversed) {
+            iconContainer.style.marginRight = '-90px'; // For reversed layout
+          } else {
+            iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
+          }
         }
       }
       
@@ -126,7 +151,12 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
       if (!defaultExpanded && bgColor === 'blue') {
         const iconContainer = card.querySelector('[data-name="icon-container"]');
         if (iconContainer) {
-          iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
+          const isReversed = card.getAttribute('data-reversed') === 'true';
+          if (isReversed) {
+            iconContainer.style.marginRight = '-90px'; // For reversed layout
+          } else {
+            iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
+          }
         }
       }
       
@@ -158,12 +188,43 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
           
           // Move image closer for collapsed magenta cards
           if (bgColor === 'default' && iconContainer) {
-            iconContainer.style.marginLeft = '-90px';
+            const isReversed = card.getAttribute('data-reversed') === 'true';
+            if (isReversed) {
+              iconContainer.style.marginRight = '-90px';
+            } else {
+              iconContainer.style.marginLeft = '-90px';
+            }
           }
           
           // Move image closer for collapsed cyan cards
           if (bgColor === 'blue' && iconContainer) {
-            iconContainer.style.marginLeft = '-90px';
+            const isReversed = card.getAttribute('data-reversed') === 'true';
+            if (isReversed) {
+              iconContainer.style.marginRight = '-90px';
+            } else {
+              iconContainer.style.marginLeft = '-90px';
+            }
+          }
+          
+          // Accordion effect: pull up cards below this one
+          const allCards = document.querySelectorAll('[data-name="infographic_card"]');
+          const currentCardIndex = Array.from(allCards).indexOf(card);
+          const expandedHeight = 200; // height when expanded
+          const collapsedHeight = 28; // height when collapsed
+          const heightDifference = 50; // reduced movement for subtle effect
+          
+          // Pull up only magenta cards (left column) below this one
+          for (let i = currentCardIndex + 1; i < allCards.length; i++) {
+            const cardBelow = allCards[i];
+            const cardBgColor = cardBelow.getAttribute('data-bg-color');
+            // Only affect magenta cards (default bgColor) in left column
+            if (cardBgColor === 'default') {
+              const currentTop = cardBelow.style.top || '0px';
+              const currentTopValue = parseInt(currentTop);
+              // Add smooth transition
+              cardBelow.style.transition = 'top 0.5s ease-in-out';
+              cardBelow.style.top = (currentTopValue - heightDifference) + 'px';
+            }
           }
           
           console.log('Collapsed');
@@ -178,7 +239,33 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
           
           // Move image back to original position for expanded cards
           if (iconContainer) {
-            iconContainer.style.marginLeft = '-50px';
+            const isReversed = card.getAttribute('data-reversed') === 'true';
+            if (isReversed) {
+              iconContainer.style.marginRight = '-50px';
+            } else {
+              iconContainer.style.marginLeft = '-50px';
+            }
+          }
+          
+          // Accordion effect: push down cards below this one
+          const allCards = document.querySelectorAll('[data-name="infographic_card"]');
+          const currentCardIndex = Array.from(allCards).indexOf(card);
+          const expandedHeight = 200; // height when expanded
+          const collapsedHeight = 28; // height when collapsed
+          const heightDifference = 50; // reduced movement for subtle effect
+          
+          // Push down only magenta cards (left column) below this one
+          for (let i = currentCardIndex + 1; i < allCards.length; i++) {
+            const cardBelow = allCards[i];
+            const cardBgColor = cardBelow.getAttribute('data-bg-color');
+            // Only affect magenta cards (default bgColor) in left column
+            if (cardBgColor === 'default') {
+              const currentTop = cardBelow.style.top || '0px';
+              const currentTopValue = parseInt(currentTop);
+              // Add smooth transition
+              cardBelow.style.transition = 'top 0.5s ease-in-out';
+              cardBelow.style.top = (currentTopValue + heightDifference) + 'px';
+            }
           }
           
           console.log('Expanded');

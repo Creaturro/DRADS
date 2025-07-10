@@ -5,6 +5,9 @@
 import svgPaths from "@scripts/timeline-svg-paths";
 import InfographicCard from "./InfographicCard.astro";
 import TimelineTooltip from "./TimelineTooltip.astro";
+import Quota from "@/components/ui/blocks/Quota.astro";
+import SpeechBubble from "@/components/ui/blocks/SpeechBubble.astro";
+import Avatar from "@/components/ui/avatars/Avatar.astro";
 
 // Props for different contexts
 export interface Props {
@@ -194,22 +197,98 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
 <div class="flex flex-col md:flex-row w-full relative">
   <!-- Left Column (DRADS) -->
   <div class="w-full md:w-[40%] bg-[#25202D] overflow-visible flex flex-col items-start p-4">
-    <div class="flex flex-col gap-y-8 w-full">
+    <div class="flex flex-col gap-y-2 w-full">
       <InfographicCard title="Brief and Research" description="The initial specs are narrow and highly focused with the goal of starting the implementation ASAP.">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/brief.png" alt="Brief and Research" class="w-[240px] h-[180px] lg:w-[331px] lg:h-[248px] object-contain" style="margin-top: 60px;" />
       </InfographicCard>
-      <InfographicCard title="Asynchronous Frontend Coding" description="We can work on your app's user interface and logic simultaneously. This parallel development eliminates bottlenecks, speeding up the entire process.">
+      <InfographicCard title="Asynchronous Frontend Coding" description="We can work on your app's user interface and logic simultaneously. This parallel development eliminates bottlenecks, speeding up the entire process." reversed={true}>
         <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/front.png" alt="Asynchronous Frontend Coding" class="w-[240px] h-[180px] lg:w-[294px] lg:h-[221px] object-contain" style="margin-top: 60px;" />
       </InfographicCard>
       <InfographicCard title="Asynchronous Design Work" description="Design is happening along side the app development. The interface elements are added into the app directly and are instantly connected to the app code.">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/design.png" alt="Asynchronous Design Work" class="w-[240px] h-[180px] lg:w-[331px] lg:h-[248px] object-contain" style="margin-top: 60px;" />
       </InfographicCard>
-      <InfographicCard title="“Glueing” systems through APIs" description="Developers quickly integrate various services and functionalities using pre-built or custom APIs, ensuring seamless data flow and communication.">
+      <InfographicCard title="“Glueing” systems through APIs" description="Developers quickly integrate various services and functionalities using pre-built or custom APIs, ensuring seamless data flow and communication." reversed={true}>
         <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/GlueAPI.png" alt="Glueing systems through APIs" class="w-[230px] h-[173px] lg:w-[360px] lg:h-[208px] object-contain" />
       </InfographicCard>
-      <InfographicCard title="Live Testing" description="The application is swiftly deployed using pre-configured environments, allowing immediate testing and validation to ensure the app meets the desired specifications and functions correctly.">
-        <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/Testing.png" alt="Live Testing" class="w-[240px] h-[180px] lg:w-[368px] lg:h-[276px] object-contain" style="margin-top: 60px;" />
-      </InfographicCard>
+      <div class="mt-[130px]">
+        <InfographicCard title="Live Testing" description="The application is swiftly deployed using pre-configured environments, allowing immediate testing and validation to ensure the app meets the desired specifications and functions correctly.">
+          <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/Testing.png" alt="Live Testing" class="w-[240px] h-[180px] lg:w-[368px] lg:h-[276px] object-contain" style="margin-top: 60px;" />
+        </InfographicCard>
+      </div>
+    </div>
+    <!-- QUOTE BOX BELOW MAGENTA CARDS -->
+    <div class="mt-[100px] w-full lg:block hidden">
+      <div class="relative rounded-xl mb-8" style="background:#45414C; color:#fff; margin-left:50px; margin-right:50px;">
+        <div class="relative z-10 flex flex-col justify-between" style="padding:28px 28px 28px 16px;">
+          <div class="flex items-start gap-[4px]">
+            <div class="flex flex-col flex-shrink-0" style="margin-top:-10px; mb-auto">
+              <img src="/src/images/format_quote_white_24dp.svg" alt="Quote icon" class="w-12 h-12" />
+            </div>
+            <div class="flex-1 text-left" style="font-family: 'Montserrat', sans-serif; font-style: italic;">
+              With DRADS, we kick off your project immediately with focused specs and start building right away. Our unique approach allows us to work on design, frontend, and backend simultaneously, while seamlessly integrating various systems. This means you’ll see a working prototype faster, with live testing happening sooner than you might expect from traditional development methods.
+            </div>
+          </div>
+        </div>
+        <!-- Speech bubble tail (bottom left, flipped triangle) -->
+        <div class="absolute left-0 -bottom-5 z-20" style="width:0;height:0;border-top:40px solid #45414C;border-right:40px solid transparent;"></div>
+      </div>
+      <div class="flex items-center gap-2 mt-2">
+        <img src="/src/images/avatar Maciej.png" alt="Maciej" class="w-20 h-20 rounded-full" />
+        <div class="flex flex-col">
+          <span class="text-sm font-medium" style="color:#fff">Maciej</span>
+          <span class="text-xs text-neutral-300">Deligo Owner</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SECOND QUOTE BOX -->
+    <div class="mt-[50px] w-full lg:block hidden">
+      <div class="relative rounded-xl mb-8" style="background:#45414C; color:#fff; margin-right:50px;">
+        <div class="relative z-10 flex flex-col justify-between" style="padding:28px 28px 28px 16px;">
+          <div class="flex items-start gap-[4px]">
+            <div class="flex flex-col flex-shrink-0" style="margin-top:-10px; mb-auto">
+              <img src="/src/images/format_quote_white_24dp.svg" alt="Quote icon" class="w-12 h-12" />
+            </div>
+            <div class="flex-1 text-left" style="font-family: 'Montserrat', sans-serif; font-style: italic;">
+              In DRADS, we skip the separate UI prototyping phase. Our workflow is so tightly integrated across UI design, frontend, and backend that we can create a working first version quickly. This allows us to make visual changes based on your feedback without slowing down development. You'll see real progress faster, not just mockups.
+            </div>
+          </div>
+        </div>
+        <!-- Speech bubble tail (bottom right, flipped triangle) -->
+        <div class="absolute right-0 -bottom-5 z-20" style="width:0;height:0;border-top:40px solid #45414C;border-left:40px solid transparent;"></div>
+      </div>
+      <div class="flex items-center gap-2 mt-2 justify-end">
+        <div class="flex flex-col text-right">
+          <span class="text-sm font-medium" style="color:#fff">Artur</span>
+          <span class="text-xs text-neutral-300">Designer</span>
+        </div>
+        <img src="/src/images/avatar Artur.png" alt="Artur" class="w-20 h-20 rounded-full" />
+      </div>
+    </div>
+    
+    <!-- THIRD QUOTE BOX -->
+    <div class="mt-[50px] w-full lg:block hidden">
+      <div class="relative rounded-xl mb-8" style="background:#45414C; color:#fff; margin-left:50px; margin-right:50px;">
+        <div class="relative z-10 flex flex-col justify-between" style="padding:28px 28px 28px 16px;">
+          <div class="flex items-start gap-[4px]">
+            <div class="flex flex-col flex-shrink-0" style="margin-top:-10px; mb-auto">
+              <img src="/src/images/format_quote_white_24dp.svg" alt="Quote icon" class="w-12 h-12" />
+            </div>
+            <div class="flex-1 text-left" style="font-family: 'Montserrat', sans-serif; font-style: italic;">
+              While traditional development might be struggling to launch version 1.0, we're already tens of features ahead with DRADS. This speed ignites creativity; clients who see their ideas come to life so quickly become fountains of innovation - we've seen this with every DRADS project. In traditional development, new ideas often stagnate due to time and cost constraints. But with DRADS, they flow like rivers, continuously shaping and improving the product - this has tremendous impact on the final product.
+            </div>
+          </div>
+        </div>
+        <!-- Speech bubble tail (bottom left, flipped triangle) -->
+        <div class="absolute left-0 -bottom-5 z-20" style="width:0;height:0;border-top:40px solid #45414C;border-right:40px solid transparent;"></div>
+      </div>
+      <div class="flex items-center gap-2 mt-2">
+        <img src="/src/images/avatar Maciej.png" alt="Maciej" class="w-20 h-20 rounded-full" />
+        <div class="flex flex-col">
+          <span class="text-sm font-medium" style="color:#fff">Maciej</span>
+          <span class="text-xs text-neutral-300">Deligo Owner</span>
+        </div>
+      </div>
     </div>
   </div>
   
@@ -263,9 +342,9 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
             style={`top: ${frame.top}; left: 50%; background: ${frame.text.includes('week') ? 'linear-gradient(to right, #25202D 50%, #1D282F 50%)' : '#3d515e'};`}
           >
             <div class="font-montserrat-bold h-[58px] relative shrink-0 text-[56px] w-full">
-              <p class="block leading-[normal]">{frame.number}</p>
+              <p class="block leading-[normal] whitespace-nowrap">{frame.number}</p>
             </div>
-            <div class="font-montserrat-semibold h-8 relative shrink-0 text-[20px] w-[86px]">
+            <div class="font-montserrat-semibold h-8 relative shrink-0 text-[20px] w-full text-center">
               <p class="block leading-[normal]">{frame.text}</p>
             </div>
           </div>

@@ -1,0 +1,49 @@
+---
+// Main layout component for Astro
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertical Timeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-[#1d282f] min-h-screen w-full overflow-x-hidden overflow-y-auto">
+    <div class="relative w-full" style="height: 2925px">
+      <!-- Left background -->
+      <div class="absolute bg-[#25202d] h-full left-0 top-0 w-1/2"></div>
+      
+      <!-- Timeline Component -->
+      <div class="relative w-full h-full">
+        <slot />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<style is:global>
+  /* Global styles similar to globals.css */
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .font-montserrat-bold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+  
+  .font-montserrat-semibold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+</style>

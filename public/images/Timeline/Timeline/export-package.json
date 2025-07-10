@@ -1,0 +1,28 @@
+{
+  "name": "vertical-timeline-astro",
+  "version": "1.0.0",
+  "description": "Vertical Timeline Component for Astro",
+  "files": [
+    "components/Timeline.astro",
+    "components/TimelineLayout.astro", 
+    "imports/svg-salhtp65jk.ts",
+    "styles/globals.css"
+  ],
+  "astro": {
+    "dependencies": [
+      "@astrojs/tailwind",
+      "tailwindcss"
+    ]
+  },
+  "instructions": {
+    "setup": [
+      "1. Copy Timeline.astro to your Astro project's components folder",
+      "2. Copy svg-salhtp65jk.ts to your imports folder", 
+      "3. Install @astrojs/tailwind integration",
+      "4. Configure Tailwind CSS",
+      "5. Add Montserrat font to your layout",
+      "6. Import and use Timeline component in your pages"
+    ],
+    "usage": "Import Timeline component: import Timeline from '../components/Timeline.astro'"
+  }
+}

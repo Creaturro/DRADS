@@ -1,8 +1,16 @@
 ---
-// Props: content (string), author (string), position (string), avatarSrc (string), bgColor (default: #1DA6AE), textColor (default: #fff), tailSize (default: 40), quoteIconSrc (default: '/src/images/format_quote_white_24dp.svg'), class (optional)
-const { content, author, position, avatarSrc, bgColor = '#1DA6AE', textColor = '#fff', tailSize = 40, quoteIconSrc = '/src/images/format_quote_white_24dp.svg', class: customClass = '' } = Astro.props;
+// Props: content (string), author (string), position (string), avatarSrc (string), bgColor (default: #1DA6AE), textColor (default: #fff), tailSize (default: 40), quoteIconSrc (default: '/src/images/format_quote_white_24dp.svg'), tailDirection (default: 'left'), class (optional)
+const { content, author, position, avatarSrc, bgColor = '#1DA6AE', textColor = '#fff', tailSize = 40, quoteIconSrc = '/src/images/format_quote_white_24dp.svg', tailDirection = 'left', class: customClass = '' } = Astro.props;
+
+const isRightTail = tailDirection === 'right';
+const quoteMargin = isRightTail ? 'margin-right:40px;' : 'margin-left:40px;';
+const triangleStyle = isRightTail 
+  ? `width:0;height:0;border-top:${tailSize}px solid ${bgColor};border-left:${tailSize}px solid transparent;`
+  : `width:0;height:0;border-top:${tailSize}px solid ${bgColor};border-right:${tailSize}px solid transparent;`;
+const trianglePosition = isRightTail ? 'right:0;' : 'left:0;';
+const avatarContainerClass = isRightTail ? 'flex items-center gap-2 mt-2 justify-end' : 'flex items-center gap-2 mt-2';
 ---
-<div class={`relative rounded-xl mb-8 ${customClass}`} style={`background:${bgColor}; color:${textColor}; margin-left:40px;`}>
+<div class={`relative rounded-xl mb-8 ${customClass}`} style={`background:${bgColor}; color:${textColor}; ${quoteMargin}`}>
   <div class="relative z-10 flex flex-col justify-between" style="padding:28px 28px 28px 16px;">
     <div class="flex items-start gap-[4px]">
       <div class="flex flex-col flex-shrink-0" style="margin-top:-10px; mb-auto">
@@ -13,11 +21,13 @@ const { content, author, position, avatarSrc, bgColor = '#1DA6AE', textColor = '
       </div>
     </div>
   </div>
-  <!-- Speech bubble tail (bottom left, flipped triangle) -->
-  <div class="absolute left-0 -bottom-5 z-20" style={`width:0;height:0;border-top:${tailSize}px solid ${bgColor};border-right:${tailSize}px solid transparent;`}></div>
+  <!-- Speech bubble tail (bottom left/right, flipped triangle) -->
+  <div class="absolute -bottom-5 z-20" style={`${trianglePosition} ${triangleStyle}`}></div>
 </div>
-<div class="flex items-center gap-2 mt-2">
+<div class={avatarContainerClass}>
   <img src={avatarSrc} alt={author} class="w-20 h-20 rounded-full" />
-  <span class="text-sm font-medium" style={`color:${textColor}`}>{author}</span>
-  <span class="text-xs text-neutral-300">{position}</span>
+  <div class="flex flex-col">
+    <span class="text-sm font-medium" style={`color:${textColor}`}>{author}</span>
+    <span class="text-xs text-neutral-300">{position}</span>
+  </div>
 </div> 

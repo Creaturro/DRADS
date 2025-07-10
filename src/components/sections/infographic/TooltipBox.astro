@@ -1,0 +1,23 @@
+---
+// TooltipBox.astro
+// Props: color (default #1DA6AE), tailSide ("left" | "right"), textColor (default #fff), class (optional)
+const { color = '#1DA6AE', tailSide = 'right', textColor = '#fff', class: customClass = '' } = Astro.props;
+---
+<div class={`relative inline-flex items-center ${customClass}`} style={`color:${textColor};`}>
+  {tailSide === 'left' && (
+    <div class="absolute left-[-8px] top-1/2 -translate-y-1/2" style={`width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:8px solid ${color};`}></div>
+  )}
+  <div class="px-3 py-2" style={`background:${color};border-radius:6px;`}>
+    <div class="flex flex-col items-center">
+      <span class="mb-1 max-w-[32px] flex justify-center">
+        <slot name="icon" />
+      </span>
+      <span class="whitespace-pre-line text-[1rem] leading-tight font-sans text-center">
+        <slot />
+      </span>
+    </div>
+  </div>
+  {tailSide === 'right' && (
+    <div class="absolute right-[-8px] top-1/2 -translate-y-1/2" style={`width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:8px solid ${color};`}></div>
+  )}
+</div> 
