@@ -6,16 +6,41 @@ import svgPaths from "@scripts/timeline-svg-paths";
 import InfographicCard from "./InfographicCard.astro";
 import TimelineTooltip from "./TimelineTooltip.astro";
 
-// Frame component data
-const frames = [
-  { number: "1", text: "week", top: "calc(50% - 1245.43px)" },
-  { number: "2", text: "weeks", top: "calc(50% - 1049.46px)" },
-  { number: "3", text: "weeks", top: "calc(50% - 854.461px)" },
-  { number: "4", text: "weeks", top: "calc(50% - 658.461px)" },
-  { number: "8", text: "weeks", top: "calc(50% + 39.5389px)" },
-  { number: "16", text: "weeks", top: "calc(50% + 636.539px)" },
-  { number: "24-32", text: "weeks", top: "calc(50% + 1143.54px)" }
-];
+// Props for different contexts
+export interface Props {
+  context?: 'full-page' | 'section';
+}
+
+const { context = 'full-page' } = Astro.props;
+
+// Frame component data - adaptive positioning for different contexts
+const getFrames = (context: string) => {
+  if (context === 'section') {
+    // Scaled down positioning for section context
+    return [
+      { number: "1", text: "week", top: "8%" },
+      { number: "2", text: "weeks", top: "20%" },
+      { number: "3", text: "weeks", top: "32%" },
+      { number: "4", text: "weeks", top: "44%" },
+      { number: "8", text: "weeks", top: "56%" },
+      { number: "16", text: "weeks", top: "68%" },
+      { number: "24-32", text: "weeks", top: "80%" }
+    ];
+  } else {
+    // Original positioning for full page
+    return [
+      { number: "1", text: "week", top: "calc(50% - 1245.43px)" },
+      { number: "2", text: "weeks", top: "calc(50% - 1049.46px)" },
+      { number: "3", text: "weeks", top: "calc(50% - 854.461px)" },
+      { number: "4", text: "weeks", top: "calc(50% - 658.461px)" },
+      { number: "8", text: "weeks", top: "calc(50% + 39.5389px)" },
+      { number: "16", text: "weeks", top: "calc(50% + 636.539px)" },
+      { number: "24-32", text: "weeks", top: "calc(50% + 1143.54px)" }
+    ];
+  }
+};
+
+const frames = getFrames(context);
 
 // Arrow configurations
 const arrows = [
@@ -29,77 +54,151 @@ const arrows = [
   { height: "148px", top: "2390px", width: "148px", pathKey: "p201ad800", viewBox: "0 0 154 12" }
 ];
 
-// Milestone data
-const milestones = [
-  // Magenta (DRADS, left, tail right)
-  {
-    label: "app specs ready",
-    top: "calc(50% - 1245.43px + 55px)", // just under 1 week, +15px
-    color: "#AB1E81",
-    text: "app specs\nready",
-    tail: "right",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
-  },
-  {
-    label: "working prototype",
-    top: "calc(50% - 854.461px + 55px)", // under 3 weeks, +15px
-    color: "#AB1E81",
-    text: "working\nprototype",
-    tail: "right",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
-  },
-  {
-    label: "your app is ready",
-    top: "calc(50% + 39.5389px + 55px)", // under 8 weeks, +15px
-    color: "#AB1E81",
-    text: "your app\nis ready",
-    tail: "right",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
-  },
-  // Cyan (Traditional, right, tail left)
-  {
-    label: "app specs ready",
-    top: "calc(50% - 1049.46px + 55px)", // under 2 weeks, +15px
-    color: "#1DA6AE",
-    text: "app specs\nready",
-    tail: "left",
-    icon: null
-  },
-  {
-    label: "design prototype",
-    top: "calc(50% - 658.461px + 55px)", // under 4 weeks, +15px
-    color: "#1DA6AE",
-    text: "design\nprototype",
-    tail: "left",
-    icon: null
-  },
-  {
-    label: "working prototype",
-    top: "calc(50% + 636.539px + 55px)", // under 16 weeks, +15px
-    color: "#1DA6AE",
-    text: "working\nprototype",
-    tail: "left",
-    icon: null
-  },
-  {
-    label: "your app is ready",
-    top: "calc(50% + 1143.54px + 55px)", // under 32 weeks, +15px
-    color: "#1DA6AE",
-    text: "your app\nis ready",
-    tail: "left",
-    icon: null
+// Milestone data - adaptive positioning for different contexts
+const getMilestones = (context: string) => {
+  if (context === 'section') {
+    // Scaled down positioning for section context
+    return [
+      // Magenta (DRADS, left, tail right)
+      {
+        label: "app specs ready",
+        top: "12%", // just under 1 week
+        color: "#AB1E81",
+        text: "app specs\nready",
+        tail: "right",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
+      },
+      {
+        label: "working prototype",
+        top: "36%", // under 3 weeks
+        color: "#AB1E81",
+        text: "working\nprototype",
+        tail: "right",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
+      },
+      {
+        label: "your app is ready",
+        top: "60%", // under 8 weeks
+        color: "#AB1E81",
+        text: "your app\nis ready",
+        tail: "right",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
+      },
+      // Cyan (Traditional, right, tail left)
+      {
+        label: "app specs ready",
+        top: "20%", // under 2 weeks
+        color: "#1DA6AE",
+        text: "app specs\nready",
+        tail: "left",
+        icon: null
+      },
+      {
+        label: "design prototype",
+        top: "40%", // under 4 weeks
+        color: "#1DA6AE",
+        text: "design\nprototype",
+        tail: "left",
+        icon: null
+      },
+      {
+        label: "working prototype",
+        top: "65%", // under 16 weeks
+        color: "#1DA6AE",
+        text: "working\nprototype",
+        tail: "left",
+        icon: null
+      },
+      {
+        label: "your app is ready",
+        top: "80%", // under 32 weeks (was 84%)
+        color: "#1DA6AE",
+        text: "your app\nis ready",
+        tail: "left",
+        icon: null
+      }
+    ];
+  } else {
+    // Original positioning for full page
+    return [
+      // Magenta (DRADS, left, tail right)
+      {
+        label: "app specs ready",
+        top: "calc(50% - 1245.43px + 55px)", // just under 1 week, +15px
+        color: "#AB1E81",
+        text: "app specs\nready",
+        tail: "right",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
+      },
+      {
+        label: "working prototype",
+        top: "calc(50% - 854.461px + 55px)", // under 3 weeks, +15px
+        color: "#AB1E81",
+        text: "working\nprototype",
+        tail: "right",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
+      },
+      {
+        label: "your app is ready",
+        top: "calc(50% + 39.5389px + 55px)", // under 8 weeks, +15px
+        color: "#AB1E81",
+        text: "your app\nis ready",
+        tail: "right",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 37.517 26.447"><path d="M7517.254,17143.445h-21.949a3.307,3.307,0,0,1-3.3-3.3v-19.832a3.313,3.313,0,0,1,3.3-3.309h18.644v6.613h-18.644v16.527h21.949v3.3Zm4,0h0v-3.3h.5v-16.527h-3.8V17117h3.8a3.32,3.32,0,0,1,3.309,3.309v14.766Zm-20.165-4.953v0l-2.314-2.312,4.255-4.3-4.3-4.3,2.358-2.311,6.609,6.609-6.609,6.611Z" transform="translate(-7492.001 -17117)" fill="#fff"></path><path d="M115.733-773.553V-788.43h-3.306V-800H124l-3.306,8.265H124Z" transform="translate(-86.48 800)" fill="#fff"></path></svg>`
+      },
+      // Cyan (Traditional, right, tail left)
+      {
+        label: "app specs ready",
+        top: "calc(50% - 1049.46px + 55px)", // under 2 weeks, +15px
+        color: "#1DA6AE",
+        text: "app specs\nready",
+        tail: "left",
+        icon: null
+      },
+      {
+        label: "design prototype",
+        top: "calc(50% - 658.461px + 55px)", // under 4 weeks, +15px
+        color: "#1DA6AE",
+        text: "design\nprototype",
+        tail: "left",
+        icon: null
+      },
+      {
+        label: "working prototype",
+        top: "calc(50% + 636.539px + 55px)", // under 16 weeks, +15px
+        color: "#1DA6AE",
+        text: "working\nprototype",
+        tail: "left",
+        icon: null
+      },
+      {
+        label: "your app is ready",
+        top: "calc(50% + 1143.54px + 55px)", // under 32 weeks, +15px
+        color: "#1DA6AE",
+        text: "your app\nis ready",
+        tail: "left",
+        icon: null
+      }
+    ];
   }
-];
+};
+
+const milestones = getMilestones(context);
+
+// Dynamic height and positioning based on context
+const timelineHeight = context === 'section' ? 'h-[2800px]' : 'h-[2894.92px]';
+const leftColumnHeight = context === 'section' ? 'h-[1400px]' : 'h-[1530px]';
+const containerClass = context === 'section' ? 'relative w-full overflow-hidden' : 'flex flex-col md:flex-row w-full relative';
 ---
 
 <div class="flex flex-col md:flex-row w-full relative">
-  <!-- Left Column (background only) -->
-  <div class="w-full md:w-[40%] bg-[#25202D] overflow-visible flex flex-col items-start justify-start p-4 h-[1530px]">
-    <div class="flex flex-col gap-y-4 w-full">
+  <!-- Left Column (DRADS) -->
+  <div class="w-full md:w-[40%] bg-[#25202D] overflow-visible flex flex-col items-start p-4">
+    <div class="flex flex-col gap-y-8 w-full">
       <InfographicCard title="Brief and Research" description="The initial specs are narrow and highly focused with the goal of starting the implementation ASAP.">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/brief.png" alt="Brief and Research" class="w-[240px] h-[180px] lg:w-[331px] lg:h-[248px] object-contain" style="margin-top: 60px;" />
       </InfographicCard>
-      <InfographicCard title="Asynchronous Frontend Coding" description="We can work on your app’s user interface and logic simultaneously. This parallel development eliminates bottlenecks, speeding up the entire process.">
+      <InfographicCard title="Asynchronous Frontend Coding" description="We can work on your app's user interface and logic simultaneously. This parallel development eliminates bottlenecks, speeding up the entire process.">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/front.png" alt="Asynchronous Frontend Coding" class="w-[240px] h-[180px] lg:w-[294px] lg:h-[221px] object-contain" style="margin-top: 60px;" />
       </InfographicCard>
       <InfographicCard title="Asynchronous Design Work" description="Design is happening along side the app development. The interface elements are added into the app directly and are instantly connected to the app code.">
@@ -113,15 +212,17 @@ const milestones = [
       </InfographicCard>
     </div>
   </div>
+  
   <!-- Center Column (background only) -->
-  <div class="w-full md:w-[20%] min-h-screen" style="background: linear-gradient(to right, #25202D 50%, #1D282F 50%);"></div>
-  <!-- Right Column (background only) -->
-  <div class="w-full md:w-[40%] bg-[#1D282F] overflow-visible flex flex-col items-end justify-start p-4 h-[2894.92px]">
-    <div class="flex flex-col justify-between h-full w-full items-end">
-      <InfographicCard title="Brief and Research" description="This initial phase involves understanding the project requirements, target audience, and goals, followed by researching the market and competitors. However, in classical development, this stage often results in overly broad or imprecise scopes. Without rapid prototyping, there’s a risk of committing to features that may not align with actual user needs or market demands." bgColor="blue">
+  <div class={`w-full md:w-[20%] h-[2800px]`} style="background: linear-gradient(to right, #25202D 50%, #1D282F 50%);"></div>
+  
+  <!-- Right Column (Traditional) -->
+  <div class="w-full md:w-[40%] bg-[#1D282F] overflow-visible flex flex-col items-end p-4">
+    <div class="flex flex-col justify-between h-[2800px] w-full">
+      <InfographicCard title="Brief and Research" description="This initial phase involves understanding the project requirements, target audience, and goals, followed by researching the market and competitors. However, in classical development, this stage often results in overly broad or imprecise scopes. Without rapid prototyping, there's a risk of committing to features that may not align with actual user needs or market demands." bgColor="blue">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/brief.png" alt="Brief and Research" class="w-[270px] h-[202px] lg:w-[338px] lg:h-[253px] object-contain" style="margin-top: 40px;" />
       </InfographicCard>
-      <InfographicCard title="UI/UX Design" description="Designers create wireframes and prototypes to map out the user journey and visual layout. However, without rapid real-world validation, these initial mockups may lead to designs that look great but perform poorly in practice. This can result in significant rework later, as actual user interactions often reveal usability issues that weren’t apparent in static designs." bgColor="blue">
+      <InfographicCard title="UI/UX Design" description="Designers create wireframes and prototypes to map out the user journey and visual layout. However, without rapid real-world validation, these initial mockups may lead to designs that look great but perform poorly in practice. This can result in significant rework later, as actual user interactions often reveal usability issues that weren't apparent in static designs." bgColor="blue">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/Design.png" alt="UI/UX Design" class="w-[300px] h-[225px] lg:w-[375px] lg:h-[281px] object-contain" style="margin-top: 40px;" />
       </InfographicCard>
       <InfographicCard title="Frontend Coding" description="Developers build the client-side of the application, translating designs into functional code using HTML, CSS, and JavaScript. Without iterative development, larger redesigns may be needed as user needs evolve or initial assumptions prove incorrect." bgColor="blue">
@@ -133,7 +234,7 @@ const milestones = [
       <InfographicCard title="Testing" description="The application undergoes rigorous testing, including unit, integration, and user acceptance tests, to identify and fix bugs. In classical development, testing is typically done on larger chunks of work. This approach means that when changes occur, the retesting process becomes lengthy and cumbersome, potentially slowing down the entire development cycle." bgColor="blue">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/test.png" alt="Testing" class="w-[300px] h-[225px] lg:w-[338px] lg:h-[253px] object-contain" style="margin-top: 40px;" />
       </InfographicCard>
-      <InfographicCard title="Setting up the production environment" description="Developers deploy the application to a live server, configure necessary services, and ensure security measures are in place, preparing the app for public use. In the standard approach, this phase can be significantly time-consuming. This process often involves complex infrastructure decisions and implementations that can delay the actual launch of the application." bgColor="blue">
+      <InfographicCard title="Setting up the production environment" description="Developers deploy the application to a live server, configure necessary services, and ensure security measures are in place, preparing the app for public use. In the standard approach, this phase can be significantly time-consuming. This process often involves complex infrastructure decisions and implementations that can delay the actual launch of the application." bgColor="blue" class="self-end">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/devops.png" alt="Setting up the production environment" class="w-[230px] h-[173px] lg:w-[270px] lg:h-[203px] object-contain" style="margin-top: 20px;" />
       </InfographicCard>
     </div>
@@ -141,16 +242,16 @@ const milestones = [
 
   <!-- Timeline overlay, absolutely centered and independent -->
   <div 
-    class="absolute h-[2894.92px] overflow-visible translate-x-[-50%] w-[300px]"
+    class={`absolute ${timelineHeight} overflow-visible translate-x-[-50%] w-[300px]`}
     style="top: 0; left: 50%"
   >
         <!-- Diagonal Lines -->
-        <div class="absolute bottom-[17.158%] left-[34.707%] right-[34.997%] top-[80.972%]">
+        <div class="absolute bottom-[26%] left-[34.707%] right-[34.997%] top-[74%]">
           <svg class="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 139 55">
             <path d={svgPaths.p34c0f00} fill="white" />
           </svg>
         </div>
-        <div class="absolute bottom-[16.502%] left-[34.707%] right-[34.997%] top-[81.629%]">
+        <div class="absolute bottom-[25.5%] left-[34.707%] right-[34.997%] top-[74.5%]">
           <svg class="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 139 55">
             <path d={svgPaths.p34c0f00} fill="white" />
           </svg>
@@ -158,8 +259,8 @@ const milestones = [
         <!-- Timeline Frames -->
         {frames.map((frame) => (
           <div
-            class="absolute bg-[#3d515e] box-border content-stretch flex flex-col items-start justify-end leading-[0] not-italic p-[8px] rounded-lg text-[#ffffff] text-center translate-x-[-50%] translate-y-[-50%]"
-            style={`top: ${frame.top}; left: 50%;`}
+            class="absolute z-10 box-border content-stretch flex flex-col items-start justify-end leading-[0] not-italic p-[8px] rounded-lg text-[#ffffff] text-center translate-x-[-50%] translate-y-[-50%]"
+            style={`top: ${frame.top}; left: 50%; background: ${frame.text.includes('week') ? 'linear-gradient(to right, #25202D 50%, #1D282F 50%)' : '#3d515e'};`}
           >
             <div class="font-montserrat-bold h-[58px] relative shrink-0 text-[56px] w-full">
               <p class="block leading-[normal]">{frame.number}</p>
@@ -169,15 +270,10 @@ const milestones = [
             </div>
           </div>
         ))}
-        <!-- Vertical Connecting Line -->
+        <!-- Vertical Connecting Line (dashed, z-0) -->
         <div
-          class="absolute w-[2px] bg-white translate-x-[-50%]"
-          style="left: 50%; top: calc(50% + 89.5389px); height: 320px"
-        ></div>
-        <!-- Dot at the top of the vertical line -->
-        <div
-          class="absolute w-[6px] h-[6px] bg-white rounded-full translate-x-[-50%] translate-y-[-50%]"
-          style="left: 50%; top: calc(50% + 89.5389px)"
+          class="absolute z-0 w-[2px] border-l-2 border-dashed border-white translate-x-[-50%]"
+          style="left: 50%; top: 0; height: 100%;"
         ></div>
         <!-- More Diagonal Lines -->
         <div class="absolute bottom-[35.906%] left-[34.707%] right-[34.997%] top-[62.224%]">
@@ -211,6 +307,7 @@ const milestones = [
               text={m.text}
               color={m.color}
               direction={m.tail === 'right' ? 'left' : 'right'}
+              showConnector={true}
             >
               {m.icon && (
                 <span slot="icon" class="flex justify-center items-center w-full" set:html={m.icon} />
