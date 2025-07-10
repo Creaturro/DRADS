@@ -12,9 +12,10 @@ import Avatar from "@/components/ui/avatars/Avatar.astro";
 // Props for different contexts
 export interface Props {
   context?: 'full-page' | 'section';
+  showCalibrationDots?: boolean;
 }
 
-const { context = 'full-page' } = Astro.props;
+const { context = 'full-page', showCalibrationDots = false } = Astro.props;
 
 // Frame component data - adaptive positioning for different contexts
 const getFrames = (context: string) => {
@@ -196,7 +197,7 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
 
 <div class="flex flex-col md:flex-row w-full relative">
   <!-- Left Column (DRADS) -->
-  <div class="w-full md:w-[40%] bg-[#25202D] overflow-visible flex flex-col items-start p-4">
+  <div class="w-full md:w-[40%] bg-[#25202D] overflow-visible flex flex-col items-start p-4 relative">
     <div class="flex flex-col gap-y-2 w-full">
       <InfographicCard title="Brief and Research" description="The initial specs are narrow and highly focused with the goal of starting the implementation ASAP.">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/brief.png" alt="Brief and Research" class="w-[240px] h-[180px] timeline-image-brief object-contain" style="margin-top: 60px;" />
@@ -215,6 +216,87 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
           <img slot="icon" src="/images/Timeline/timeline_cards_images/new_drads/Testing.png" alt="Live Testing" class="w-[240px] h-[180px] timeline-image-testing object-contain" style="margin-top: 60px;" />
         </InfographicCard>
       </div>
+    </div>
+    
+    {showCalibrationDots && (
+      <>
+        <!-- Magenta dot for calibration (Brief and Research) -->
+        <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
+          <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+            <circle cx="330" cy="200" r="12" fill="#AB1E81" stroke="#fff" stroke-width="3" />
+          </svg>
+        </div>
+        
+        <!-- Green dot for calibration (Brief and Research original position) -->
+        <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
+          <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+            <circle cx="20%" cy="15%" r="12" fill="#22c55e" stroke="#fff" stroke-width="3" />
+          </svg>
+        </div>
+        
+        <!-- Blue dot for calibration (Design Work) -->
+        <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
+          <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+            <circle cx="350" cy="628" r="12" fill="#3b82f6" stroke="#fff" stroke-width="3" />
+          </svg>
+        </div>
+        
+        <!-- Orange dot for calibration (Glueing) -->
+        <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
+          <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+            <circle cx="80" cy="848" r="12" fill="#f97316" stroke="#fff" stroke-width="3" />
+          </svg>
+        </div>
+        
+        <!-- Red dot for calibration (Testing) -->
+        <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
+          <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+            <circle cx="312" cy="1022" r="12" fill="#ef4444" stroke="#fff" stroke-width="3" />
+          </svg>
+        </div>
+        
+        <!-- Purple dot for calibration (Frontend) -->
+        <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
+          <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+            <circle cx="280" cy="414" r="12" fill="#a855f7" stroke="#fff" stroke-width="3" />
+          </svg>
+        </div>
+      </>
+    )}
+    
+    <!-- DRADS Flow Arrows (always visible) -->
+    <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 10;">
+      <svg class="absolute w-full h-full" style="top: 0; left: 0;">
+        <defs>
+          <marker id="arrowhead-drads" markerWidth="5" markerHeight="3.5" refX="4.5" refY="1.75" orient="auto">
+            <polygon points="0 0, 5 1.75, 0 3.5" fill="#AB1E81" />
+          </marker>
+        </defs>
+        
+        <!-- Brief to Design Work (larger arc) -->
+        <path d="M 330 200 C 380 250 360 500 350 628" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        
+        <!-- Brief to Glueing (larger arc) -->
+        <path d="M 330 200 C 280 400 50 700 80 848" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        
+        <!-- Design Work to Glueing (larger arc) -->
+        <path d="M 350 628 C 280 750 100 850 80 848" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        
+        <!-- Glueing to Testing (larger arc) -->
+        <path d="M 80 848 C 180 950 280 1050 312 1022" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        
+        <!-- Design Work to Testing (larger arc) -->
+        <path d="M 350 628 C 380 800 350 1000 312 1022" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        
+        <!-- NEW ARROWS: Brief to Frontend -->
+        <path d="M 330 200 C 340 250 310 350 280 414" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        
+        <!-- NEW ARROWS: Design to Frontend -->
+        <path d="M 350 628 C 330 550 310 480 280 414" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        
+        <!-- NEW ARROWS: Frontend to Glueing -->
+        <path d="M 280 414 C 200 600 120 750 80 848" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+      </svg>
     </div>
     
     <!-- QUOTE BOX BELOW MAGENTA CARDS -->
@@ -328,27 +410,27 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
             <polygon points="0 0, 10 3.5, 0 7" fill="#1DA6AE" />
           </marker>
         </defs>
-        <line x1="85%" y1="16.67%" x2="85%" y2="33.33%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+        <line x1="75%" y1="13%" x2="75%" y2="20%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
       </svg>
       
       <!-- Arrow from UI/UX Design to Frontend Coding -->
       <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-        <line x1="85%" y1="33.33%" x2="85%" y2="50%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+        <line x1="75%" y1="30%" x2="75%" y2="37%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
       </svg>
       
       <!-- Arrow from Frontend Coding to Backend Coding -->
       <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-        <line x1="85%" y1="50%" x2="85%" y2="66.67%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+        <line x1="75%" y1="47%" x2="75%" y2="54%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
       </svg>
       
       <!-- Arrow from Backend Coding to Testing -->
       <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-        <line x1="85%" y1="66.67%" x2="85%" y2="83.33%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+        <line x1="75%" y1="64%" x2="75%" y2="71%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
       </svg>
       
       <!-- Arrow from Testing to Production Environment -->
       <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-        <line x1="85%" y1="83.33%" x2="85%" y2="100%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
+        <line x1="75%" y1="81%" x2="75%" y2="88%" stroke="#1DA6AE" stroke-width="1" marker-end="url(#arrowhead-cyan)" />
       </svg>
     </div>
   </div>
