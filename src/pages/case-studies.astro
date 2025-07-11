@@ -620,7 +620,7 @@ const liveLeadCost = {
 </MainLayout>
 
 <script>
-  function scrollToSection(event, sectionId) {
+  function scrollToSection(event: Event, sectionId: string) {
     event.preventDefault();
     const element = document.getElementById(sectionId);
     if (!element) return;
@@ -629,9 +629,9 @@ const liveLeadCost = {
     const startY = window.scrollY;
     const distance = targetY - startY;
     const duration = 2000; // 2000ms = 2s
-    let startTime = null;
+    let startTime: number | null = null;
 
-    function animateScroll(currentTime) {
+    function animateScroll(currentTime: number) {
       if (!startTime) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);

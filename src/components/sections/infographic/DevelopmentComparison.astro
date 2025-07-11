@@ -11,6 +11,22 @@ import TimelineComponent from "./TimelineComponent.astro";
       <h2 class="font-h2">Development Process Comparison</h2>
       <h3 class="font-h3 text-left w-full lg:w-[70%] mb-8">A side-by-side look at the DRADS quick development flow versus the classic standard development process.</h3>
     </div>
+    <!-- Timeline Header (hidden on mobile) -->
+    <div class="hidden md:flex w-full" style="margin-bottom: 0;">
+      <!-- DRADS (Magenta) -->
+      <div class="flex items-center w-1/2 bg-[#AB1E81] py-8 px-12 gap-6" style="border-top-left-radius: 0.5rem;">
+        <img src="/images/Timeline/drads-ico.svg" alt="DRADS Icon" class="w-12 h-12" />
+        <div>
+          <div class="text-4xl font-extrabold text-white leading-tight">DRADS</div>
+          <div class="text-xl font-light text-white mt-1">quick development flow</div>
+        </div>
+      </div>
+      <!-- Standard Development (Cyan) -->
+      <div class="flex flex-col justify-center w-1/2 bg-[#1DA6AE] py-8 px-12" style="border-top-right-radius: 0.5rem;">
+        <div class="text-4xl font-extrabold text-white leading-tight">Standard Development</div>
+        <div class="text-xl font-light text-white mt-1">classic development process</div>
+      </div>
+    </div>
     <!-- Timeline Component - Full Width -->
     <div class="w-full overflow-x-visible">
       <TimelineComponent showCalibrationDots={false} />

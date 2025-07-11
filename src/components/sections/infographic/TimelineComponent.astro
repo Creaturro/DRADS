@@ -195,6 +195,22 @@ const leftColumnHeight = context === 'section' ? 'h-[1400px]' : 'h-[1530px]';
 const containerClass = context === 'section' ? 'relative w-full overflow-hidden' : 'flex flex-col md:flex-row w-full relative';
 ---
 
+<div class="hidden md:flex w-full" style="margin-bottom: 0;">
+  <!-- DRADS (Magenta) -->
+  <div class="flex items-center w-1/2 bg-[#AB1E81] py-8 px-12 gap-6" style="border-top-left-radius: 0.5rem;">
+    <img src="/images/Timeline/drads-ico.svg" alt="DRADS Icon" class="w-12 h-12" />
+    <div>
+      <div class="text-4xl font-extrabold text-white leading-tight">DRADS</div>
+      <div class="text-xl font-light text-white mt-1">quick development flow</div>
+    </div>
+  </div>
+  <!-- Standard Development (Cyan) -->
+  <div class="flex flex-col justify-center w-1/2 bg-[#1DA6AE] py-8 px-12" style="border-top-right-radius: 0.5rem;">
+    <div class="text-4xl font-extrabold text-white leading-tight">Standard Development</div>
+    <div class="text-xl font-light text-white mt-1">classic development process</div>
+  </div>
+</div>
+
 <div class="flex flex-col md:flex-row w-full relative">
   <!-- Left Column (DRADS) -->
   <div class="w-full md:w-[40%] bg-[#25202D] overflow-visible flex flex-col items-start p-4 relative">
@@ -396,7 +412,7 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
       <InfographicCard title="Testing" description="The application undergoes rigorous testing, including unit, integration, and user acceptance tests, to identify and fix bugs. In classical development, testing is typically done on larger chunks of work. This approach means that when changes occur, the retesting process becomes lengthy and cumbersome, potentially slowing down the entire development cycle." bgColor="blue">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/test.png" alt="Testing" class="w-[300px] h-[225px] timeline-image-traditional-testing object-contain" style="margin-top: 40px;" />
       </InfographicCard>
-      <InfographicCard title="Setting up the production environment" description="Developers deploy the application to a live server, configure necessary services, and ensure security measures are in place, preparing the app for public use. In the standard approach, this phase can be significantly time-consuming. This process often involves complex infrastructure decisions and implementations that can delay the actual launch of the application." bgColor="blue" class="self-end">
+      <InfographicCard title="Setting up the production environment" description="Developers deploy the application to a live server, configure necessary services, and ensure security measures are in place, preparing the app for public use. In the standard approach, this phase can be significantly time-consuming. This process often involves complex infrastructure decisions and implementations that can delay the actual launch of the application." bgColor="blue">
         <img slot="icon" src="/images/Timeline/timeline_cards_images/traditional_dev/devops.png" alt="Setting up the production environment" class="w-[230px] h-[173px] timeline-image-traditional-devops object-contain" style="margin-top: 20px;" />
       </InfographicCard>
     </div>
@@ -488,7 +504,7 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
               <div class="h-0 relative" style={`width: ${arrow.width}`}> 
                 <div class="absolute bottom-[-5.333px] left-[-1.852%] right-0 top-[-5.333px]">
                   <svg class="block size-full" fill="none" preserveAspectRatio="none" viewBox={arrow.viewBox}>
-                    <path d={svgPaths[arrow.pathKey]} fill="white" />
+                    <path d={svgPaths[arrow.pathKey as keyof typeof svgPaths]} fill="white" />
                   </svg>
                 </div>
               </div>

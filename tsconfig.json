@@ -14,5 +14,11 @@
     }
   },
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "exclude": [
+    "dist",
+    "src/components/Three Cards Recreation/**/*",
+    "src/components/Comparison Table/**/*",
+    "public/images/Timeline/Infographic_Cards/**/*",
+    "public/images/Timeline/Timeline/**/*"
+  ]
 }

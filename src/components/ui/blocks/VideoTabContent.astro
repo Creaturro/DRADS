@@ -65,12 +65,13 @@ const secondClass = second
   document.addEventListener('DOMContentLoaded', () => {
     const videos = document.querySelectorAll('video[id^="video-"]');
     
-    videos.forEach(video => {
-      video.addEventListener('click', () => {
-        if (video.paused) {
-          video.play();
+    videos.forEach((video) => {
+      const videoElement = video as HTMLVideoElement;
+      videoElement.addEventListener('click', () => {
+        if (videoElement.paused) {
+          videoElement.play();
         } else {
-          video.pause();
+          videoElement.pause();
         }
       });
     });
@@ -83,12 +84,13 @@ const secondClass = second
     tabButtons.forEach(button => {
       button.addEventListener('click', () => {
         const targetId = button.getAttribute('data-hs-tab');
-        const video = document.querySelector(`video[id="video-${targetId}"]`);
+        const video = document.querySelector(`video[id="video-${targetId}"]`) as HTMLVideoElement;
         
         if (video) {
           // Pause all videos first
-          document.querySelectorAll('video[id^="video-"]').forEach(v => {
-            v.pause();
+          document.querySelectorAll('video[id^="video-"]').forEach((v) => {
+            const videoElement = v as HTMLVideoElement;
+            videoElement.pause();
           });
           
           // Play the video for the active tab

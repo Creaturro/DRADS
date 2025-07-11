@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "E-commerce Platform Transformation",
+    "client": "RetailTech Solutions",
+    "industry": "E-commerce",
+    "description": "Modern e-commerce platform with advanced inventory management, AI-powered recommendations, and seamless payment processing.",
+    "longDescription": "RetailTech Solutions needed to modernize their legacy e-commerce platform to handle increased traffic and provide a better user experience. The platform had to integrate with multiple payment gateways, provide real-time inventory management, and offer personalized product recommendations.",
+    "challenge": "The existing platform was built on outdated technology that couldn't handle the growing user base and lacked modern features like AI recommendations and real-time inventory tracking.",
+    "solution": "We rebuilt the platform using React for the frontend, Node.js for the backend, PostgreSQL for data management, and AWS for cloud hosting. The new platform included AI-powered product recommendations, real-time inventory management, and seamless payment processing.",
+    "technologies": ["React", "Node.js", "PostgreSQL", "AWS", "Stripe API", "AI/ML"],
+    "metrics": {
+      "performance": "300%",
+      "conversion": "45%",
+      "loadTime": "1.2s"
+    },
+    "image": "/images/case-studies/ecommerce-platform.avif",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Healthcare Management System",
+    "client": "MediCare Solutions",
+    "industry": "Healthcare",
+    "description": "Custom patient management system with HIPAA compliance, real-time data synchronization, and advanced analytics dashboard for healthcare providers.",
+    "longDescription": "MediCare Solutions needed a comprehensive patient management system that could handle sensitive medical data while providing healthcare providers with real-time insights and analytics. The system had to be fully HIPAA compliant and integrate with existing medical equipment and databases.",
+    "challenge": "Managing patient data securely while providing real-time access to healthcare providers was a major challenge. The system needed to be HIPAA compliant, integrate with multiple medical devices, and provide analytics without compromising patient privacy.",
+    "solution": "We developed a secure, cloud-based patient management system using Vue.js for the frontend, Python for backend processing, MongoDB for flexible data storage, and Azure for secure cloud hosting. The system included advanced encryption, audit trails, and real-time data synchronization.",
+    "technologies": ["Vue.js", "Python", "MongoDB", "Azure", "TensorFlow", "HIPAA APIs"],
+    "metrics": {
+      "efficiency": "250%",
+      "accuracy": "99.9%",
+      "compliance": "100%"
+    },
+    "image": "/images/case-studies/healthcare-system.avif",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "title": "Financial Trading Platform",
+    "client": "TradeFlow Capital",
+    "industry": "FinTech",
+    "description": "High-frequency trading platform with real-time market data processing, advanced risk management, and automated trading algorithms.",
+    "longDescription": "TradeFlow Capital required a high-frequency trading platform that could process millions of market data points per second while maintaining sub-millisecond latency. The platform needed to handle complex trading algorithms and provide comprehensive risk management tools.",
+    "challenge": "Building a trading platform that could handle high-frequency trading with sub-millisecond latency while maintaining accuracy and reliability was extremely challenging. The system needed to process massive amounts of real-time data and execute trades with perfect precision.",
+    "solution": "We built a high-performance trading platform using Angular for the user interface, Java for ultra-fast backend processing, Redis for in-memory data storage, and Kubernetes for scalable deployment. The platform included advanced risk management algorithms and real-time market data processing.",
+    "technologies": ["Angular", "Java", "Redis", "Kubernetes", "Apache Kafka", "Machine Learning"],
+    "metrics": {
+      "latency": "0.1ms",
+      "throughput": "1M+",
+      "reliability": "99.99%"
+    },
+    "image": "/images/case-studies/trading-platform.avif",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "Supply Chain Optimization",
+    "client": "Global Logistics Corp",
+    "industry": "Logistics",
+    "description": "End-to-end supply chain management system with IoT integration, predictive analytics, and real-time tracking capabilities.",
+    "longDescription": "Global Logistics Corp needed a comprehensive supply chain management system that could track shipments in real-time, predict delays, and optimize routes automatically. The system had to integrate with IoT devices and provide predictive analytics for better decision-making.",
+    "challenge": "Managing a complex global supply chain with thousands of shipments, multiple carriers, and unpredictable variables required a sophisticated system that could provide real-time visibility and predictive insights.",
+    "solution": "We developed an end-to-end supply chain management system using React Native for mobile access, Go for high-performance backend processing, InfluxDB for time-series data, and Docker for containerized deployment. The system included IoT integration and machine learning for predictive analytics.",
+    "technologies": ["React Native", "Go", "InfluxDB", "Docker", "IoT APIs", "Machine Learning"],
+    "metrics": {
+      "efficiency": "180%",
+      "costSavings": "35%",
+      "visibility": "Real-time"
+    },
+    "image": "/images/case-studies/ecommerce-platform.avif",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "Educational Learning Platform",
+    "client": "EduTech Innovations",
+    "industry": "Education",
+    "description": "Comprehensive learning management system with AI-powered content recommendations, virtual classrooms, and advanced assessment tools.",
+    "longDescription": "EduTech Innovations wanted to create a next-generation learning platform that could personalize education for each student using AI, provide virtual classroom experiences, and offer comprehensive assessment tools for educators.",
+    "challenge": "Creating a learning platform that could adapt to individual student needs while providing engaging virtual classroom experiences and comprehensive assessment tools required sophisticated AI algorithms and real-time collaboration features.",
+    "solution": "We built a comprehensive learning management system using Next.js for the frontend, Python for AI processing, TensorFlow for machine learning algorithms, and AWS for scalable cloud hosting. The platform included AI-powered content recommendations and virtual classroom capabilities.",
+    "technologies": ["Next.js", "Python", "TensorFlow", "AWS", "WebRTC", "AI/ML"],
+    "metrics": {
+      "engagement": "200%",
+      "completion": "85%",
+      "satisfaction": "4.8/5"
+    },
+    "image": "/images/case-studies/healthcare-system.avif",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Manufacturing Automation",
+    "client": "SmartFactory Industries",
+    "industry": "Manufacturing",
+    "description": "IoT-driven manufacturing automation system with predictive maintenance, quality control, and production optimization.",
+    "longDescription": "SmartFactory Industries needed to modernize their manufacturing processes with IoT-driven automation, predictive maintenance capabilities, and real-time quality control. The system had to integrate with existing manufacturing equipment and provide comprehensive analytics.",
+    "challenge": "Integrating IoT devices with existing manufacturing equipment while providing predictive maintenance and real-time quality control required a sophisticated system that could handle diverse data sources and provide actionable insights.",
+    "solution": "We developed an IoT-driven manufacturing automation system using Vue.js for the user interface, C# for backend processing, SQL Server for data management, and Azure IoT for device connectivity. The system included predictive maintenance algorithms and real-time quality control.",
+    "technologies": ["Vue.js", "C#", "SQL Server", "Azure IoT", "Machine Learning", "IoT Protocols"],
+    "metrics": {
+      "productivity": "220%",
+      "downtime": "-70%",
+      "quality": "99.5%"
+    },
+    "image": "/images/case-studies/trading-platform.avif",
+    "featured": false
+  }
+] 

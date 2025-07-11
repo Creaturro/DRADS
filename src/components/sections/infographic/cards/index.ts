@@ -1,5 +1,5 @@
 // Available Components
-export { default as InfographicTemplateFrontend } from '../InfographicTemplateFrontend';
+// export { default as InfographicTemplateFrontend } from '../InfographicTemplateFrontend';
 
 // TODO: Create these components when needed
 // export { default as InfographicTemplateBrief } from '../InfographicTemplateBrief';

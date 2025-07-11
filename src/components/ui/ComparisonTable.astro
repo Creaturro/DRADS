@@ -56,7 +56,7 @@ const tableData = [
     </thead>
     <tbody>
       {tableData.map((row, idx) => (
-        <tr class="border-b border-gray-600 hover:bg-gray-700/50" key={idx}>
+        <tr class="border-b border-gray-600 hover:bg-gray-700/50">
           <td class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 border-r border-gray-600 align-top whitespace-nowrap">{row.area}</td>
           {idx === tableData.length - 1 ? (
             <td colspan="2" class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 align-top whitespace-normal break-words">{row.drads}</td>
@@ -76,7 +76,7 @@ const tableData = [
 <!-- Mobile Stacked Cards (below md) -->
 <div class="block md:hidden space-y-6">
   {tableData.map((row, idx) => (
-    <div class="bg-gray-800 rounded-lg shadow p-4 flex flex-col gap-2" key={idx}>
+    <div class="bg-gray-800 rounded-lg shadow p-4 flex flex-col gap-2">
       <div class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-1">{row.area}</div>
       <div class="flex flex-col gap-2">
         <div>

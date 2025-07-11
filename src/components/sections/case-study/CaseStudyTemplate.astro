@@ -76,7 +76,7 @@ import Quota from "@components/ui/blocks/Quota.astro";
   </div>
   <!-- Right: Persona Blocks -->
   <div class="w-full md:w-1/2 text-white flex flex-col gap-6">
-    {personas.map(persona => (
+    {personas.map((persona: any) => (
       <div class="flex items-start gap-4">
         <img src={persona.icon} alt="Checkbox" class="w-8 h-8 mt-1" />
         <div>
