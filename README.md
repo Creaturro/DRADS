@@ -33,7 +33,6 @@ ScrewFast is an **open-source template** designed for quick and efficient web pr
     * [Footer Links](#footer-links)
     * [Social Media Links](#social-media-links)
 * [Integrations and Enhancements](#integrations-and-enhancements)
-  * [Starlight Documentation](#starlight-documentation)
   * [Lenis for Smooth Scrolling](#lenis-for-smooth-scrolling)
   * [GSAP Integration](#gsap-integration)
   * [Hiding Scrollbar](#hiding-scrollbar)
@@ -70,7 +69,6 @@ ScrewFast is an **open-source template** designed for quick and efficient web pr
 * **Preline UI:** Implement prebuilt UI components for added elegance.
 * **GSAP Integration:** Impress with professional and polished animations.
 * **Markdown Content Collections:** Organize and manage your content seamlessly.
-* **Starlight Documentation:** A sleek, user-friendly, full-featured documentation theme.
 * **Internationalization (i18n):** Integrates Astro’s internationalization features.
 * **SEO and Responsiveness:** Ensure your site is discoverable and accessible on any device.
 
@@ -91,10 +89,6 @@ ScrewFast is an **open-source template** designed for quick and efficient web pr
   * Collects user feedback at the end of blog posts.
   * Serves as a UI demonstration (no back-end integration currently).
   
-* [x] **Starlight Documentation Theme Integration**:
-  * A sleek, user-friendly, full-featured documentation theme, which enhances the readability and usability of documentation.
-  * Enhances readability and usability of documentation with features like site navigation, search, dark mode, code highlighting, and internationalization support.
-
 * [x] **Icon Set Component**:
   * Centralizes SVG icons for easy management and updates.
   * Render any pre-defined icon SVG using `<Icon name="iconName" />` in your Astro components.
@@ -343,28 +337,6 @@ The `Navbar.astro` and `NavbarMegaMenu.astro` components can be configured withi
 
 
 ## Integrations and Enhancements
-
-### Starlight Documentation
-
-ScrewFast is now equipped with Starlight, designed to elevate the user experience with documentation. This modern and elegant theme includes a suite of features to make content more accessible and enjoyable to navigate.
-
-Key Features:
-
-* **Site Navigation and Search**: Navigate effortlessly using the intuitive sidebar and built-in search functionality.
-* **Internationalization**: Reach a global audience with language-switching capabilities, making the documentation accessible worldwide.
-* **SEO Friendly**: Optimized for search engines, helping users quickly find the information they need.
-* **Code Highlighting and Dark Mode**: Improves code readability with syntax highlighting, and offers a dark mode to reduce eye strain.
-* **Mobile Responsive Design**: Adapts to any screen size, whether you're on a phone, tablet, or desktop, for optimal readability.
-
-With Starlight, you gain access to powerful features and integrations, as well as extensive customization options to suit your needs.
-
-> [!NOTE]
-> Dive into the Starlight's comprehensive feature list and learn how it can streamline your development process by visiting the theme's [documentation site](https://starlight.astro.build/).
-
-
-> [!IMPORTANT]  
-> If the sidebar in your Starlight site is not scrolling, and you have to manually drag the scrollbar, remove the script tag related to the Lenis smooth scroll library from `src/components/ui/starlight/Head.astro`.
-
 
 ### Lenis for Smooth Scrolling
 
