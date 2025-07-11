@@ -1,6 +1,5 @@
 ---
 // Import the necessary dependencies
-import { Image } from "astro:assets";
 import IconBlock from "@components/ui/blocks/IconBlock.astro";
 import Icon from "@components/ui/icons/Icon.astro";
 
@@ -18,7 +17,7 @@ interface Props {
   alt?: string;
 }
 // Define props from Astro
-const { title, subTitle, src, alt, features } = Astro.props;
+const { title, subTitle } = Astro.props;
 ---
 
 <section

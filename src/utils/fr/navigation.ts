@@ -21,7 +21,7 @@ const footerLinks = [
     links: [
       { name: "À propos de nous", url: "#" },
       { name: "Blog", url: "/fr/blog" },
-      { name: "Carrières", url: "#" },
+      // { name: "Carrières", url: "#" }, // DISABLED
       { name: "Clients", url: "#" },
     ],
   },

@@ -1,5 +1,4 @@
 ---
-import TestimonialItem from "./TestimonialItem.astro";
 import StatsGrid from "../../ui/blocks/StatsGrid.astro";
 import PrimaryCTA from "../../ui/buttons/PrimaryCTA.astro";
 import SecondaryCTA from "../../ui/buttons/SecondaryCTA.astro";
@@ -89,6 +88,7 @@ const caseStudyLogos = [
           <a 
             href={caseStudy.url}
             class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
+            data-case-study-link="true"
           >
             <div class="flex flex-col items-center gap-5">
               <img 

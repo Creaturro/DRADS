@@ -46,24 +46,24 @@ const tableData = [
 
 <!-- Desktop Table (md and up) -->
 <div class="w-full overflow-x-auto hidden md:block">
-  <table class="w-full">
+  <table class="w-full border-l border-r border-gray-600">
     <thead>
       <tr class="border-b-0 hover:bg-transparent">
-        <th class="text-white text-lg p-3 sm:p-4 font-medium border-r border-gray-500 min-w-[220px] sm:min-w-[240px]" style="background-color: #5A5959;">Area</th>
-        <th class="text-white text-lg p-3 sm:p-4 font-medium border-r border-gray-500 min-w-[280px] sm:min-w-[320px]" style="background-color: #E14EB5;">DRADS</th>
-        <th class="text-white text-lg p-3 sm:p-4 font-medium min-w-[280px] sm:min-w-[320px]" style="background-color: #1DA6AE;">Traditional Development</th>
+        <th class="text-white text-lg p-3 sm:p-4 font-medium border-l border-r border-gray-500 min-w-[220px] sm:min-w-[240px]" style="background-color: #5A5959;">Area</th>
+        <th class="text-white text-lg p-3 sm:p-4 font-medium border-r border-gray-500 min-w-[280px] sm:min-w-[320px]" style="background-color: #AB1E81;">DRADS</th>
+        <th class="text-white text-lg p-3 sm:p-4 font-medium border-r border-gray-500 min-w-[280px] sm:min-w-[320px]" style="background-color: #1DA6AE;">Traditional Development</th>
       </tr>
     </thead>
     <tbody>
       {tableData.map((row, idx) => (
         <tr class="border-b border-gray-600 hover:bg-gray-700/50">
-          <td class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 border-r border-gray-600 align-top whitespace-nowrap">{row.area}</td>
+          <td class="text-gray-300 text-lg p-3 sm:p-4 border-l border-r border-gray-600 align-top whitespace-nowrap">{row.area}</td>
           {idx === tableData.length - 1 ? (
-            <td colspan="2" class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 align-top whitespace-normal break-words">{row.drads}</td>
+            <td colspan="2" class="text-gray-300 text-lg p-3 sm:p-4 border-r border-gray-600 align-top whitespace-normal break-words">{row.drads}</td>
           ) : (
             <>
-              <td class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 border-r border-gray-600 align-top whitespace-normal break-words">{row.drads}</td>
-              <td class="bg-gray-800 text-gray-300 text-lg p-3 sm:p-4 align-top whitespace-normal break-words">{row.traditional}</td>
+              <td class="text-gray-300 text-lg p-3 sm:p-4 border-r border-gray-600 align-top whitespace-normal break-words">{row.drads}</td>
+              <td class="text-gray-300 text-lg p-3 sm:p-4 border-r border-gray-600 align-top whitespace-normal break-words">{row.traditional}</td>
             </>
           )}
         </tr>

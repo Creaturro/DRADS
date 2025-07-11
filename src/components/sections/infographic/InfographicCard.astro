@@ -142,7 +142,7 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
           if (isReversed) {
             iconContainer.style.marginRight = '-90px'; // For reversed layout
           } else {
-            iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
+          iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
           }
         }
       }
@@ -155,7 +155,7 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
           if (isReversed) {
             iconContainer.style.marginRight = '-90px'; // For reversed layout
           } else {
-            iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
+          iconContainer.style.marginLeft = '-90px'; // -50px (original) + -40px (additional)
           }
         }
       }
@@ -192,7 +192,7 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
             if (isReversed) {
               iconContainer.style.marginRight = '-90px';
             } else {
-              iconContainer.style.marginLeft = '-90px';
+            iconContainer.style.marginLeft = '-90px';
             }
           }
           
@@ -202,15 +202,13 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
             if (isReversed) {
               iconContainer.style.marginRight = '-90px';
             } else {
-              iconContainer.style.marginLeft = '-90px';
+            iconContainer.style.marginLeft = '-90px';
             }
           }
           
           // Accordion effect: pull up cards below this one
           const allCards = document.querySelectorAll('[data-name="infographic_card"]');
           const currentCardIndex = Array.from(allCards).indexOf(card);
-          const expandedHeight = 200; // height when expanded
-          const collapsedHeight = 28; // height when collapsed
           const heightDifference = 50; // reduced movement for subtle effect
           
           // Pull up only magenta cards (left column) below this one
@@ -243,15 +241,13 @@ const firstSentence = description.split('. ')[0] + (description.includes('.') ? 
             if (isReversed) {
               iconContainer.style.marginRight = '-50px';
             } else {
-              iconContainer.style.marginLeft = '-50px';
+            iconContainer.style.marginLeft = '-50px';
             }
           }
           
           // Accordion effect: push down cards below this one
           const allCards = document.querySelectorAll('[data-name="infographic_card"]');
           const currentCardIndex = Array.from(allCards).indexOf(card);
-          const expandedHeight = 200; // height when expanded
-          const collapsedHeight = 28; // height when collapsed
           const heightDifference = 50; // reduced movement for subtle effect
           
           // Push down only magenta cards (left column) below this one

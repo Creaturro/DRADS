@@ -1,12 +1,4 @@
 ---
-// Import SecondaryCTA component for use in this module
-import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
-import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
-import Icon from "@components/ui/icons/Icon.astro";
-
-// Define props from Astro
-const { pricing } = Astro.props;
-
 // Define TypeScript type for services.
 type Service = {
   name: string;
@@ -15,13 +7,6 @@ type Service = {
   icon: string;
 };
 
-interface PricingSectionProps {
-  title: string;
-  subTitle: string;
-  services: Service[];
-  ctaTitle: string;
-  ctaSubtitle: string;
-  ctaButtonText: string;
-  ctaButtonUrl: string;
-}
+// Define props from Astro
+const { pricing } = Astro.props;
 ---

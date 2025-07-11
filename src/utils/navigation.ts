@@ -3,7 +3,7 @@ const navBarLinks = [
   { name: "Home", url: "/" },
   { name: "Case Studies", url: "/case-studies" },
   { name: "About Us", url: "/about" },
-  { name: "Join Our Team", url: "/careers" },
+  // { name: "Join Our Team", url: "/careers" }, // DISABLED
   { name: "Contact", url: "/contact" },
 ];
 // An array of links for footer

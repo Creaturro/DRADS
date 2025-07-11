@@ -47,41 +47,72 @@
 
 ---
 
-## Calibration Dots System
+## Integrated Calibration System
 
 ### **Purpose:**
-The calibration dots system provides precise positioning reference points for placing future visual elements (arrows, connectors, indicators) on the DRADS cards in the left column.
+The integrated calibration system provides synchronized positioning for dots, icons, and arrows. All elements use shared position variables, ensuring perfect alignment and easy repositioning.
 
 ### **How to Use:**
 ```astro
-<!-- Hide calibration dots (default) -->
-<TimelineComponent />
+<!-- Hide calibration dots, show icons (default) -->
+<TimelineComponent showCalibrationDots={false} />
 
 <!-- Show calibration dots for positioning -->
 <TimelineComponent showCalibrationDots={true} />
 ```
 
-### **Calibration Dot Positions:**
-| Color | Position | Target Card | Notes |
-|-------|----------|-------------|-------|
-| **Magenta** | (330, 200) | Brief and Research | Absolute coordinates |
-| **Green** | (20%, 15%) | Brief and Research | Percentage coordinates |
-| **Blue** | (350, 628) | Asynchronous Design Work | Absolute coordinates |
-| **Orange** | (80, 848) | "Glueing" systems through APIs | Absolute coordinates |
-| **Red** | (312, 1022) | Live Testing | Absolute coordinates |
+### **Shared Position Variables:**
+```javascript
+const calibrationPositions = {
+  magenta: { x: 437, y: 89 },   // Brief and Research
+  green: { x: 90, y: 308 },     // Asynchronous Frontend Coding
+  blue: { x: 430, y: 488 },     // Asynchronous Design Work
+  orange: { x: 66, y: 713 },    // "Glueing" systems through APIs
+  red: { x: 302, y: 1012 }      // Live Testing
+};
+```
 
-### **Workflow for Adding New Visual Elements:**
-1. **Enable calibration dots:** `showCalibrationDots={true}`
-2. **Identify reference point:** Use the closest calibration dot
-3. **Calculate offset:** Measure distance from reference to target position
-4. **Position new element:** Use calculated coordinates
-5. **Test and adjust:** Fine-tune position as needed
-6. **Disable dots:** Set `showCalibrationDots={false}` for production
+### **Current Calibration Positions:**
+| Color | Position | Target Card | Status |
+|-------|----------|-------------|--------|
+| **Magenta** | (437, 89) | Brief and Research | ✅ Active |
+| **Green** | (90, 308) | Asynchronous Frontend Coding | ✅ Active |
+| **Blue** | (430, 488) | Asynchronous Design Work | ✅ Active |
+| **Orange** | (66, 713) | "Glueing" systems through APIs | ⚠️ Dot only (no icon) |
+| **Red** | (302, 1012) | Live Testing | ✅ Active |
+
+### **Integrated Elements:**
+When `showCalibrationDots={false}` (default):
+- **Icons:** `orange_ico.svg` appears at all positions except orange
+- **Orange position:** Shows only dot (no icon)
+- **Arrows:** All automatically use calibration positions for start/end points
+
+When `showCalibrationDots={true}`:
+- **Dots:** All calibration dots visible
+- **Icons:** Hidden
+- **Arrows:** Same positioning as above
+
+### **Workflow for Repositioning:**
+1. **Modify position variable:** Change `calibrationPositions.{color}.x` or `.y`
+2. **Automatic updates:** All related elements move simultaneously:
+   - Calibration dot (when visible)
+   - Icon (when dots hidden)
+   - All arrows starting/ending at that position
+3. **Test and adjust:** Fine-tune as needed
+4. **Production:** Set `showCalibrationDots={false}`
+
+### **Example Repositioning:**
+```javascript
+// Move magenta (Brief) 50px right and 30px up
+calibrationPositions.magenta.x += 50;
+calibrationPositions.magenta.y -= 30;
+```
 
 ### **Coordinate System:**
 - **X-axis:** Left to right (0 = left edge, larger values = more right)
 - **Y-axis:** Top to bottom (0 = top edge, larger values = more down)
-- **Units:** Pixels for absolute positioning, percentages for responsive positioning
+- **Units:** Pixels for absolute positioning
+- **Z-index:** Icons (51) > Dots (50) > Arrows (10)
 
 ---
 

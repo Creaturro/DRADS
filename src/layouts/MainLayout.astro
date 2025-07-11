@@ -62,8 +62,109 @@ interface Props {
     </div>
     <FooterSection />
     <script>
-      // https://preline.co
-      import "preline/preline.js";
+      // Import and initialize Preline components
+      import("preline/preline.js").then(() => {
+        if (typeof (window as any).HSStaticMethods !== 'undefined') {
+          (window as any).HSStaticMethods.autoInit();
+        }
+      }).catch(err => {
+        console.error('Failed to load Preline:', err);
+      });
+    </script>
+    <script>
+      // Smooth scroll for case study links only
+      document.addEventListener('DOMContentLoaded', function() {
+        const CASE_STUDY_SELECTOR = 'a[href^="/case-studies#"], a[data-case-study-link="true"]';
+        // Attach smooth scroll handlers to all relevant links
+        function attachSmoothScrollToLinks() {
+          let selector = CASE_STUDY_SELECTOR;
+          if (window.location.pathname === '/case-studies') {
+            selector += ', a[href^="#"]';
+          }
+          const caseStudyLinks = document.querySelectorAll(selector);
+          caseStudyLinks.forEach(link => {
+            if (link.hasAttribute('data-smooth-scroll-attached')) return;
+            link.setAttribute('data-smooth-scroll-attached', 'true');
+            const originalHref = link.getAttribute('href');
+            link.setAttribute('href', 'javascript:void(0)');
+            link.setAttribute('data-original-href', originalHref || '');
+            (link as HTMLElement).onclick = function(e: Event) {
+              e.preventDefault();
+              e.stopPropagation();
+              const targetHref = link.getAttribute('data-original-href');
+              if (!targetHref) return false;
+                            let sectionId;
+                if (targetHref.startsWith('/case-studies#')) {
+                  sectionId = targetHref.split('#')[1];
+                } else if (targetHref.startsWith('#') && window.location.pathname === '/case-studies') {
+                  sectionId = targetHref.substring(1);
+                } else if (targetHref.startsWith('#') && window.location.pathname === '/') {
+                  // Handle homepage case study links
+                  sectionId = targetHref.substring(1);
+                } else {
+                  // For case study links from homepage, navigate to case studies page
+                  if (link.hasAttribute('data-case-study-link')) {
+                    setTimeout(() => {
+                      window.location.href = targetHref;
+                    }, 500);
+                    return false;
+                  }
+                  return false;
+                }
+                if (!sectionId) return false;
+                if (window.location.pathname === '/case-studies') {
+                  const element = document.getElementById(sectionId);
+                  if (element) {
+                    if ((window as any).lenis) {
+                      (window as any).lenis.scrollTo(element, { offset: -50, duration: 2 });
+                    } else {
+                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      setTimeout(() => { window.scrollBy(0, -50); }, 100);
+                    }
+                  }
+                } else {
+                  // Navigate to case studies page with hash (from homepage or other pages)
+                  setTimeout(() => {
+                    window.location.href = targetHref;
+                  }, 500);
+                }
+                return false;
+              };
+          });
+        }
+        // Debounce utility to avoid excessive handler attachment
+        function debounce(fn: Function, delay: number) {
+          let timeout: any;
+          return function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(fn, delay);
+          };
+        }
+        // Initial attachment
+        attachSmoothScrollToLinks();
+        // Re-attach handlers after Preline loads
+        setTimeout(attachSmoothScrollToLinks, 1000);
+        // Re-attach handlers after footer loads
+        setTimeout(attachSmoothScrollToLinks, 2000);
+        // Observe DOM changes and re-attach handlers if needed
+        const observer = new MutationObserver(debounce(attachSmoothScrollToLinks, 200));
+        observer.observe(document.body, { childList: true, subtree: true });
+        // Smooth scroll on page load if hash is present
+        if (window.location.pathname === '/case-studies' && window.location.hash) {
+          const sectionId = window.location.hash.substring(1);
+          const element = document.getElementById(sectionId);
+          if (element) {
+            setTimeout(() => {
+                                if ((window as any).lenis) {
+                    (window as any).lenis.scrollTo(element, { offset: -50, duration: 2 });
+                  } else {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => { window.scrollBy(0, -50); }, 100);
+              }
+            }, 500);
+          }
+        }
+      });
     </script>
     <style>
       /* CSS rules for the page scrollbar */

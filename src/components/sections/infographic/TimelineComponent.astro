@@ -5,9 +5,6 @@
 import svgPaths from "@scripts/timeline-svg-paths";
 import InfographicCard from "./InfographicCard.astro";
 import TimelineTooltip from "./TimelineTooltip.astro";
-import Quota from "@/components/ui/blocks/Quota.astro";
-import SpeechBubble from "@/components/ui/blocks/SpeechBubble.astro";
-import Avatar from "@/components/ui/avatars/Avatar.astro";
 
 // Props for different contexts
 export interface Props {
@@ -16,6 +13,15 @@ export interface Props {
 }
 
 const { context = 'full-page', showCalibrationDots = false } = Astro.props;
+
+// Calibration positions - shared between dots, icons, and arrows
+const calibrationPositions = {
+  magenta: { x: 437, y: 89 }, // TEST: moved 73px right, 51px up (was 364, 140)
+  green: { x: 90, y: 308 },
+  blue: { x: 430, y: 488 }, // TEST: moved 80px right, 130px up (was 350, 618)
+  orange: { x: 66, y: 713 },
+  red: { x: 302, y: 1012 }
+};
 
 // Frame component data - adaptive positioning for different contexts
 const getFrames = (context: string) => {
@@ -191,25 +197,9 @@ const milestones = getMilestones(context);
 
 // Dynamic height and positioning based on context
 const timelineHeight = context === 'section' ? 'h-[2800px]' : 'h-[2894.92px]';
-const leftColumnHeight = context === 'section' ? 'h-[1400px]' : 'h-[1530px]';
-const containerClass = context === 'section' ? 'relative w-full overflow-hidden' : 'flex flex-col md:flex-row w-full relative';
 ---
 
-<div class="hidden md:flex w-full" style="margin-bottom: 0;">
-  <!-- DRADS (Magenta) -->
-  <div class="flex items-center w-1/2 bg-[#AB1E81] py-8 px-12 gap-6" style="border-top-left-radius: 0.5rem;">
-    <img src="/images/Timeline/drads-ico.svg" alt="DRADS Icon" class="w-12 h-12" />
-    <div>
-      <div class="text-4xl font-extrabold text-white leading-tight">DRADS</div>
-      <div class="text-xl font-light text-white mt-1">quick development flow</div>
-    </div>
-  </div>
-  <!-- Standard Development (Cyan) -->
-  <div class="flex flex-col justify-center w-1/2 bg-[#1DA6AE] py-8 px-12" style="border-top-right-radius: 0.5rem;">
-    <div class="text-4xl font-extrabold text-white leading-tight">Standard Development</div>
-    <div class="text-xl font-light text-white mt-1">classic development process</div>
-  </div>
-</div>
+
 
 <div class="flex flex-col md:flex-row w-full relative">
   <!-- Left Column (DRADS) -->
@@ -234,84 +224,99 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
       </div>
     </div>
     
-    {showCalibrationDots && (
+    {showCalibrationDots ? (
       <>
         <!-- Magenta dot for calibration (Brief and Research) -->
         <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
           <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-            <circle cx="330" cy="200" r="12" fill="#AB1E81" stroke="#fff" stroke-width="3" />
+            <circle cx={calibrationPositions.magenta.x} cy={calibrationPositions.magenta.y} r="12" fill="#AB1E81" stroke="#fff" stroke-width="3" />
           </svg>
         </div>
         
-        <!-- Green dot for calibration (Brief and Research original position) -->
+        <!-- Green dot for calibration (Asynchronous Frontend Coding) -->
         <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
           <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-            <circle cx="20%" cy="15%" r="12" fill="#22c55e" stroke="#fff" stroke-width="3" />
+            <circle cx={calibrationPositions.green.x} cy={calibrationPositions.green.y} r="12" fill="#22c55e" stroke="#fff" stroke-width="3" />
           </svg>
         </div>
         
         <!-- Blue dot for calibration (Design Work) -->
         <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
           <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-            <circle cx="350" cy="628" r="12" fill="#3b82f6" stroke="#fff" stroke-width="3" />
+            <circle cx={calibrationPositions.blue.x} cy={calibrationPositions.blue.y} r="12" fill="#3b82f6" stroke="#fff" stroke-width="3" />
           </svg>
         </div>
         
         <!-- Orange dot for calibration (Glueing) -->
         <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
           <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-            <circle cx="80" cy="848" r="12" fill="#f97316" stroke="#fff" stroke-width="3" />
+            <circle cx={calibrationPositions.orange.x} cy={calibrationPositions.orange.y} r="12" fill="#f97316" stroke="#fff" stroke-width="3" />
           </svg>
         </div>
         
         <!-- Red dot for calibration (Testing) -->
         <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
           <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-            <circle cx="312" cy="1022" r="12" fill="#ef4444" stroke="#fff" stroke-width="3" />
+            <circle cx={calibrationPositions.red.x} cy={calibrationPositions.red.y} r="12" fill="#ef4444" stroke="#fff" stroke-width="3" />
           </svg>
         </div>
         
-        <!-- Purple dot for calibration (Frontend) -->
-        <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 50;">
-          <svg class="absolute w-full h-full" style="top: 0; left: 0;">
-            <circle cx="280" cy="414" r="12" fill="#a855f7" stroke="#fff" stroke-width="3" />
-          </svg>
+
+      </>
+    ) : (
+      <>
+        <!-- Magenta icon -->
+        <div class="hidden 2xl:block absolute" style={`left:${calibrationPositions.magenta.x}px;top:${calibrationPositions.magenta.y}px;z-index:51;transform:translate(-50%,-50%);`}>
+          <div class="timeline-icon"><img src="/images/Timeline/Timeline/orange_ico.svg" alt="Orange Icon" style="width:32px;height:32px;" /></div>
+        </div>
+        <!-- Green icon -->
+        <div class="hidden 2xl:block absolute" style={`left:${calibrationPositions.green.x}px;top:${calibrationPositions.green.y}px;z-index:51;transform:translate(-50%,-50%);`}>
+          <div class="timeline-icon"><img src="/images/Timeline/Timeline/orange_ico.svg" alt="Orange Icon" style="width:32px;height:32px;" /></div>
+        </div>
+        <!-- Blue icon -->
+        <div class="hidden 2xl:block absolute" style={`left:${calibrationPositions.blue.x}px;top:${calibrationPositions.blue.y}px;z-index:51;transform:translate(-50%,-50%);`}>
+          <div class="timeline-icon"><img src="/images/Timeline/Timeline/orange_ico.svg" alt="Orange Icon" style="width:32px;height:32px;" /></div>
+        </div>
+
+        <!-- Red icon -->
+        <div class="hidden 2xl:block absolute" style={`left:${calibrationPositions.red.x}px;top:${calibrationPositions.red.y}px;z-index:51;transform:translate(-50%,-50%);`}>
+          <div class="timeline-icon"><img src="/images/Timeline/Timeline/orange_ico.svg" alt="Orange Icon" style="width:32px;height:32px;" /></div>
         </div>
       </>
     )}
     
     <!-- DRADS Flow Arrows (always visible) -->
-    <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 10;">
+    <div class="hidden 2xl:block absolute left-0 top-0 w-full h-full pointer-events-none" style="z-index: 10;">
       <svg class="absolute w-full h-full" style="top: 0; left: 0;">
         <defs>
           <marker id="arrowhead-drads" markerWidth="5" markerHeight="3.5" refX="4.5" refY="1.75" orient="auto">
-            <polygon points="0 0, 5 1.75, 0 3.5" fill="#AB1E81" />
+            <polygon points="0 0, 5 1.75, 0 3.5" fill="#582350" />
           </marker>
         </defs>
         
         <!-- Brief to Design Work (larger arc) -->
-        <path d="M 330 200 C 380 250 360 500 350 628" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        <path d={`M ${calibrationPositions.magenta.x} ${calibrationPositions.magenta.y} C 380 250 360 500 ${calibrationPositions.blue.x} ${calibrationPositions.blue.y}`} stroke="#582350" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
         
         <!-- Brief to Glueing (larger arc) -->
-        <path d="M 330 200 C 280 400 50 700 80 848" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        <path d={`M ${calibrationPositions.magenta.x} ${calibrationPositions.magenta.y} C 280 400 50 700 ${calibrationPositions.orange.x} ${calibrationPositions.orange.y}`} stroke="#582350" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
         
         <!-- Design Work to Glueing (larger arc) -->
-        <path d="M 350 628 C 280 750 100 850 80 848" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        <path d={`M ${calibrationPositions.blue.x} ${calibrationPositions.blue.y} C 280 750 100 850 ${calibrationPositions.orange.x} ${calibrationPositions.orange.y}`} stroke="#582350" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
         
         <!-- Glueing to Testing (larger arc) -->
-        <path d="M 80 848 C 180 950 280 1050 312 1022" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        <path d={`M ${calibrationPositions.orange.x} ${calibrationPositions.orange.y} C 180 950 280 1050 ${calibrationPositions.red.x} ${calibrationPositions.red.y}`} stroke="#582350" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
         
         <!-- Design Work to Testing (larger arc) -->
-        <path d="M 350 628 C 380 800 350 1000 312 1022" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        <path d={`M ${calibrationPositions.blue.x} ${calibrationPositions.blue.y} C 380 800 350 1000 ${calibrationPositions.red.x} ${calibrationPositions.red.y}`} stroke="#582350" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
         
-        <!-- NEW ARROWS: Brief to Frontend -->
-        <path d="M 330 200 C 340 250 310 350 280 414" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        <!-- NEW ARROWS: Brief to Frontend (now pointing to green dot) -->
+        <path d={`M ${calibrationPositions.magenta.x} ${calibrationPositions.magenta.y} C 340 250 310 350 ${calibrationPositions.green.x - 10} ${calibrationPositions.green.y - 10}`} stroke="#582350" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
         
-        <!-- NEW ARROWS: Design to Frontend -->
-        <path d="M 350 628 C 330 550 310 480 280 414" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        <!-- NEW ARROWS: Design to Frontend (now pointing to green dot) -->
+        <path d={`M ${calibrationPositions.blue.x} ${calibrationPositions.blue.y} C 330 550 310 480 ${calibrationPositions.green.x - 10} ${calibrationPositions.green.y - 10}`} stroke="#582350" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
         
-        <!-- NEW ARROWS: Frontend to Glueing -->
-        <path d="M 280 414 C 200 600 120 750 80 848" stroke="#AB1E81" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
+        <!-- NEW ARROWS: Frontend to Glueing (now starting from green dot) -->
+        <path d={`M ${calibrationPositions.green.x} ${calibrationPositions.green.y} C 200 600 120 750 ${calibrationPositions.orange.x - 10} ${calibrationPositions.orange.y - 10}`} stroke="#582350" stroke-width="2" fill="none" marker-end="url(#arrowhead-drads)" />
       </svg>
     </div>
     
@@ -418,7 +423,7 @@ const containerClass = context === 'section' ? 'relative w-full overflow-hidden'
     </div>
     
     <!-- Linear arrows connecting Cyan cards -->
-    <div class="absolute right-0 top-0 w-full h-full pointer-events-none">
+    <div class="hidden 2xl:block absolute right-0 top-0 w-full h-full pointer-events-none">
       <!-- Arrow from Brief and Research to UI/UX Design -->
       <svg class="absolute w-full h-full" style="top: 0; left: 0;">
         <defs>

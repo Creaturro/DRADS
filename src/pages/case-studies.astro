@@ -1,106 +1,9 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import Icon from "@components/ui/icons/Icon.astro";
-import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
-import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
-import ReusableSection from "@components/sections/misc/ReusableSection.astro";
 import Quota from "@components/ui/blocks/Quota.astro";
-import CaseStudyTemplate from "@components/sections/case-study/CaseStudyTemplate.astro";
 import ProjectCTA from "@components/ui/blocks/ProjectCTA.astro";
 
-// Case studies data
-const caseStudies = [
-  {
-    id: 1,
-    title: "E-Commerce Platform Transformation",
-    client: "TechRetail Inc.",
-    industry: "E-Commerce",
-    description: "Complete overhaul of legacy e-commerce system with modern microservices architecture, resulting in 300% performance improvement and 50% reduction in maintenance costs.",
-    technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
-    metrics: {
-      performance: "300%",
-      costReduction: "50%",
-      timeToMarket: "60%"
-    },
-    image: "/images/case-studies/ecommerce-platform.avif",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "Healthcare Management System",
-    client: "MediCare Solutions",
-    industry: "Healthcare",
-    description: "Custom patient management system with HIPAA compliance, real-time data synchronization, and advanced analytics dashboard for healthcare providers.",
-    technologies: ["Vue.js", "Python", "MongoDB", "Azure"],
-    metrics: {
-      efficiency: "250%",
-      accuracy: "99.9%",
-      compliance: "100%"
-    },
-    image: "/images/case-studies/healthcare-system.avif",
-    featured: false
-  },
-  {
-    id: 3,
-    title: "Financial Trading Platform",
-    client: "TradeFlow Capital",
-    industry: "FinTech",
-    description: "High-frequency trading platform with real-time market data processing, advanced risk management, and automated trading algorithms.",
-    technologies: ["Angular", "Java", "Redis", "Kubernetes"],
-    metrics: {
-      latency: "0.1ms",
-      throughput: "1M+",
-      reliability: "99.99%"
-    },
-    image: "/images/case-studies/trading-platform.avif",
-    featured: false
-  },
-  {
-    id: 4,
-    title: "Supply Chain Optimization",
-    client: "Global Logistics Corp",
-    industry: "Logistics",
-    description: "End-to-end supply chain management system with IoT integration, predictive analytics, and real-time tracking capabilities.",
-    technologies: ["React Native", "Go", "InfluxDB", "Docker"],
-    metrics: {
-      efficiency: "180%",
-      costSavings: "35%",
-      visibility: "Real-time"
-    },
-    image: "/images/case-studies/ecommerce-platform.avif",
-    featured: false
-  },
-  {
-    id: 5,
-    title: "Educational Learning Platform",
-    client: "EduTech Innovations",
-    industry: "Education",
-    description: "Comprehensive learning management system with AI-powered content recommendations, virtual classrooms, and advanced assessment tools.",
-    technologies: ["Next.js", "Python", "TensorFlow", "AWS"],
-    metrics: {
-      engagement: "200%",
-      completion: "85%",
-      satisfaction: "4.8/5"
-    },
-    image: "/images/case-studies/healthcare-system.avif",
-    featured: false
-  },
-  {
-    id: 6,
-    title: "Manufacturing Automation",
-    client: "SmartFactory Industries",
-    industry: "Manufacturing",
-    description: "IoT-driven manufacturing automation system with predictive maintenance, quality control, and production optimization.",
-    technologies: ["Vue.js", "C#", "SQL Server", "Azure IoT"],
-    metrics: {
-      productivity: "220%",
-      downtime: "-70%",
-      quality: "99.5%"
-    },
-    image: "/images/case-studies/trading-platform.avif",
-    featured: false
-  }
-];
+// Usuń nieużywane importy i zmienne
 
 const liveLeadPersonas = [
   {
@@ -157,7 +60,6 @@ const liveLeadCost = {
         <a 
           href="#inbox"
           class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
-          onclick="scrollToSection(event, 'inbox')"
         >
           <div class="flex flex-col items-center gap-5">
             <img 
@@ -173,7 +75,6 @@ const liveLeadCost = {
         <a 
           href="#live-lead"
           class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
-          onclick="scrollToSection(event, 'live-lead')"
         >
           <div class="flex flex-col items-center gap-5">
             <img 
@@ -189,7 +90,6 @@ const liveLeadCost = {
         <a 
           href="#printing-shop"
           class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
-          onclick="scrollToSection(event, 'printing-shop')"
         >
           <div class="flex flex-col items-center gap-5">
             <img 
@@ -205,7 +105,6 @@ const liveLeadCost = {
         <a 
           href="#invoice-caddy"
           class="group bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-primary/50 transition-all duration-300 hover:bg-neutral-700 text-center no-underline"
-          onclick="scrollToSection(event, 'invoice-caddy')"
         >
           <div class="flex flex-col items-center gap-5">
             <img 
@@ -619,38 +518,7 @@ const liveLeadCost = {
   <ProjectCTA />
 </MainLayout>
 
-<script>
-  function scrollToSection(event: Event, sectionId: string) {
-    event.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (!element) return;
 
-    const targetY = element.offsetTop - 50; // -50px margin as before
-    const startY = window.scrollY;
-    const distance = targetY - startY;
-    const duration = 2000; // 2000ms = 2s
-    let startTime: number | null = null;
-
-    function animateScroll(currentTime: number) {
-      if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-
-      // Ease function (easeInOutQuad)
-      const ease = progress < 0.5
-        ? 2 * progress * progress
-        : -1 + (4 - 2 * progress) * progress;
-
-      window.scrollTo(0, startY + distance * ease);
-
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      }
-    }
-
-    requestAnimationFrame(animateScroll);
-  }
-</script>
 
 <style>
 @media (min-width: 768px) {
